@@ -1,4 +1,4 @@
-package BoardUI;
+package project3;
 
 /*
  * CS 2365 OOP Spring 2020
@@ -148,7 +148,7 @@ public class board extends javax.swing.JFrame {
         n8.setText("100%");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game2/Outlaw.PNG"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project3/Outlaw.PNG")));
 
         Box2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Outlaw", "Deputy", "Sheriff", "Renegade" }));
         Box2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,11 +163,6 @@ public class board extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(h1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(n1))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(h7)
@@ -248,8 +243,13 @@ public class board extends javax.swing.JFrame {
                                     .addComponent(p4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(6, 6, 6))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(p1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(122, 122, 122)
+                        .addComponent(p1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(h1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(n1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -258,13 +258,13 @@ public class board extends javax.swing.JFrame {
                 .addGap(86, 86, 86)
                 .addComponent(p4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(h4)
                     .addComponent(n4))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(p2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(p2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(p3))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(h2)
@@ -281,7 +281,7 @@ public class board extends javax.swing.JFrame {
                             .addComponent(h8)
                             .addComponent(n8)
                             .addComponent(Box2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(156, 156, 156))
+                        .addGap(136, 136, 136))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(p6)
@@ -299,17 +299,17 @@ public class board extends javax.swing.JFrame {
                             .addComponent(n5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(h7)
                             .addComponent(n7))
-                        .addGap(87, 87, 87)))
+                        .addGap(67, 67, 67)))
                 .addComponent(p1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(n1)
                     .addComponent(h1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(65, 65, 65))
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -320,7 +320,7 @@ public class board extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -418,16 +418,16 @@ public class board extends javax.swing.JFrame {
     private void Box2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Box2ActionPerformed
         int ch = Box2.getSelectedIndex();
         if(ch == 0){
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game2/Outlaw.PNG")));
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Outlaw.PNG")));
         }
         else if(ch == 1){
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game2/Deputy.PNG")));
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Deputy.PNG")));
         }
         else if(ch == 2){
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game2/Sheriff.PNG")));
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Sheriff.PNG")));
         }
         else if(ch == 3){
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game2/Renegade.PNG")));
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Renegade.PNG")));
         }
     }//GEN-LAST:event_Box2ActionPerformed
 
