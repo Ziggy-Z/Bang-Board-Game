@@ -113,9 +113,11 @@ public class Game {
         int totalOneShot=0;
         int totalBeer=0;
         int turnNum =1;
+        boolean rollAgain = false;
         die.clear();
         createDie();
-        System.out.println("\n=====New Turn ======");
+        // start the turn dialog 
+        System.out.println("\n=====New Turn ======\n" + p.getRole() +":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         do 
         {
@@ -133,8 +135,6 @@ public class Game {
                 }
                 else if(d.getResult().equals("Dynamite"))
                 {
-                    die.add(d);
-                    temp.remove(d);
                     totalDynamite++;
                 }
                 else if(d.getResult().equals("Gatling"))
@@ -145,14 +145,23 @@ public class Game {
                 }
                 
             }
-                 for(Dice d: temp)
-                    System.out.print(d.getResult() + " ");
-                 System.out.print("\nDynamite " + totalDynamite);
-            rollingDie = (ArrayList<Dice>)temp.clone();
+            //display the dice to the user
+            Collections.sort(temp);
+            for(Dice d: temp)
+                System.out.print(d.getResult() + " ");
+            //System.out.println("  - Dynamite " + totalDynamite);
+            
+            int [] input = p.rollAgain(temp);
+            //resets the roling with the ones that 
+            
             temp.clear();
             turnNum++;
-    
-        }while(turnNum <= 3 && totalDynamite < 3 && p.rollAgain(rollingDie));
+            // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
+            
+        }while(turnNum <= 3 && totalDynamite < 3 && rollAgain);
+        
+    }
+    private void performActions(Player p, ArrayList<Dice> die){
         
     }
     public int getNumPlayers()
@@ -199,9 +208,9 @@ public class Game {
         return rerolling;
     }
     private void IndianAttack(){
-        
+        //show indian attack
     }
     private void gatlingGun(Player p){
-        
+        //show gat gun
     }
 }
