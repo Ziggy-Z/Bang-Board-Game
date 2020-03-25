@@ -78,14 +78,19 @@ public class TestClientGame {
                
             
         }
+      
         
         
-        Game g = new Game(8);
+        
         
         //g.play();
        // g.display();
     }
-
+    public void checkTurn(){
+        Game g = new Game(3);
+        g.play();
+        
+    }
   private boolean checkNumRoles(int S, int R, int O, int D, int cS, int cR , int cO, int cD,int gS){
     if(S != cS)
     {
