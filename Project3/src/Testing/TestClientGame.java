@@ -134,4 +134,42 @@ public class TestClientGame {
    else
        System.out.println("Incorrect number " + playerAmountFlag + " of " + failedRoles + " in game size " + sizeFlag);
   }
+  public void checkGetOne(){
+      Game g = new Game(5);
+      for(Player P : g.getPlayers())
+          System.out.print(P.getRole() + " ");
+      System.out.println();
+      ArrayList<Player> options = g.getOneAway(g.getPlayers().get(0));
+      System.out.println("\n" +g.getPlayers().get(0).getRole()+"\n=====");
+      for(Player P : options )
+          System.out.println(P.getRole());
+      
+      options = g.getOneAway(g.getPlayers().get(4));
+      System.out.println("\n" +g.getPlayers().get(4).getRole()+"\n=====");
+      for(Player P : options )
+          System.out.println(P.getRole());
+      options = g.getOneAway(g.getPlayers().get(2));
+      System.out.println("\n" +g.getPlayers().get(2).getRole()+"\n=====");
+      for(Player P : options )
+          System.out.println(P.getRole());
+  }
+  public void checkGetTwo(){
+      Game g = new Game(5);
+      for(Player P : g.getPlayers())
+          System.out.print(P.getRole() + " ");
+      System.out.println();
+      ArrayList<Player> options = g.getTwoAway(g.getPlayers().get(0));
+      System.out.println("\n" +g.getPlayers().get(0).getRole()+"\n=====");
+      for(Player P : options )
+          System.out.println(P.getRole());
+      
+      options = g.getTwoAway(g.getPlayers().get(4));
+      System.out.println("\n" +g.getPlayers().get(4).getRole()+"\n=====");
+      for(Player P : options )
+          System.out.println(P.getRole());
+      options = g.getTwoAway(g.getPlayers().get(2));
+      System.out.println("\n" +g.getPlayers().get(2).getRole()+"\n=====");
+      for(Player P : options )
+          System.out.println(P.getRole());
+  }
 }

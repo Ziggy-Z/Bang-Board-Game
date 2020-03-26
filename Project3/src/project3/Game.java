@@ -6,7 +6,18 @@ import java.util.LinkedList;
 CS 2365 OOP Spring 2020 Section 2
 Nathan Clough
  */
+/*
+* Notes for krystyna 
+So your functions are at the bottomm of the class and all hava a comment with your name
+The class as a whole cant run because it gets errors since it isnt linked with the other ones so to do your testing use 
+test client game file and call them individually
+I also added a player class so you can look at the values and check them in the test client 
+line 140 is an example of how to change the values in player should be editing the arrows 
 
+
+all of these functions should be relatively simple you will have to iterate through array list players for gattling and indian attack
+use a for each loop to do that line 55 is an example 
+*/
 /**
  CS 2365 Section 02
  Nathan Clough
@@ -19,12 +30,15 @@ public class Game {
     private boolean finished;
     private int totalArrows;
     
-    public Game(int numPlayers)
-    {  
+    public Game(int numPlayers){  
         
         for(int i =1; i <=numPlayers; i++)
         {
             Player p = new Player(i); 
+            if(i == 1)
+                p.setType("User");
+            else
+                p.setType("AI");
             players.add(p); 
         }
         setupRoles();
@@ -105,65 +119,107 @@ public class Game {
      * Takes in a Player object and then runs through the rolls and applies any actions
      * @param p a 
      */
-    private void takeTurn(Player p)
-    {
+    private void takeTurn(Player p){
         int totalDynamite=0;
         int totalGat=0;
         int totalTwoShot=0;
         int totalOneShot=0;
         int totalBeer=0;
         int turnNum =1;
+        boolean rollAgain = true;
         die.clear();
         createDie();
-        System.out.println("\n=====New Turn ======");
+        // start the turn dialog 
+        System.out.println("\n=====New Turn ======\n" + p.getRole() +":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
+        die.clear();
         do 
         {
             
             rollDie(rollingDie);
+            //arrayList to iterate through since cannot itterate and edit at same time 
             ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
-            for(Dice d: rollingDie)
+            for(Dice d: temp)
             {
                 if(d.getResult().equals("Arrow"))
                 {
-                    p.setTotalArrows(p.getTotalArrows()+1);
+                    p.setArrows(p.getArrows()+1);
                     totalArrows --;
                     if(totalArrows == 0)
                         IndianAttack();
                 }
                 else if(d.getResult().equals("Dynamite"))
                 {
+                    rollingDie.remove(d);
                     die.add(d);
-                    temp.remove(d);
                     totalDynamite++;
                 }
-                else if(d.getResult().equals("Gatling"))
-                {
-                    totalGat++;
-                    if(totalGat >= 3 )
-                        gatlingGun(p);
-                }
+                
                 
             }
-                 for(Dice d: temp)
-                    System.out.print(d.getResult() + " ");
-                 System.out.print("\nDynamite " + totalDynamite);
-            rollingDie = (ArrayList<Dice>)temp.clone();
             temp.clear();
+            //display the dice to the user
+            Collections.sort(rollingDie);
+            for(Dice d: die)
+                System.out.print(d.getResult() + " ");
+            System.out.print('-');
+            for(Dice d: rollingDie)
+                System.out.print(d.getResult() + " ");
+            System.out.println();
+            
+            //System.out.println("  - Dynamite " + totalDynamite
+            //resets the roling with the ones that 
+            
+            
             turnNum++;
-    
-        }while(turnNum <= 3 && totalDynamite < 3 && p.rollAgain(rollingDie));
-        
+            // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
+            
+        }while(turnNum <= 3 && totalDynamite < 3 && rollAgain);
+        //displays final value of die 
+        System.out.print("Final Dice:");
+        for(Dice d: rollingDie)
+            die.add(d);
+        for(Dice d: die)
+            System.out.print(d.getResult() + " ");
+        performActions(p);
     }
-    public int getNumPlayers()
-    {
+    private void performActions(Player p){
+        int totalGat=0;
+        int totalTwoShot=0;
+        int totalOneShot=0;
+        int totalBeer=0;
+        for(Dice d :die)
+            if(d.getResult().equals("One"))
+                totalOneShot ++;
+            else if(d.getResult().equals("Two"))
+                totalTwoShot++;
+            else if(d.getResult().equals("Beer"))
+                totalBeer ++;
+            else if(d.getResult().equals("Gatling"))
+                totalGat++;
+        
+        for(int i=0; i<totalOneShot;i++)
+        {
+            oneShot(p.getType().shootWho(getOneAway(p)));     
+        }
+        for(int i=0; i<totalBeer;i++)
+        {
+            heal(p.getType().healWho(players);     
+        }   
+        for(int i=0; i<totalTwoShot;i++)
+        {
+            (p.getType().shootTwo(players);     
+        }  
+        if(totalGat >= 3)
+            gattlingGun(p);
+    }
+    public int getNumPlayers(){
         return players.size() + 1;
     }
     public ArrayList<Player> getPlayers(){
         return players;
     }
-    public void display()
-    {
+    public void display(){
         for(Player t: players)
         {
             System.out.println(t.getValue());
@@ -198,10 +254,80 @@ public class Game {
             d.rollDie();
         return rerolling;
     }
-    private void IndianAttack(){
+    /**
+     * Performs Indian Attack
+     */
+    //Krystyna 
+    public void IndianAttack(){
+        //show indian attack
+    }
+    /**
+     * Performs an gatling gun shoots every player but the given Player p
+     * @param p 
+     */
+    //Krystyna 
+    public void gatlingGun(Player p){
+        //show gat gun
+    }
+    /** Shots given player who is one position away
+    */
+    //Krystyna 
+    public void oneShot(Player p){
         
     }
-    private void gatlingGun(Player p){
+    /** Shots given player who is two positions away
+    */
+    //Krystyna 
+    public void twoShot(Player p){
         
+    }
+    //Krystyna 
+    /**
+     * heals the given player 
+     * @param p 
+     */
+    public void heal(Player p){
+    }
+    /**
+     * gets all players one distance away from the parameter Player p 
+     * @param p
+     * @return 
+     */
+    public ArrayList<Player> getOneAway(Player p){
+        ArrayList<Player> options = new ArrayList<Player>();
+        int index = players.indexOf(p);
+        if(index +1 == players.size())
+            options.add(players.get(0));
+        else
+            options.add(players.get(index+1));
+        if(index - 1 == -1)
+            options.add(players.get(players.size()-1));
+        else
+            options.add(players.get(index-1));
+        return options;
+    }
+     /**
+     * gets all players two distance away from the parameter Player p 
+     * @param p
+     * @return 
+     */
+    public ArrayList<Player> getTwoAway(Player p){
+        ArrayList<Player> options = new ArrayList<Player>();
+        //gets player 2 ahead
+        int index = players.indexOf(p);
+        if(index + 2 == players.size())
+            options.add(players.get(0));
+        else if(index + 2 == players.size()+1)
+            options.add(players.get(1));
+        else 
+            options.add(players.get(index+2));
+        //gets player 2 behind 
+        if(index - 2 == -1)
+            options.add(players.get(players.size()-1));
+        else if(index - 2 == -2 )
+            options.add(players.get(players.size() - 2));
+        else 
+            options.add(players.get(index-2));
+        return(options);
     }
 }
