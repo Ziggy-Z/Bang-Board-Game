@@ -374,16 +374,28 @@ public class board extends javax.swing.JFrame {
         n6.setText(s6);
         n7.setText(s7);
         n8.setText(s8);
-        if(n1.getText().contains("-")||n2.getText().contains("-")||n3.getText().contains("-")
-            ||n4.getText().contains("-")||n5.getText().contains("-")||n6.getText().contains("-")
-            ||n7.getText().contains("-")||n8.getText().contains("-")){
+        if(n1.getText().contains("-")){
             n1.setText("0");
+        }
+        if(n2.getText().contains("-")){
             n2.setText("0");
+        }
+        if(n3.getText().contains("-")){
             n3.setText("0");
+        }
+        if(n4.getText().contains("-")){
             n4.setText("0");
+        }
+        if(n5.getText().contains("-")){
             n5.setText("0");
+        }
+       if(n6.getText().contains("-")){
             n6.setText("0");
+        }
+        if(n7.getText().contains("-")){
             n7.setText("0");
+        }
+        if(n8.getText().contains("-")){
             n8.setText("0");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
