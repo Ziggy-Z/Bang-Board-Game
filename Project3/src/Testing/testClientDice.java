@@ -7,12 +7,11 @@ package Testing;
 import project3.Dice;
 
 /**
- *
+ * Creates 5 dice objects and rolls them each 3 times to make sure 
+ * each re-roll actually gives a different random output.
  * @author krystynaurbanczyk
  */
 public class testClientDice {
-    //create a function that makes 5 dice and roll them 3 times displaying output
-    //call this function from Project3.java 
     public testClientDice(){
         Dice dice1 = new Dice();
         Dice dice2 = new Dice();

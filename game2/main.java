@@ -3,18 +3,18 @@
  * Zegedam Zegeye
  */
 package game2;
-
 /**
  *
  * @author zeged
  */
-public class Game2 {
+public class main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+         board g = new board();
+        g.setVisible(true);
     }
     
 }
