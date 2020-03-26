@@ -5,14 +5,14 @@ package project3;
  * Zegedam Zegeye
  */
 public class board extends javax.swing.JFrame {
-    int hp1=100;
-    int hp2 = 100;
-    int hp3 = 100;
-    int hp4 = 100;
-    int hp5 = 100;
-    int hp6 = 100;
-    int hp7 = 100;
-    int hp8 = 100;
+    int hp1=10;
+    int hp2 = 10;
+    int hp3 = 10;
+    int hp4 = 10;
+    int hp5 = 10;
+    int hp6 = 10;
+    int hp7 = 10;
+    int hp8 = 10;
     
     /**
      * Creates new form game
@@ -99,7 +99,7 @@ public class board extends javax.swing.JFrame {
         });
 
         n1.setForeground(new java.awt.Color(0, 0, 255));
-        n1.setText("100%");
+        n1.setText("10");
 
         h1.setForeground(new java.awt.Color(255, 255, 255));
         h1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -109,43 +109,43 @@ public class board extends javax.swing.JFrame {
         h2.setText("Health:");
 
         n2.setForeground(new java.awt.Color(0, 0, 255));
-        n2.setText("100%");
+        n2.setText("10");
 
         h3.setForeground(new java.awt.Color(255, 255, 255));
         h3.setText("Health:");
 
         n3.setForeground(new java.awt.Color(0, 0, 255));
-        n3.setText("100%");
+        n3.setText("10");
 
         h4.setForeground(new java.awt.Color(255, 255, 255));
         h4.setText("Health:");
 
         n4.setForeground(new java.awt.Color(0, 0, 255));
-        n4.setText("100%");
+        n4.setText("10");
 
         h5.setForeground(new java.awt.Color(255, 255, 255));
         h5.setText("Health:");
 
         n5.setForeground(new java.awt.Color(0, 0, 255));
-        n5.setText("100%");
+        n5.setText("10");
 
         h6.setForeground(new java.awt.Color(255, 255, 255));
         h6.setText("Health:");
 
         n6.setForeground(new java.awt.Color(0, 0, 255));
-        n6.setText("100%");
+        n6.setText("10");
 
         h7.setForeground(new java.awt.Color(255, 255, 255));
         h7.setText("Health:");
 
         n7.setForeground(new java.awt.Color(0, 0, 255));
-        n7.setText("100%");
+        n7.setText("10");
 
         h8.setForeground(new java.awt.Color(255, 255, 255));
         h8.setText("Health:");
 
         n8.setForeground(new java.awt.Color(0, 0, 255));
-        n8.setText("100%");
+        n8.setText("10");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Project3/Outlaw.PNG")));
@@ -328,14 +328,14 @@ public class board extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        hp1 = hp1-10;
-        hp2=hp2-10;
-        hp3=hp3-10;
-        hp4=hp4-10;
-        hp5=hp5-10;
-        hp6=hp6-10;
-        hp7=hp7-10;
-        hp8=hp8-10;
+        hp1 = hp1-1;
+        hp2=hp2-2;
+        hp3=hp3-3;
+        hp4=hp4-1;
+        hp5=hp5-1;
+        hp6=hp6-3;
+        hp7=hp7-4;
+        hp8=hp8-2;
         String s1 = Integer.toString(hp1);
         String s2 = Integer.toString(hp2);
         String s3 = Integer.toString(hp3);
@@ -344,25 +344,25 @@ public class board extends javax.swing.JFrame {
         String s6 = Integer.toString(hp6);
         String s7 = Integer.toString(hp7);
         String s8 = Integer.toString(hp8);
-        n1.setText(s1+"%");
-        n2.setText(s2+"%");
-        n3.setText(s3+"%");
-        n4.setText(s4+"%");
-        n5.setText(s5+"%");
-        n6.setText(s6+"%");
-        n7.setText(s7+"%");
-        n8.setText(s8+"%");
+        n1.setText(s1);
+        n2.setText(s2);
+        n3.setText(s3);
+        n4.setText(s4);
+        n5.setText(s5);
+        n6.setText(s6);
+        n7.setText(s7);
+        n8.setText(s8);
         if(n1.getText().contains("-")||n2.getText().contains("-")||n3.getText().contains("-")
             ||n4.getText().contains("-")||n5.getText().contains("-")||n6.getText().contains("-")
             ||n7.getText().contains("-")||n8.getText().contains("-")){
-            n1.setText("0%");
-            n2.setText("0%");
-            n3.setText("0%");
-            n4.setText("0%");
-            n5.setText("0%");
-            n6.setText("0%");
-            n7.setText("0%");
-            n8.setText("0%");
+            n1.setText("0");
+            n2.setText("0");
+            n3.setText("0");
+            n4.setText("0");
+            n5.setText("0");
+            n6.setText("0");
+            n7.setText("0");
+            n8.setText("0");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
