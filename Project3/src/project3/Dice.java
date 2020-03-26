@@ -5,26 +5,40 @@ package project3;
 import java.util.Random;
 
 /**
- *
+ * Creates the dice to be used in the game.
  * @author krystynaurbanczyk
  */
 
 public class Dice {
     
-    public int dice;
-    public String result;
+    /**
+     * initializes dice value
+     */
+    private int dice;
+
+    /**
+     * stores the result of the dice roll
+     */
+    private String result;
     
+    Random diceface = new Random();
+    
+    /**
+     * default constructor, initializes dice to a random value
+     */
     public Dice(){
-        dice = 0;
+        dice = diceface.nextInt((6 - 1) + 1) + 1;
         result = null;
     }
     
+    /**
+     * Generates random numbers that are assigned to the dice face which simulates rolling dice.
+     * @return result of dice roll
+     */
     public String rollDie(){
         
-        Random diceface = new Random();
         int face = diceface.nextInt((6 - 1) + 1) + 1;
         
-        //int temp = 0;
         switch (face) {
             case 1:
                 result = "Arrow";
@@ -51,6 +65,10 @@ public class Dice {
         return result;
     }
     
+    /**
+     * Used for other classes to get result.
+     * @return result of dice roll
+     */
     public String getResult(){
         return result;
     }
