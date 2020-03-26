@@ -12,10 +12,12 @@ Nathan Clough
  Nathan Clough
  */
 public class Game {
-    ArrayList<Player> players = new ArrayList<Player>();
-    LinkedList<String> roles = new LinkedList<String>();
-    LinkedList<Integer> characters = new LinkedList<Integer>();
-    boolean finished;
+    private ArrayList<Player> players = new ArrayList<Player>();
+    private LinkedList<String> roles = new LinkedList<String>();
+    private LinkedList<Integer> characters = new LinkedList<Integer>();
+    private ArrayList<Dice> die = new ArrayList<Dice>();
+    private boolean finished;
+    private int totalArrows;
     
     public Game(int numPlayers)
     {  
@@ -27,9 +29,12 @@ public class Game {
         }
         setupRoles();
         assignCharacters();
-        
+ 
     }
-    public void assignCharacters(){
+    /**
+     * assigns a character to each player in the game
+     */
+    private void assignCharacters(){
         for (int i =1; i<=16; i++ )
            characters.add(i);
         Collections.shuffle(characters);
@@ -41,7 +46,7 @@ public class Game {
      * Based on the number of players this method will create a list of roles 
      * then shuffle them and assign to the players
      */
-    public void setupRoles(){
+    private void setupRoles(){
         //special rules for 3 people
         if(players.size() == 3)
         {
@@ -91,20 +96,63 @@ public class Game {
                 i = 0;
             
             Player temp = players.get(i);
-            
             takeTurn(temp);
             
             i++;
         }
     }
+    /**
+     * Takes in a Player object and then runs through the rolls and applies any actions
+     * @param p a 
+     */
     private void takeTurn(Player p)
     {
-        
-        if(p.getValue() == 3)
+        int totalDynamite=0;
+        int totalGat=0;
+        int totalTwoShot=0;
+        int totalOneShot=0;
+        int totalBeer=0;
+        int turnNum =1;
+        die.clear();
+        createDie();
+        System.out.println("\n=====New Turn ======");
+        ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
+        do 
         {
-            players.remove(players.indexOf(p) +2);
-            finished = true;
-        }
+            
+            rollDie(rollingDie);
+            ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
+            for(Dice d: rollingDie)
+            {
+                if(d.getResult().equals("Arrow"))
+                {
+                    p.setTotalArrows(p.getTotalArrows()+1);
+                    totalArrows --;
+                    if(totalArrows == 0)
+                        IndianAttack();
+                }
+                else if(d.getResult().equals("Dynamite"))
+                {
+                    die.add(d);
+                    temp.remove(d);
+                    totalDynamite++;
+                }
+                else if(d.getResult().equals("Gatling"))
+                {
+                    totalGat++;
+                    if(totalGat >= 3 )
+                        gatlingGun(p);
+                }
+                
+            }
+                 for(Dice d: temp)
+                    System.out.print(d.getResult() + " ");
+                 System.out.print("\nDynamite " + totalDynamite);
+            rollingDie = (ArrayList<Dice>)temp.clone();
+            temp.clear();
+            turnNum++;
+    
+        }while(turnNum <= 3 && totalDynamite < 3 && p.rollAgain(rollingDie));
         
     }
     public int getNumPlayers()
@@ -121,5 +169,39 @@ public class Game {
             System.out.println(t.getValue());
         }
     }
+    /**
+     * creates the list of dice objects to use when taking a turn
+     */
+    private void createDie(){
+        for(int i =0; i<5; i++)
+        {
+            Dice d = new Dice();
+           // d.rollDie();
+            die.add(d);
+        }
 
+    }
+    /**
+     * Rolls all the die in the linked list
+     */
+    private void rollDie(){
+        for(Dice d: die)
+            d.rollDie();
+    }
+    /**
+     * Takes an ArrayList of dice and rolls them all
+     * @param rerolling
+     * @return 
+     */
+    private ArrayList<Dice> rollDie(ArrayList<Dice> rerolling ){
+        for(Dice d: rerolling )
+            d.rollDie();
+        return rerolling;
+    }
+    private void IndianAttack(){
+        
+    }
+    private void gatlingGun(Player p){
+        
+    }
 }
