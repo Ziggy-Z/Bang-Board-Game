@@ -6,7 +6,18 @@ import java.util.LinkedList;
 CS 2365 OOP Spring 2020 Section 2
 Nathan Clough
  */
+/*
+* Notes for krystyna 
+So your functions are at the bottomm of the class and all hava a comment with your name
+The class as a whole cant run because it gets errors since it isnt linked with the other ones so to do your testing use 
+test client game file and call them individually
+I also added a player class so you can look at the values and check them in the test client 
+line 140 is an example of how to change the values in player should be editing the arrows 
 
+
+all of these functions should be relatively simple you will have to iterate through array list players for gattling and indian attack
+use a for each loop to do that line 55 is an example 
+*/
 /**
  CS 2365 Section 02
  Nathan Clough
@@ -24,6 +35,10 @@ public class Game {
         for(int i =1; i <=numPlayers; i++)
         {
             Player p = new Player(i); 
+            if(i == 1)
+                p.setType("User");
+            else
+                p.setType("AI");
             players.add(p); 
         }
         setupRoles();
@@ -128,7 +143,7 @@ public class Game {
             {
                 if(d.getResult().equals("Arrow"))
                 {
-                    p.setTotalArrows(p.getTotalArrows()+1);
+                    p.setArrows(p.getArrows()+1);
                     totalArrows --;
                     if(totalArrows == 0)
                         IndianAttack();
@@ -160,13 +175,13 @@ public class Game {
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
         }while(turnNum <= 3 && totalDynamite < 3 && rollAgain);
-        
+        //displays final value of die 
         System.out.print("Final Dice:");
         for(Dice d: rollingDie)
             die.add(d);
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
-        
+        performActions(p);
     }
     private void performActions(Player p){
         int totalGat=0;
@@ -185,11 +200,18 @@ public class Game {
         
         for(int i=0; i<totalOneShot;i++)
         {
-            oneShot(p.getType().shootWho(getOneAway(p)));
-                
-                
+            oneShot(p.getType().shootWho(getOneAway(p)));     
         }
-                
+        for(int i=0; i<totalBeer;i++)
+        {
+            heal(p.getType().healWho(players);     
+        }   
+        for(int i=0; i<totalTwoShot;i++)
+        {
+            (p.getType().shootTwo(players);     
+        }  
+        if(totalGat >= 3)
+            gattlingGun(p);
     }
     public int getNumPlayers(){
         return players.size() + 1;
@@ -235,25 +257,36 @@ public class Game {
     /**
      * Performs Indian Attack
      */
-    private void IndianAttack(){
+    //Krystyna 
+    public void IndianAttack(){
         //show indian attack
     }
     /**
      * Performs an gatling gun shoots every player but the given Player p
      * @param p 
      */
-    private void gatlingGun(Player p){
+    //Krystyna 
+    public void gatlingGun(Player p){
         //show gat gun
     }
     /** Shots given player who is one position away
     */
-    private void oneShot(Player p){
+    //Krystyna 
+    public void oneShot(Player p){
         
     }
     /** Shots given player who is two positions away
     */
-    private void twoShot(Player p){
+    //Krystyna 
+    public void twoShot(Player p){
         
+    }
+    //Krystyna 
+    /**
+     * heals the given player 
+     * @param p 
+     */
+    public void heal(Player p){
     }
     /**
      * gets all players one distance away from the parameter Player p 
@@ -273,6 +306,11 @@ public class Game {
             options.add(players.get(index-1));
         return options;
     }
+     /**
+     * gets all players two distance away from the parameter Player p 
+     * @param p
+     * @return 
+     */
     public ArrayList<Player> getTwoAway(Player p){
         ArrayList<Player> options = new ArrayList<Player>();
         //gets player 2 ahead
