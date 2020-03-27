@@ -28,13 +28,10 @@ public class Game {
     private LinkedList<Integer> characters = new LinkedList<Integer>();
     private ArrayList<Dice> die = new ArrayList<Dice>();
     private boolean finished;
-    private boolean three = false;
-    private int totalArrows = 9;
-    private String winners;
+    private int totalArrows;
     
     public Game(int numPlayers){  
-        if(numPlayers == 3)
-            three = true;
+        
         for(int i =1; i <=numPlayers; i++)
         {
             Player p = new Player(i); 
@@ -114,9 +111,7 @@ public class Game {
             
             Player temp = players.get(i);
             takeTurn(temp);
-            if(getWinner(players))
-                finished = true;
-                
+            
             i++;
         }
     }
@@ -188,54 +183,6 @@ public class Game {
             System.out.print(d.getResult() + " ");
         performActions(p);
     }
-    public boolean getWinner(ArrayList<Player> Players){
-        //counts number of each player remaining 
-        boolean sheriff = false;
-        int numRenegade =0;
-        int numOutlaw=0;
-        int numDeputy=0;
-        if(Players.size()==0)
-        {
-            winners="Outlaw";
-            return true;
-            
-        }
-        for(Player p: Players )
-        {
-            if(p.getRole().equals("Sheriff"))
-                sheriff = true;
-            else if(p.getRole().equals("Renegade"))
-                numRenegade ++;
-            else if(p.getRole().equals("Deputy"))
-                numDeputy ++;
-            else if(p.getRole().equals("Outlaw"))
-                numOutlaw ++;
-        }
-        
-        //if sheriff is in play count the number of outlaws and renegades to see if he wins 
-        System.out.println(numRenegade);
-        if(sheriff)
-        {
-            if(numOutlaw ==0 & numRenegade == 0)
-            {
-                winners = "Sheriff";
-                return true;
-            }
-            else 
-                return false;
-        }
-        else 
-        {
-            if(numRenegade == 1 && numOutlaw == 0 && numDeputy == 0)
-            {
-                winners = "Renegade";
-                return true;
-            }
-            else 
-               winners = "Outlaw";
-               return true; 
-        }       
-    }
     private void performActions(Player p){
         int totalGat=0;
         int totalTwoShot=0;
@@ -265,9 +212,6 @@ public class Game {
         }  
         if(totalGat >= 3)
             gatlingGun(p);
-    }
-    public String getWinners(){
-        return winners;
     }
     public int getNumPlayers(){
         return players.size() + 1;
