@@ -521,21 +521,25 @@ public class board extends javax.swing.JFrame {
             jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Outlaw.PNG")));
             jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character3.PNG")));
             p.desc(ch3);
+            p.title("BLACK JACK");
         }
         else if(ch == 1){
             jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Deputy.PNG")));
             jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character1.PNG")));
             p.desc(ch1);
+            p.title("BART CASSIDY");
         }
         else if(ch == 2){
             jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Sheriff.PNG")));
             jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character2.PNG")));
             p.desc(ch2);
+            p.title("PAUL REGRET");
         }
         else if(ch == 3){
             jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/Renegade.PNG")));
             jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character4.PNG")));
             p.desc(ch4);
+            p.title("PEDRO RAMIREZ");
         }
     }//GEN-LAST:event_Box2ActionPerformed
 
