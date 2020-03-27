@@ -91,6 +91,80 @@ public class TestClientGame {
         g.play();
         
     }
+    public void checkWinners(){
+       
+        Game g = new Game(4);
+        ArrayList<Player> testing = new ArrayList<Player>();
+        
+        Player p = new Player(1);
+        Player p2 = new Player(1);
+         
+        if(g.getWinner(testing))
+            System.out.println("All dead Outlaws win test passed");
+        
+        //single Outlaw left 
+        p.setRole("Outlaw");
+        testing.add(p);
+        if(g.getWinner(testing))
+            if("Outlaw".equals(g.getWinners()))
+                System.out.println("Outlaw wins - Single Outlaw Test passed");
+            else System.out.println("Single Outlaw Test Failed");
+        else 
+            System.out.println("Single Outlaw Test Didn't end game");
+        //two outlaws remain
+        p.setRole("Outlaw");
+        p2.setRole("Outlaw");
+        testing.add(p);
+        testing.add(p2);
+        if(g.getWinner(testing))
+            if("Outlaw".equals(g.getWinners()))
+                System.out.println("Outlaws wins - two Outlaw Test passed");
+            else System.out.println("two Outlaw Test Failed");
+        else 
+            System.out.println("two outlaw didnt end game");
+        
+    //single Renegade left 
+        testing.clear();
+        p.setRole("Renegade");
+        testing.add(p);
+        if(g.getWinner(testing))
+            if("Renegade".equals(g.getWinners()))
+                System.out.println("Renegade wins - Single Renegade Test passed");
+            else 
+                System.out.println("Single Renegade Test Failed - result was " + g.getWinners());
+        else 
+            System.out.println("Single Renegade Test Didn't end game");
+        //two renegades kill the sheriff
+        
+        p2.setRole("Renegade");
+        testing.add(p2);
+        if(g.getWinner(testing))
+            if("Outlaw".equals(g.getWinners()))
+                System.out.println("Outlaws win - Two Renegade kill sheriff Test passed");
+            else
+                System.out.println("Two renegade kill sheriff test failed");
+        else
+            System.out.println("Two renegade test didnt end game");
+        //Single sheriff remaining 
+        testing.clear();
+        p.setRole("Sheriff");
+        testing.add(p);
+        
+        if(g.getWinner(testing))
+            if("Sheriff".equals(g.getWinners()))
+                System.out.println("Sheriff wins - Single Sheriff Test passed");
+            else System.out.println("Single Sheriff Test Failed");
+        else 
+            System.out.println("Single Sheriff Test Didn't end game");
+         p2.setRole("Deputy");
+         testing.add(p2);
+         if(g.getWinner(testing))
+            if("Sheriff".equals(g.getWinners()))
+                System.out.println("Sheriff wins - Sheriff and  Deputy Test passed");
+            else System.out.println("Sheriff and  Deputy Test failed");
+         else   
+             System.out.println("Sheriff and  Deputy Test Didn't end game");
+    }
   private boolean checkNumRoles(int S, int R, int O, int D, int cS, int cR , int cO, int cD,int gS){
     if(S != cS)
     {
