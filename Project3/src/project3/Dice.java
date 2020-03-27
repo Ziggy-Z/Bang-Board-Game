@@ -9,7 +9,7 @@ import java.util.Random;
  * @author krystynaurbanczyk
  */
 
-public class Dice {
+public class Dice implements Comparable<Dice>{
     
     /**
      * initializes dice value
@@ -38,13 +38,15 @@ public class Dice {
     public String rollDie(){
         
         int face = diceface.nextInt((6 - 1) + 1) + 1;
-        
+        this.dice = face;
+        //int temp = 0;
+
         switch (face) {
             case 1:
-                result = "Arrow";
+                result = "Dynamite";
                 break;
             case 2:
-                result = "Dynamite";
+                result = "Arrow";
                 break;
             case 3:
                 result = "One";
@@ -71,6 +73,16 @@ public class Dice {
      */
     public String getResult(){
         return result;
+    }
+    
+    @Override 
+    public int compareTo(Dice d){
+        if(this.dice < d.dice )
+            return -1;
+        else if(this.dice > d.dice)
+            return 1;
+        else 
+            return 0;
     }
     
 }
