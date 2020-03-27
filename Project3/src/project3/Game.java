@@ -211,7 +211,7 @@ public class Game {
             (p.getType().shootTwo(players);     
         }  
         if(totalGat >= 3)
-            gattlingGun(p);
+            gatlingGun(p);
     }
     public int getNumPlayers(){
         return players.size() + 1;
@@ -254,40 +254,55 @@ public class Game {
             d.rollDie();
         return rerolling;
     }
+    
     /**
      * Performs Indian Attack
+     * @author Krystyna Urbanczyk
      */
-    //Krystyna 
     public void IndianAttack(){
         //show indian attack
+        for(Player t : players){
+            t.setHealth(t.getHealth()-t.getArrows());
+            t.setArrows(0);
+        }
+            
     }
     /**
      * Performs an gatling gun shoots every player but the given Player p
      * @param p 
+     * @author Krystyna Urbanczyk
      */
-    //Krystyna 
     public void gatlingGun(Player p){
         //show gat gun
+        p.setArrows(0);
+        for(Player t : players)
+            t.setHealth(t.getHealth()-1);
     }
-    /** Shots given player who is one position away
-    */
-    //Krystyna 
+    /** 
+     * Shots given player who is one position away
+     * @author Krystyna Urbanczyk
+     */
     public void oneShot(Player p){
-        
+        getOneAway(p);
+        p.setHealth(p.getHealth()-1);
     }
-    /** Shots given player who is two positions away
-    */
-    //Krystyna 
+    /** 
+     * Shots given player who is two positions away
+     * @author Krystyna Urbanczyk
+     */
     public void twoShot(Player p){
-        
+        getTwoAway(p);
+        p.setHealth(p.getHealth()-1);
     }
-    //Krystyna 
     /**
      * heals the given player 
      * @param p 
+     * @author Krystyna Urbanczyk
      */
     public void heal(Player p){
+        p.setHealth(p.getHealth()+1);
     }
+    
     /**
      * gets all players one distance away from the parameter Player p 
      * @param p
