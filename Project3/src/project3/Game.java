@@ -257,11 +257,11 @@ public class Game {
         }
         for(int i=0; i<totalBeer;i++)
         {
-            heal(p.getType().healWho(players);     
+            heal(p.getType().healWho(players));     
         }   
         for(int i=0; i<totalTwoShot;i++)
         {
-            (p.getType().shootTwo(players);     
+            twoShot(p.getType().shootTwo(players));     
         }  
         if(totalGat >= 3)
             gatlingGun(p);
@@ -320,6 +320,8 @@ public class Game {
         for(Player t : players){
             t.setHealth(t.getHealth()-t.getArrows());
             t.setArrows(0);
+            if(t.getHealth() <= 0)
+                players.remove(t);
         }
             
     }
@@ -332,23 +334,30 @@ public class Game {
         //show gat gun
         p.setArrows(0);
         for(Player t : players)
+        {
             t.setHealth(t.getHealth()-1);
+            if(p.getHealth() <= 0)
+                players.remove(p);
+        }
     }
     /** 
      * Shots given player who is one position away
      * @author Krystyna Urbanczyk
      */
     public void oneShot(Player p){
-        getOneAway(p);
         p.setHealth(p.getHealth()-1);
+        if(p.getHealth() <= 0)
+            players.remove(p);
     }
     /** 
      * Shots given player who is two positions away
      * @author Krystyna Urbanczyk
      */
     public void twoShot(Player p){
-        getTwoAway(p);
         p.setHealth(p.getHealth()-1);
+        if(p.getHealth() <= 0)
+            players.remove(p);
+        
     }
     /**
      * heals the given player 
