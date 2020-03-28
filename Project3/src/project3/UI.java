@@ -2,7 +2,7 @@
  * CS 2365 OOP Spring 2020
  * Zegedam Zegeye
  */
-package Project3;
+package project3;
 
 import javax.swing.JFrame;
 
