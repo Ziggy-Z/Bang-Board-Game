@@ -2,7 +2,10 @@ package project3;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.LinkedList;
+
+import project3.AI;
 /*
+
 CS 2365 OOP Spring 2020 Section 2
 Nathan Clough
  */
@@ -37,10 +40,10 @@ public class Game {
         for(int i =1; i <=numPlayers; i++)
         {
             Player p = new Player(i); 
-            if(i == 1)
-                p.setType(false);
-            else
-                p.setType(true);
+            //if(i == 1)
+              //  p.setType("User");
+            //else
+                p.setType("AI");
             players.add(p); 
         }
         setupRoles();
@@ -129,10 +132,6 @@ public class Game {
      */
     private void takeTurn(Player p){
         int totalDynamite=0;
-        int totalGat=0;
-        int totalTwoShot=0;
-        int totalOneShot=0;
-        int totalBeer=0;
         int turnNum =1;
         boolean rollAgain = true;
         die.clear();
@@ -178,8 +177,27 @@ public class Game {
             //System.out.println("  - Dynamite " + totalDynamite
             //resets the roling with the ones that 
             
-            
+            if(p.getType().equals("AI"))
+            {
+                AI ai = new AI();
+                ArrayList<Dice> temp2 = new ArrayList<Dice>();
+                ArrayList<Integer> indecies = new ArrayList<Integer>();
+                indecies = ai.rollagain(rollingDie, p.getRole() );
+                
+                for(int i =0; i <rollingDie.size(); i++)
+                {
+                   if(!indecies.contains(i))
+                   {
+                       die.add(rollingDie.get(i));
+                   }
+                   else 
+                      temp.add(rollingDie.get(i));
+                }
+               rollingDie = (ArrayList<Dice>)temp.clone();
+            }
             turnNum++;
+            if(rollingDie.size() == 0)
+                rollAgain = false;
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
         }while(turnNum <= 3 && totalDynamite < 3 && rollAgain);
@@ -189,7 +207,7 @@ public class Game {
             die.add(d);
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
-        performActions(p);
+        //performActions(p);
     }
     /***
      * Given a  list of players it determines who the winner of the game is if conditions are met
@@ -253,6 +271,7 @@ public class Game {
         int totalTwoShot=0;
         int totalOneShot=0;
         int totalBeer=0;
+        AI ai = new AI();
         for(Dice d :die)
             if(d.getResult().equals("One"))
                 totalOneShot ++;
@@ -265,15 +284,29 @@ public class Game {
         
         for(int i=0; i<totalOneShot;i++)
         {
-            oneShot(p.getType().shootWho(getOneAway(p)));     
+            if(p.getType().equals("AI") )
+            {
+                ArrayList<Player> options = getOneAway(p);
+                int x = ai.who_toshoot(options);
+                oneShot(options.get(x));
+            }     
         }
         for(int i=0; i<totalBeer;i++)
         {
-            heal(p.getType().healWho(players));     
+              int x = ai.who_toheal(players);
+              if(x == -1)
+                  heal(p);
+              else
+                  heal(players.get(x));
         }   
         for(int i=0; i<totalTwoShot;i++)
         {
-            twoShot(p.getType().shootTwo(players));     
+            if(p.getType().equals("AI") )
+            {
+                ArrayList<Player> options = getTwoAway(p);
+                int x = ai.who_toshoot(options);
+                oneShot(options.get(x));
+            }         
         }  
         if(totalGat >= 3)
             gatlingGun(p);
