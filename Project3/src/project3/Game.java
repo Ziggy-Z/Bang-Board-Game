@@ -6,21 +6,16 @@ import java.util.LinkedList;
 CS 2365 OOP Spring 2020 Section 2
 Nathan Clough
  */
-/*
-* Notes for krystyna 
-So your functions are at the bottomm of the class and all hava a comment with your name
-The class as a whole cant run because it gets errors since it isnt linked with the other ones so to do your testing use 
-test client game file and call them individually
-I also added a player class so you can look at the values and check them in the test client 
-line 140 is an example of how to change the values in player should be editing the arrows 
 
-
-all of these functions should be relatively simple you will have to iterate through array list players for gattling and indian attack
-use a for each loop to do that line 55 is an example 
-*/
 /**
  CS 2365 Section 02
  Nathan Clough
+ */
+/***
+ * Game orchestrates the game and coordinates with AI to get decisions and board to display information
+ * Contributors: Krystyna Urbanczyk
+ * @author Nathan Clough
+ * 
  */
 public class Game {
     private ArrayList<Player> players = new ArrayList<Player>();
@@ -31,7 +26,11 @@ public class Game {
     private boolean three = false;
     private int totalArrows = 9;
     private String winners;
-    
+    /***
+     * Constructor for game object that takes in a number of players 
+     * @author Nathan Clough
+     * @param numPlayers 
+     */
     public Game(int numPlayers){  
         if(numPlayers == 3)
             three = true;
@@ -39,17 +38,18 @@ public class Game {
         {
             Player p = new Player(i); 
             if(i == 1)
-                p.setType("User");
+                p.setType(false);
             else
-                p.setType("AI");
+                p.setType(true);
             players.add(p); 
         }
         setupRoles();
         assignCharacters();
  
     }
-    /**
-     * assigns a character to each player in the game
+    /***
+     * Assigns each character a role 
+     * @author Nathan Clough
      */
     private void assignCharacters(){
         for (int i =1; i<=16; i++ )
@@ -62,6 +62,7 @@ public class Game {
     /**
      * Based on the number of players this method will create a list of roles 
      * then shuffle them and assign to the players
+     * @author Nathan Clough
      */
     private void setupRoles(){
         //special rules for 3 people
@@ -103,6 +104,7 @@ public class Game {
     }
     /**
      * Function for looping through the players arrayList and having each player take turn in order
+     * @author Nathan Clough
      */
     public void play(){
 //loops through the list allowing to keep taking turns in the correct order
@@ -123,6 +125,7 @@ public class Game {
     /**
      * Takes in a Player object and then runs through the rolls and applies any actions
      * @param p a 
+     * @author Nathan Clough
      */
     private void takeTurn(Player p){
         int totalDynamite=0;
@@ -188,6 +191,11 @@ public class Game {
             System.out.print(d.getResult() + " ");
         performActions(p);
     }
+    /***
+     * Given a  list of players it determines who the winner of the game is if conditions are met
+     * @param Players
+     * @return true if game is over false otherwise 
+     */
     public boolean getWinner(ArrayList<Player> Players){
         //counts number of each player remaining 
         boolean sheriff = false;
@@ -212,8 +220,7 @@ public class Game {
                 numOutlaw ++;
         }
         
-        //if sheriff is in play count the number of outlaws and renegades to see if he wins 
-        System.out.println(numRenegade);
+        //if sheriff is in play count the  System.out.println(numRenegade);
         if(sheriff)
         {
             if(numOutlaw ==0 & numRenegade == 0)
@@ -236,6 +243,11 @@ public class Game {
                return true; 
         }       
     }
+    /***
+     * Performs Actions of the dice by the given player 
+     * @param p 
+     * @author Nathan Clough
+     */
     private void performActions(Player p){
         int totalGat=0;
         int totalTwoShot=0;
@@ -283,6 +295,7 @@ public class Game {
     }
     /**
      * creates the list of dice objects to use when taking a turn
+     * @author Nathan Clough
      */
     private void createDie(){
         for(int i =0; i<5; i++)
@@ -293,17 +306,12 @@ public class Game {
         }
 
     }
-    /**
-     * Rolls all the die in the linked list
-     */
-    private void rollDie(){
-        for(Dice d: die)
-            d.rollDie();
-    }
+
     /**
      * Takes an ArrayList of dice and rolls them all
      * @param rerolling
      * @return 
+     * @author Nathan Clough
      */
     private ArrayList<Dice> rollDie(ArrayList<Dice> rerolling ){
         for(Dice d: rerolling )
@@ -371,7 +379,7 @@ public class Game {
     /**
      * gets all players one distance away from the parameter Player p 
      * @param p
-     * @return 
+     * @return list of players one distance away
      */
     public ArrayList<Player> getOneAway(Player p){
         ArrayList<Player> options = new ArrayList<Player>();
@@ -389,7 +397,7 @@ public class Game {
      /**
      * gets all players two distance away from the parameter Player p 
      * @param p
-     * @return 
+     * @return list of players two distance away 
      */
     public ArrayList<Player> getTwoAway(Player p){
         ArrayList<Player> options = new ArrayList<Player>();
