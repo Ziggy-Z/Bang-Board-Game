@@ -71,6 +71,7 @@ public class Game {
            }
            else if(numPlayers == 8){
                 Player p = new Player("p"+((i+1)));
+                
                 players.add(p);
            }
         }

@@ -22,6 +22,7 @@ public class Project3 {
        TestClientGame test = new TestClientGame();
        test.checkCharacters();
        
+       
         
         
         /*
