@@ -46,9 +46,10 @@ public class Game {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
         B.setVisible(true);
-        B.pChoice(numPlayers-3);
+        B.pChoice(numPlayers-2);
         if(numPlayers == 3)
             three = true;
+            System.out.println(three);
         
         for(int i =1; i <=numPlayers; i++)
         {
