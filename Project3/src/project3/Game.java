@@ -89,6 +89,7 @@ public class Game {
             t.setCharacterTraits(characters.pop());
             B.setChar(t.getCharacter(),t.getNumber());
         }
+    
         
     }
     /**

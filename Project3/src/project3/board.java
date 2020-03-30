@@ -45,7 +45,7 @@ public class board extends javax.swing.JFrame {
     String name1 = "BART CASSIDY";
     String name2 = "PAUL REGRET";
     String name3 = "BLACK JACK";
-    String name4 = "PEDRO RAMIREZ";
+    String name4 = "PEDRO RAMERIEZ";
     String name5 = "CALAMITY JANET";
     String name6 = "ROSE DOOLAN";
     String name7 = "EL GRINGO";
@@ -137,30 +137,30 @@ public class board extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(153, 102, 0));
 
         p3.setForeground(new java.awt.Color(255, 255, 255));
-        p3.setText("AI 7");
+        p3.setText("P3 (AI)");
 
         p7.setForeground(new java.awt.Color(255, 255, 255));
-        p7.setText("AI 5");
+        p7.setText("P7 (AI)");
 
         p2.setForeground(new java.awt.Color(255, 255, 255));
-        p2.setText("AI 6");
+        p2.setText("P2 (AI)");
 
         p1.setForeground(new java.awt.Color(255, 255, 255));
         p1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         p1.setText("User");
 
         p6.setForeground(new java.awt.Color(255, 255, 255));
-        p6.setText("AI 1");
+        p6.setText("P6 (AI)");
 
         p4.setForeground(new java.awt.Color(255, 255, 255));
-        p4.setText("AI 2");
+        p4.setText("P4 (AI)");
 
         p5.setForeground(new java.awt.Color(255, 255, 255));
         p5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        p5.setText("AI 3");
+        p5.setText("P5 (AI)");
 
         p8.setForeground(new java.awt.Color(255, 255, 255));
-        p8.setText("AI 4");
+        p8.setText("P8 (AI)");
 
         n1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         n1.setForeground(new java.awt.Color(0, 0, 255));
@@ -330,13 +330,8 @@ public class board extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(p3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(p4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(p3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -409,9 +404,11 @@ public class board extends javax.swing.JFrame {
                         .addComponent(TA)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(p4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(300, 300, 300)
                         .addComponent(p6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(86, 86, 86))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
@@ -504,8 +501,8 @@ public class board extends javax.swing.JFrame {
                     .addComponent(pa5)
                     .addComponent(A5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(p6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(p6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(p4))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

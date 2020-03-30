@@ -86,9 +86,14 @@ public class TestClientGame {
         //g.play();
        // g.display();
     }
-     public  void checkOneShot(){
+    public void checkCharacters(){
+       Game g = new Game();
+       for(Player p :g.getPlayers())
+           System.out.println(p.getNumber()+" "+p.getCharacter());
+    } 
+    public  void checkOneShot(){
          Game g = new Game(4);
-         Player p = new Player(1);
+         Player p = new Player("p"+1);
          p.setHealth(10);
          g.oneShot(p);
          if(p.getHealth()== 9)
@@ -97,7 +102,7 @@ public class TestClientGame {
      }
      public void checkTwoShot(){
          Game g = new Game(4);
-         Player p = new Player(1);
+         Player p = new Player("p"+1);
          p.setHealth(10);
          g.oneShot(p);
          if(p.getHealth()== 9)
@@ -113,8 +118,8 @@ public class TestClientGame {
         Game g = new Game(4);
         ArrayList<Player> testing = new ArrayList<Player>();
         
-        Player p = new Player(1);
-        Player p2 = new Player(1);
+        Player p = new Player("p"+1);
+        Player p2 = new Player("p"+1);
          
         if(g.getWinner(testing))
             System.out.println("All dead Outlaws win test passed");
