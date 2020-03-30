@@ -96,6 +96,7 @@ public class Player {
         MaxHealth = Integer.parseInt(arrtemp[1]);
         CurrentHealth = MaxHealth;
         ability = arrtemp[2];
+        ability = ability.replace(":","\n");
     }  
     public boolean isAI()
     {
