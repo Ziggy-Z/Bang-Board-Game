@@ -18,12 +18,16 @@ public class Player {
     private String Role;
     private String Character;
     private String ability;
-    private boolean AI;
+    private String number;
+    private boolean AI = true;
     
     
-    public Player(boolean temp)
+    public Player(String number)
     {
-        this.AI=temp;
+        if(number == "p1")
+            AI=false;
+        this.number = number;
+        
         /*
         setCharacterTraits(0);
         System.out.println("Name: " +Character);
@@ -37,6 +41,9 @@ public class Player {
         System.out.println("Role: " +Role);
         System.out.println("Arrows: "+Arrows);
 */
+    }
+    public String getNumber(){
+        return number;
     }
     public int getHealth()
     {

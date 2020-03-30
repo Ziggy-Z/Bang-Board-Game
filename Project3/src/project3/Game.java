@@ -51,11 +51,7 @@ public class Game {
             three = true;
         for(int i =1; i <=numPlayers; i++)
         {
-            Player p = new Player("p"+i); 
-            //if(i == 1)
-              //  p.setType("User");
-            //else
-                p.setType("AI");
+            Player p = new Player("p"+i);                 
             players.add(p); 
         }
         //creates the board gui with correct information
@@ -69,11 +65,10 @@ public class Game {
             three = true;
         for(int i =1; i <=numPlayers; i++)
         {
-            Player p = new Player(i); 
+            Player p = new Player("p"+i); 
             //if(i == 1)
               //  p.setType("User");
             //else
-                p.setType("AI");
             players.add(p); 
         }
         
@@ -86,13 +81,13 @@ public class Game {
      * @author Nathan Clough
      */
     private void assignCharacters(){
-        for (int i =1; i<=16; i++ )
+        for (int i =0; i<15; i++ )
            characters.add(i);
         Collections.shuffle(characters);
         for(Player t : players)
         {
-            t.setCharacter(characters.pop());
-            B.setChar(t.(),t.getNumber());
+            t.setCharacterTraits(characters.pop());
+            B.setChar(t.getCharacter(),t.getNumber());
         }
         
     }
@@ -215,7 +210,7 @@ public class Game {
             //System.out.println("  - Dynamite " + totalDynamite
             //resets the roling with the ones that 
             
-            if(p.getType().equals("AI"))
+            if(p.isAI())
             {
                 AI ai = new AI();
                 ArrayList<Dice> temp2 = new ArrayList<Dice>();
@@ -322,7 +317,7 @@ public class Game {
         
         for(int i=0; i<totalOneShot;i++)
         {
-            if(p.getType().equals("AI") )
+            if(p.isAI())
             {
                 ArrayList<Player> options = getOneAway(p);
                 int x = ai.who_toshoot(options);
@@ -339,7 +334,7 @@ public class Game {
         }   
         for(int i=0; i<totalTwoShot;i++)
         {
-            if(p.getType().equals("AI") )
+            if(p.isAI())
             {
                 ArrayList<Player> options = getTwoAway(p);
                 int x = ai.who_toshoot(options);
@@ -361,7 +356,7 @@ public class Game {
     public void display(){
         for(Player t: players)
         {
-            System.out.println(t.getValue());
+            System.out.println(t.getNumber());
         }
     }
     /**
