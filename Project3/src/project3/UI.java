@@ -61,7 +61,7 @@ public class UI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
-        Box1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5", "6", "7", "8" }));
+        Box1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "3", "4", "5", "6", "7", "8" }));
         Box1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Box1ActionPerformed(evt);
@@ -138,7 +138,7 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Box1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Box1ActionPerformed
-       choice = Box1.getSelectedIndex()+3;
+       choice = Box1.getSelectedIndex()+2;
 
     }//GEN-LAST:event_Box1ActionPerformed
 

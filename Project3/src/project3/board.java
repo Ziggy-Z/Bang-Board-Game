@@ -613,7 +613,7 @@ public class board extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void pChoice(int ch){
-        if(ch == 0){
+        if(ch == 1){
             p2.setVisible(false);
             p4.setVisible(false);
             p5.setVisible(false);
@@ -645,7 +645,7 @@ public class board extends javax.swing.JFrame {
             pc6.setVisible(false);
             pc8.setVisible(false);
         }
-        else if(ch == 1){
+        else if(ch == 2){
             seen();
             p2.setVisible(false);
             p4.setVisible(false);
@@ -673,7 +673,7 @@ public class board extends javax.swing.JFrame {
             pc8.setVisible(false);
 
         }
-        else if(ch == 2){
+        else if(ch == 3){
             seen();
             p3.setVisible(false);
             p5.setVisible(false);
@@ -694,7 +694,7 @@ public class board extends javax.swing.JFrame {
             pc5.setVisible(false);
             pc7.setVisible(false);
         }
-        else if(ch == 3){
+        else if(ch == 4){
             seen();
             p3.setVisible(false);
             p7.setVisible(false);
@@ -709,7 +709,7 @@ public class board extends javax.swing.JFrame {
             pc3.setVisible(false);
             pc7.setVisible(false);
         }
-        else if(ch == 4){
+        else if(ch == 5){
             seen();
             p8.setVisible(false);
             h5.setVisible(false);
@@ -718,7 +718,7 @@ public class board extends javax.swing.JFrame {
             pa8.setVisible(false);
             pc8.setVisible(false);
         }
-        else if(ch == 5){
+        else if(ch == 6){
             seen();
         }
         else{
