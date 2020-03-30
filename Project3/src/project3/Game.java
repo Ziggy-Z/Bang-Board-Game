@@ -49,10 +49,30 @@ public class Game {
         B.pChoice(numPlayers-3);
         if(numPlayers == 3)
             three = true;
+        
         for(int i =1; i <=numPlayers; i++)
         {
-            Player p = new Player("p"+i);                 
-            players.add(p); 
+           if(numPlayers == 4){
+                    Player p = new Player("p"+((2*i)-1));
+                    players.add(p);
+           }
+           else if(numPlayers == 5){
+                Player p = new Player("p"+((2*(i-1))));
+                players.add(p);
+                
+            }
+           else if(numPlayers == 6){
+                Player p = new Player("p"+((2*(i-1))));
+                players.add(p);
+           }
+           else if(numPlayers == 7){
+                Player p = new Player("p"+((i)));
+                players.add(p);
+           }
+           else if(numPlayers == 8){
+                Player p = new Player("p"+((i+1)));
+                players.add(p);
+           }
         }
         //creates the board gui with correct information
         
@@ -88,9 +108,9 @@ public class Game {
         {
             t.setCharacterTraits(characters.pop());
             B.setChar(t.getCharacter(),t.getNumber());
+            
         }
-    
-        
+
     }
     /**
      * Based on the number of players this method will create a list of roles 

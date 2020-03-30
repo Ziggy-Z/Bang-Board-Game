@@ -19,7 +19,6 @@ public class Project3 {
         //Displays the board 
 
        
- 
        TestClientGame test = new TestClientGame();
        test.checkCharacters();
        
