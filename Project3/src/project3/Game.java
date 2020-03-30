@@ -2,6 +2,8 @@ package project3;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import project3.AI;
 /*
@@ -29,12 +31,40 @@ public class Game {
     private boolean three = false;
     private int totalArrows = 9;
     private String winners;
+    board B = new board();
     /***
      * Constructor for game object that takes in a number of players 
      * @author Nathan Clough
      * @param numPlayers 
      */
-    public Game(int numPlayers){  
+    public Game(){
+        UI ui = new UI();
+        int numPlayers= 0;
+        try {
+            numPlayers = ui.getStartNumPlayers();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        B.setVisible(true);
+        B.pChoice(numPlayers-3);
+        if(numPlayers == 3)
+            three = true;
+        for(int i =1; i <=numPlayers; i++)
+        {
+            Player p = new Player("p"+i); 
+            //if(i == 1)
+              //  p.setType("User");
+            //else
+                p.setType("AI");
+            players.add(p); 
+        }
+        //creates the board gui with correct information
+        
+        setupRoles();
+        assignCharacters();
+ 
+    }
+    public Game(int numPlayers){
         if(numPlayers == 3)
             three = true;
         for(int i =1; i <=numPlayers; i++)
@@ -46,6 +76,7 @@ public class Game {
                 p.setType("AI");
             players.add(p); 
         }
+        
         setupRoles();
         assignCharacters();
  
@@ -59,7 +90,10 @@ public class Game {
            characters.add(i);
         Collections.shuffle(characters);
         for(Player t : players)
+        {
             t.setCharacter(characters.pop());
+            B.setChar(t.(),t.getNumber());
+        }
         
     }
     /**
@@ -102,7 +136,11 @@ public class Game {
                 
         //takes a role and assigns it to each player
         for(Player t: players )
+        {
+            
             t.setRole(roles.pop());
+            B.setRole(t.getRole(),t.getNumber());
+        }
 
     }
     /**
