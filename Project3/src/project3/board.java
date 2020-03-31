@@ -777,37 +777,37 @@ public class board extends javax.swing.JFrame {
            }
         else if("p2".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 6");
+                jLabel4.setText("Sheriff = P2");
                 }
             }
         else if("p3".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 7");
+                jLabel4.setText("Sheriff = P3");
                 }
             }
         else if("p4".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 2");
+                jLabel4.setText("Sheriff = P4");
                 }
             }
         else if("p5".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 3");
+                jLabel4.setText("Sheriff = P5");
                 }
             }
         else if("p6".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 1");
+                jLabel4.setText("Sheriff = P6");
                 }
             }
         else if("p7".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 5");
+                jLabel4.setText("Sheriff = P7");
                 }
             }
         else if("p8".equals(player)){
             if("Sheriff".equals(role)){
-                jLabel4.setText("Sheriff = AI 4");
+                jLabel4.setText("Sheriff = P8");
                 }
             }
         }

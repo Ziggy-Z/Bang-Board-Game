@@ -18,9 +18,9 @@ public class Project3 {
         
         //Displays the board 
 
+        Game g = new Game();
+        g.play();
        
-       TestClientGame test = new TestClientGame();
-       test.checkCharacters();
        
        
         

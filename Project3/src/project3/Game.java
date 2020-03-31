@@ -2,10 +2,10 @@ package project3;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import project3.AI;
 /*
 
 CS 2365 OOP Spring 2020 Section 2
@@ -30,6 +30,7 @@ public class Game {
     private boolean finished;
     private boolean three = false;
     private int totalArrows = 9;
+    int start;
     private String winners;
     board B = new board();
     /***
@@ -47,6 +48,7 @@ public class Game {
         }
         B.setVisible(true);
         B.pChoice(numPlayers-2);
+        B.tArrow(9);
         if(numPlayers == 3)
             three = true;
             System.out.println(three);
@@ -155,8 +157,10 @@ public class Game {
         //takes a role and assigns it to each player
         for(Player t: players )
         {
-            
+
             t.setRole(roles.pop());
+            if(t.getRole().equals("Sheriff"))
+                     start = players.indexOf(t);
             B.setRole(t.getRole(),t.getNumber());
         }
 
@@ -167,19 +171,21 @@ public class Game {
      */
     public void play(){
 //loops through the list allowing to keep taking turns in the correct order
-    int i = 0;    
-    while(players.size() > 1 && finished != true)
+    int i = start;    
+    do 
         {
-            if(i == players.size() )
+            if(i >= players.size() )
                 i = 0;
-            
+            System.out.println(i);
             Player temp = players.get(i);
             takeTurn(temp);
             if(getWinner(players))
                 finished = true;
-                
+            Scanner kb = new Scanner(System.in);   
+           //kb.next();
             i++;
-        }
+        }while(players.size() > 1 && finished != true);
+     System.out.println(winners + "wins!!!!!!!");
     }
     /**
      * Takes in a Player object and then runs through the rolls and applies any actions
@@ -193,7 +199,7 @@ public class Game {
         die.clear();
         createDie();
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() +":");
+        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         do 
@@ -207,7 +213,9 @@ public class Game {
                 if(d.getResult().equals("Arrow"))
                 {
                     p.setArrows(p.getArrows()+1);
+                    B.pArrow(p.getArrows(), p.getNumber());
                     totalArrows --;
+                    B.tArrow(totalArrows);
                     if(totalArrows == 0)
                         IndianAttack();
                 }
@@ -257,13 +265,21 @@ public class Game {
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
         }while(turnNum <= 3 && totalDynamite < 3 && rollAgain);
+        if(totalDynamite>=3)
+        {
+            System.out.println("Explosion");
+            p.setHealth(p.getHealth()-1);
+            B.update_Health(p.getHealth(),p.getNumber());
+        }
         //displays final value of die 
         System.out.print("Final Dice:");
         for(Dice d: rollingDie)
             die.add(d);
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
-        //performActions(p);
+        System.out.println();
+        if(players.contains(p))
+            performActions(p);
     }
     /***
      * Given a  list of players it determines who the winner of the game is if conditions are met
@@ -345,28 +361,48 @@ public class Game {
                 ArrayList<Player> options = getOneAway(p);
                 int x = ai.who_toshoot(options);
                 oneShot(options.get(x));
+                if(getWinner(players))
+                    break;
             }     
         }
-        for(int i=0; i<totalBeer;i++)
+        if(!getWinner(players))
         {
+            for(int i=0; i<totalBeer;i++)
+            {
               int x = ai.who_toheal(players);
               if(x == -1)
                   heal(p);
               else
                   heal(players.get(x));
-        }   
+            }   
+        }
+        if(!getWinner(players)){
         for(int i=0; i<totalTwoShot;i++)
         {
+            ArrayList<Player> options = new ArrayList<Player>();
             if(p.isAI())
             {
-                ArrayList<Player> options = getTwoAway(p);
+                if (players.size() <4)
+                {
+                    options = getOneAway(p);
+                }
+                else
+                     options = getTwoAway(p);
+                
                 int x = ai.who_toshoot(options);
-                oneShot(options.get(x));
+                twoShot(options.get(x));
+                if(getWinner(players))
+                    break;
             }         
         }  
-        if(totalGat >= 3)
-            gatlingGun(p);
+        }
+        if(!getWinner(players))
+        {
+            if(totalGat >= 3)
+                gatlingGun(p);
+        }
     }
+    
     public String getWinners(){
         return winners;
     }
@@ -414,11 +450,21 @@ public class Game {
      */
     public void IndianAttack(){
         //show indian attack
-        for(Player t : players){
+        System.out.println("Indian Attack");
+        totalArrows = 9;
+        B.tArrow(totalArrows);
+       
+        for(int i = 0; i<players.size(); i++){
+            Player t = players.get(i);
+            B.pArrow(t.getArrows(), t.getNumber());
             t.setHealth(t.getHealth()-t.getArrows());
             t.setArrows(0);
             if(t.getHealth() <= 0)
+            {
                 players.remove(t);
+                if(getWinner(players))
+                    break;
+            }
         }
             
     }
@@ -429,12 +475,22 @@ public class Game {
      */
     public void gatlingGun(Player p){
         //show gat gun
+        System.out.println("Gattling Gun");
         p.setArrows(0);
+        B.pArrow(p.getArrows(), p.getCharacter());
+        totalArrows = 0;
+        B.tArrow(totalArrows);
         for(Player t : players)
         {
             t.setHealth(t.getHealth()-1);
+            B.update_Health(p.getHealth(), t.getCharacter());
+            System.out.println("Player " + t.getCharacter() + " was shot by gat");
             if(p.getHealth() <= 0)
+            {
                 players.remove(p);
+                if (getWinner(players)) 
+                    break;
+            }
         }
     }
     /** 
@@ -443,6 +499,8 @@ public class Game {
      */
     public void oneShot(Player p){
         p.setHealth(p.getHealth()-1);
+        B.update_Health(p.getHealth(), p.getNumber());
+        System.out.println("Player " + p.getNumber() + " was shot by 1shot");
         if(p.getHealth() <= 0)
             players.remove(p);
     }
@@ -452,6 +510,8 @@ public class Game {
      */
     public void twoShot(Player p){
         p.setHealth(p.getHealth()-1);
+        B.update_Health(p.getHealth(), p.getNumber());
+        System.out.println("Player " + p.getNumber() + " was shot by 2shot");
         if(p.getHealth() <= 0)
             players.remove(p);
         
@@ -462,9 +522,12 @@ public class Game {
      * @author Krystyna Urbanczyk
      */
     public void heal(Player p){
+       
+        
         p.setHealth(p.getHealth()+1);
+        B.update_Health(p.getHealth(), p.getNumber());
+        System.out.println("Player " + p.getNumber() + " was healed");
     }
-    
     /**
      * gets all players one distance away from the parameter Player p 
      * @param p
@@ -480,7 +543,12 @@ public class Game {
         if(index - 1 == -1)
             options.add(players.get(players.size()-1));
         else
+        {
+            for(Player t : players)
+                System.out.print(t.getRole() +" " );
+            System.out.println();
             options.add(players.get(index-1));
+        }
         return options;
     }
      /**
