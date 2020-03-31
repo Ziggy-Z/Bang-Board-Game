@@ -1,6 +1,7 @@
 package project3;
 
 import java.awt.Color;
+import java.awt.MouseInfo;
 import javax.swing.JFrame;
 
 /*
@@ -352,15 +353,16 @@ public class board extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addGap(86, 86, 86)
-                                    .addComponent(p1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+                                    .addComponent(p1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(pa1)
                                         .addComponent(h1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(n1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(A1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(n1)
+                                        .addComponent(A1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(148, 148, 148))))
                         .addGap(93, 93, 93)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -548,11 +550,13 @@ public class board extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pa2)
                             .addComponent(A2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
                         .addComponent(p1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(n1)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(n1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(2, 2, 2))
                             .addComponent(h1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(4, 4, 4)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1244,7 +1248,7 @@ public class board extends javax.swing.JFrame {
     }
     
     public void update_Health(int value, String player){
-        if("p1".equals(player)){
+        if("p1".equals(player)||"p0".equals(player)){
             hp1 = value;
             String s1 = Integer.toString(hp1);
             n1.setText(s1);
@@ -1259,11 +1263,11 @@ public class board extends javax.swing.JFrame {
             hp2 = value;
             String s2 = Integer.toString(hp2);
             n7.setText(s2);
-            int N2 = Integer.parseInt(n2.getText());
+            int N2 = Integer.parseInt(n7.getText());
             if(N2 <= 0)
-                n2.setForeground(Color.red);
-            if(n2.getText().contains("-")){
-                n2.setText("0");
+                n7.setForeground(Color.red);
+            if(n7.getText().contains("-")){
+                n7.setText("0");
             }
             
         }
@@ -1271,7 +1275,7 @@ public class board extends javax.swing.JFrame {
             hp3 = value;
             String s3 = Integer.toString(hp3);
             n8.setText(s3);
-            int N3 = Integer.parseInt(n3.getText());
+            int N3 = Integer.parseInt(n8.getText());
             if(N3 <= 0)
                 n8.setForeground(Color.red);
             if(n8.getText().contains("-")){
@@ -1282,18 +1286,18 @@ public class board extends javax.swing.JFrame {
             hp4 = value;
             String s4 = Integer.toString(hp4);
             n3.setText(s4);
-            int N4 = Integer.parseInt(n4.getText());
+            int N4 = Integer.parseInt(n3.getText());
             if(N4 <= 0)
                 n3.setForeground(Color.red);
             if(n3.getText().contains("-")){
                 n3.setText("0");
             }
         }
-        else if("p5".equals(player)){
+        else if("p5".equals(player)||"p10".equals(player)){
             hp5 = value;
             String s5 = Integer.toString(hp5);
             n4.setText(s5);
-            int N5 = Integer.parseInt(n5.getText());
+            int N5 = Integer.parseInt(n4.getText());
             if(N5 <= 0)
                 n4.setForeground(Color.red);
             if(n4.getText().contains("-")){
@@ -1304,7 +1308,7 @@ public class board extends javax.swing.JFrame {
             hp6 = value;
             String s6 = Integer.toString(hp6);
             n2.setText(s6);
-            int N6 = Integer.parseInt(n6.getText());
+            int N6 = Integer.parseInt(n2.getText());
             if(N6 <= 0)
                 n2.setForeground(Color.red);
             if(n2.getText().contains("-")){
@@ -1315,7 +1319,7 @@ public class board extends javax.swing.JFrame {
             hp7 = value;
             String s7 = Integer.toString(hp7);
             n6.setText(s7);
-            int N7 = Integer.parseInt(n7.getText());
+            int N7 = Integer.parseInt(n6.getText());
             if(N7 <= 0)
                 n6.setForeground(Color.red);
             if(n6.getText().contains("-")){
@@ -1326,7 +1330,7 @@ public class board extends javax.swing.JFrame {
             hp8 = value;
             String s8 = Integer.toString(hp8);
             n5.setText(s8);
-            int N8 = Integer.parseInt(n8.getText());
+            int N8 = Integer.parseInt(n5.getText());
             if(N8 <= 0)
                 n5.setForeground(Color.red);
             if(n5.getText().contains("-")){
@@ -1385,7 +1389,9 @@ public class board extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         p.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        p.setLocation(957, 826);
+        int x = MouseInfo.getPointerInfo().getLocation().x;
+        int y = MouseInfo.getPointerInfo().getLocation().y;
+        p.setLocation(x-80, y+30);
         p.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
