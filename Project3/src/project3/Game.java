@@ -172,19 +172,19 @@ public class Game {
     public void play(){
 //loops through the list allowing to keep taking turns in the correct order
     int i = start;    
-    while(players.size() > 1 && finished != true)
+    do 
         {
-            if(i == players.size() )
+            if(i >= players.size() )
                 i = 0;
-            
+            System.out.println(i);
             Player temp = players.get(i);
             takeTurn(temp);
             if(getWinner(players))
                 finished = true;
             Scanner kb = new Scanner(System.in);   
-           kb.next();
+           //kb.next();
             i++;
-        }
+        }while(players.size() > 1 && finished != true);
      System.out.println(winners + "wins!!!!!!!");
     }
     /**
@@ -278,7 +278,8 @@ public class Game {
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
         System.out.println();
-        performActions(p);
+        if(players.contains(p))
+            performActions(p);
     }
     /***
      * Given a  list of players it determines who the winner of the game is if conditions are met
@@ -476,14 +477,14 @@ public class Game {
         //show gat gun
         System.out.println("Gattling Gun");
         p.setArrows(0);
-        B.pArrow(p.getArrows(), p.getNumber());
+        B.pArrow(p.getArrows(), p.getCharacter());
         totalArrows = 0;
         B.tArrow(totalArrows);
         for(Player t : players)
         {
             t.setHealth(t.getHealth()-1);
-            B.update_Health(p.getHealth(), t.getNumber());
-            System.out.println("Player " + t.getNumber() + " was shot by gat");
+            B.update_Health(p.getHealth(), t.getCharacter());
+            System.out.println("Player " + t.getCharacter() + " was shot by gat");
             if(p.getHealth() <= 0)
             {
                 players.remove(p);
@@ -542,7 +543,12 @@ public class Game {
         if(index - 1 == -1)
             options.add(players.get(players.size()-1));
         else
+        {
+            for(Player t : players)
+                System.out.print(t.getRole() +" " );
+            System.out.println();
             options.add(players.get(index-1));
+        }
         return options;
     }
      /**
