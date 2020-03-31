@@ -1,6 +1,7 @@
 package project3;
 
 import java.awt.Color;
+import java.awt.MouseInfo;
 import javax.swing.JFrame;
 
 /*
@@ -1385,7 +1386,9 @@ public class board extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         p.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        p.setLocation(957, 826);
+        int x = MouseInfo.getPointerInfo().getLocation().x;
+        int y = MouseInfo.getPointerInfo().getLocation().y;
+        p.setLocation(x-80, y+30);
         p.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
