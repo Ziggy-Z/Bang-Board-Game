@@ -22,34 +22,45 @@ public class AI {
             * returns array of integers of indexes of dice that needs to be re-rolled.
             * 
             */
+           public AI(){
+    
+                }
                  
            public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i=0;
                    ArrayList<Integer> roll_list = new ArrayList<Integer>();
-                    if(role.equals("Sherrif")){
+                    if(role.equals("Sheriff")){
                        for(i=0;i<die.size();i++)
-                          if(die.get(i).getResult().equals("Arrow"))
-                             roll_list.add(i);
-                          if(die.get(i).getResult().equals("Gatling"))
-                             roll_list.add(i);
+                       {
+                            if(die.get(i).getResult().equals("Arrow"))
+                                roll_list.add(i);
+                            if(die.get(i).getResult().equals("Gatling"))
+                                roll_list.add(i);
+                       }
                     }else if(role.equals("Deputy")){
                         for(i=0;i<die.size();i++)
+                        {
                           if(die.get(i).getResult().equals("Arrow"))
                              roll_list.add(i);
                           if(die.get(i).getResult().equals("Gatling"))
                              roll_list.add(i);
+                        }
                     }else if(role.equals("Renegade")){
                         for(i=0;i<die.size();i++)
+                        {
                           if(die.get(i).getResult().equals("Arrow"))
                              roll_list.add(i);
                           if(die.get(i).getResult().equals("Gatling"))
                              roll_list.add(i);
+                        }
                     }else if(role.equals("Outlaw")){
                         for(i=0;i<die.size();i++)
+                        {
                           if(die.get(i).getResult().equals("Arrow"))
                              roll_list.add(i);
                           if(die.get(i).getResult().equals("Gatling"))
                              roll_list.add(i);
+                        }
                     }                       
                     return roll_list;       
                              
@@ -61,6 +72,7 @@ public class AI {
             * 
             */
            
+ 
            public int who_toshoot(ArrayList<Player> options,String role){
               
                int i=0;
@@ -147,6 +159,9 @@ public class AI {
                     
                        }
               }
+
+         
+
                
                
                
@@ -156,6 +171,7 @@ public class AI {
             * returns  player object that should be healed.
             * 
             */
+ 
            public int who_toheal(ArrayList<Player> options,String role){
              
              Random f=new Random();  
@@ -205,7 +221,8 @@ public class AI {
                  
              }
   
-           }
+
+           
   }
            
 }

@@ -1,0 +1,16 @@
+Bart Cassidy;8;You may take an arrow instead:of losing a life point:(except to Indians or Dynamite)
+Black Jack;8;You may re-roll a dynamite:(not if you roll three or more)
+Calamity Janet;8;You can use 1 shot as 2 shot and:vice-versa
+El Gringo;7;When a player makes you lose one:or more life points, he must:take an arrow
+Jesse Jones;9;If you have four life points or:less, you gain two if you use:beer for yourself
+Jourdonnais;7;You never lose more than:one life point to Indians
+Kit Carlson;7;For each gattling you may:discard one arrow from any player
+Lucky Duke;8;You may make one extra re-roll:(max of four)
+Paul Regret;9;You never lose life points to the:Gatling Gun
+Pedro Rameriez;8;Each time you lose a life point,:you may discard one of your arrows:(still lose the life point)
+Rose Doolan;9;Shooting range increases by one
+Sid Ketchum;8;At the beginning of your turn,:any player of your choice gains:one life point(including yourself)
+Slab the Killer;8;Once per turn, you can use a:beer to double your shooting:damage
+Suzy Lafayette;8;If you didn’t roll any bullseye,:you gain two life points:(applies to end of your turn)
+Vulture Sam;9;Each time another player is:eliminated, you gain two life:points
+Willy the Kid;8;you only need two gattling dice:to use the Gatling Gun:(Only use Gatling gun once per turn)

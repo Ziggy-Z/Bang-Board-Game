@@ -40,7 +40,7 @@ public class Dice implements Comparable<Dice>{
         int face = diceface.nextInt((6 - 1) + 1) + 1;
         this.dice = face;
         //int temp = 0;
-      
+ 
         switch (face) {
             case 1:
                 result = "Dynamite";

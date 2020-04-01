@@ -86,12 +86,108 @@ public class TestClientGame {
         //g.play();
        // g.display();
     }
-    public void checkTurn(){
+    public void checkCharacters(){
+       Game g = new Game();
+       for(Player p :g.getPlayers())
+           System.out.println(p.getNumber()+" "+p.getCharacter());
+    } 
+    public  void checkOneShot(){
+         Game g = new Game(4);
+         Player p = new Player("p"+1);
+         p.setHealth(10);
+         g.oneShot(p);
+         if(p.getHealth()== 9)
+             System.out.println("One shot - Damage passed");
+         
+     }
+     public void checkTwoShot(){
+         Game g = new Game(4);
+         Player p = new Player("p"+1);
+         p.setHealth(10);
+         g.oneShot(p);
+         if(p.getHealth()== 9)
+             System.out.println("Two shot - Damage passed");
+     }
+     public void checkTurn(){
         Game g = new Game(3);
         g.play();
         
     }
-  private boolean checkNumRoles(int S, int R, int O, int D, int cS, int cR , int cO, int cD,int gS){
+     public void checkWinners(){
+       
+        Game g = new Game(4);
+        ArrayList<Player> testing = new ArrayList<Player>();
+        
+        Player p = new Player("p"+1);
+        Player p2 = new Player("p"+1);
+         
+        if(g.getWinner(testing))
+            System.out.println("All dead Outlaws win test passed");
+        
+        //single Outlaw left 
+        p.setRole("Outlaw");
+        testing.add(p);
+        if(g.getWinner(testing))
+            if("Outlaw".equals(g.getWinners()))
+                System.out.println("Outlaw wins - Single Outlaw Test passed");
+            else System.out.println("Single Outlaw Test Failed");
+        else 
+            System.out.println("Single Outlaw Test Didn't end game");
+        //two outlaws remain
+        p.setRole("Outlaw");
+        p2.setRole("Outlaw");
+        testing.add(p);
+        testing.add(p2);
+        if(g.getWinner(testing))
+            if("Outlaw".equals(g.getWinners()))
+                System.out.println("Outlaws wins - two Outlaw Test passed");
+            else System.out.println("two Outlaw Test Failed");
+        else 
+            System.out.println("two outlaw didnt end game");
+        
+    //single Renegade left 
+        testing.clear();
+        p.setRole("Renegade");
+        testing.add(p);
+        if(g.getWinner(testing))
+            if("Renegade".equals(g.getWinners()))
+                System.out.println("Renegade wins - Single Renegade Test passed");
+            else 
+                System.out.println("Single Renegade Test Failed - result was " + g.getWinners());
+        else 
+            System.out.println("Single Renegade Test Didn't end game");
+        //two renegades kill the sheriff
+        
+        p2.setRole("Renegade");
+        testing.add(p2);
+        if(g.getWinner(testing))
+            if("Outlaw".equals(g.getWinners()))
+                System.out.println("Outlaws win - Two Renegade kill sheriff Test passed");
+            else
+                System.out.println("Two renegade kill sheriff test failed");
+        else
+            System.out.println("Two renegade test didnt end game");
+        //Single sheriff remaining 
+        testing.clear();
+        p.setRole("Sheriff");
+        testing.add(p);
+        
+        if(g.getWinner(testing))
+            if("Sheriff".equals(g.getWinners()))
+                System.out.println("Sheriff wins - Single Sheriff Test passed");
+            else System.out.println("Single Sheriff Test Failed");
+        else 
+            System.out.println("Single Sheriff Test Didn't end game");
+         p2.setRole("Deputy");
+         testing.add(p2);
+         if(g.getWinner(testing))
+            if("Sheriff".equals(g.getWinners()))
+                System.out.println("Sheriff wins - Sheriff and  Deputy Test passed");
+            else System.out.println("Sheriff and  Deputy Test failed");
+         else   
+             System.out.println("Sheriff and  Deputy Test Didn't end game");
+    }
+     private boolean checkNumRoles(int S, int R, int O, int D, int cS, int cR , int cO, int cD,int gS){
     if(S != cS)
     {
         correctNumRoles = false;
@@ -124,7 +220,7 @@ public class TestClientGame {
     else return true;
       
   }
-  public void showResults(){
+     public void showResults(){
    if(correctPlayers)
       System.out.println("number of players passed all tests");
    else
@@ -134,7 +230,7 @@ public class TestClientGame {
    else
        System.out.println("Incorrect number " + playerAmountFlag + " of " + failedRoles + " in game size " + sizeFlag);
   }
-  public void checkGetOne(){
+     public void checkGetOne(){
       Game g = new Game(5);
       for(Player P : g.getPlayers())
           System.out.print(P.getRole() + " ");
@@ -153,7 +249,7 @@ public class TestClientGame {
       for(Player P : options )
           System.out.println(P.getRole());
   }
-  public void checkGetTwo(){
+     public void checkGetTwo(){
       Game g = new Game(5);
       for(Player P : g.getPlayers())
           System.out.print(P.getRole() + " ");
@@ -172,4 +268,4 @@ public class TestClientGame {
       for(Player P : options )
           System.out.println(P.getRole());
   }
-}
+}   
