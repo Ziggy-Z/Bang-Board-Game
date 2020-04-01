@@ -169,11 +169,12 @@ public class Game {
      * Function for looping through the players arrayList and having each player take turn in order
      * @author Nathan Clough
      */
-    public void play(){
+    public void play() throws InterruptedException{
 //loops through the list allowing to keep taking turns in the correct order
     int i = start;    
     do 
         {
+            Thread.sleep(1200);
             if(i >= players.size() )
                 i = 0;
             System.out.println(i);
@@ -185,7 +186,7 @@ public class Game {
            //kb.next();
             i++;
         }while(players.size() > 1 && finished != true);
-     System.out.println(winners + "wins!!!!!!!");
+     System.out.println(winners + " wins!!!!!!!");
     }
     /**
      * Takes in a Player object and then runs through the rolls and applies any actions
