@@ -112,6 +112,7 @@ public class Game {
         {
             t.setCharacterTraits(characters.pop());
             B.setChar(t.getCharacter(),t.getNumber());
+            B.update_Health(t.getHealth(), t.getNumber());
             
         }
 
