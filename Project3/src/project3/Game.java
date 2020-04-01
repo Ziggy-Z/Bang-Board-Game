@@ -183,7 +183,7 @@ public class Game {
             if(getWinner(players))
                 finished = true;
             Scanner kb = new Scanner(System.in);   
-           //kb.next();
+            //gitkb.next();
             i++;
         }while(players.size() > 1 && finished != true);
      System.out.println(winners + "wins!!!!!!!");
