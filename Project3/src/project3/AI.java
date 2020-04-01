@@ -6,7 +6,8 @@
 package project3;
 import java.util.ArrayList;
 import java.util.*;
-
+import java.lang.Math;
+import java.util.Random;
 /*
 CS 2365 OOP Spring 2020 Section 2
 Rohit Gurnani
@@ -60,8 +61,92 @@ public class AI {
             * 
             */
            
-           public int who_toshoot(ArrayList<Players> options){
-              return 2;
+           public ArrayList<Players> who_toshoot(ArrayList<Players> options,String role){
+              
+               int i=0;
+               int x;
+               int y;
+               if(role.equals("Deputy")){
+                for(i=0;i<options.size();i++)
+                    if(options.get(i).equals("Outlaw")){
+                        x = i.getHealth();
+                    }
+                    if(options.get(i).equals("Renegade")){
+                        y = i.getHealth();
+                    }
+                if(x > y){
+                    for(i=0;i<options.size(i);i++)
+                        if(options.get(i).equals("Renegade"))
+                            return options[i];
+                       }
+                else   {
+                    for(i=0;i<options.size();i++)
+                        if(options.get(i).equals("Outlaw"))
+                           return options[i];
+                    
+                       }
+              }
+               
+               else if(role.equals("Sherrif")) {
+                for(i=0;i<options.size();i++)
+                    if(options.get(i).equals("Outlaw")){
+                        x = i.getHealth();
+                    }
+                    if(options.get(i).equals("Renegade")){
+                        y = i.getHealth();
+                    }
+                if(x > y){
+                    for(i=0;i<options.size(i);i++)
+                        if(options.get(i).equals("Renegade"))
+                            return options[i];
+                       }
+                else   {
+                    for(i=0;i<options.size();i++)
+                        if(options.get(i).equals("Outlaw"))
+                            return options[i];
+                    
+                       }
+                }
+               else if(role.equals("Outlaw")){
+                for(i=0;i<options.size();i++)
+                    if(options.get(i).equals("Sherrif")){
+                        x = i.getHealth();
+                    }
+                    if(options.get(i).equals("Deputy")){
+                        y = i.getHealth();
+                    }
+                if(x > y){
+                    for(i=0;i<options.size(i);i++)
+                        if(options.get(i).equals("Deputy"))
+                            return options[i];
+                       }
+                else   {
+                    for(i=0;i<options.size();i++)
+                        if(options.get(i).equals("Sherrif"))
+                            return options[i];
+                    
+                       }
+              }
+               else if(role.equals("Renegade")){
+                for(i=0;i<options.size();i++)
+                    if(options.get(i).equals("Sherrif")){
+                        x = i.getHealth();
+                    }
+                    if(options.get(i).equals("Deputy")){
+                        y = i.getHealth();
+                    }
+                if(x > y){
+                    for(i=0;i<options.size(i);i++)
+                        if(options.get(i).equals("Deputy"))
+                            return options[i];
+                       }
+                else   {
+                    for(i=0;i<options.size();i++)
+                        if(options.get(i).equals("Sherrif"))
+                            return options[i];
+                    
+                       }
+              }
                
                
                
@@ -71,8 +156,58 @@ public class AI {
             * returns  player object that should be healed.
             * 
             */
-           public int who_toheal(ArrayList<Players> options){
-              return 1;
+           public int who_toheal(ArrayList<Players> options,String role){
+             
+             Random f=new Random();  
+             if(role.equals("Deputy")){
+                 for(int i=0;i<options.size();i++)
+                     if(options.get(i).equals("Deputy")){
+                         if(i.isFullHealth()==false)
+                             return -1;
+                         else if(1==1)
+                             for(i=0;i<options.size();i++)
+                                 if(options.get(i).equals("Sherrif"))
+                                    if(i.isFullHealth()==false)
+                                       return i;
+                         else 
+                             return f.nextInt(((options.size()-1)+1))+1;
+                 
+             }   
+             else if(role.equals("Sherrif")){
+                 for(i=0;i<options.size();i++)
+                     if(options.get(i).equals("Sherrif")){
+                         if(i.isFullHealth()==false)
+                             return -1;
+                         else 
+                             return f.nextInt(((options.size()-1)+1))+1;
+              }
+                 
+             }
+             else if(role.equals("Renegade")){
+                 for(i=0;i<options.size();i++)
+                     if(options.get(i).equals("Renegade")){
+                         if(!i.isFullHealth())
+                             return -1;
+                         else 
+                             return f.nextInt(((options.size()-1)+1))+1;
+             }
+                 
+                 
+             }
+             else if(role.equals("Outlaw")){
+                 for(i=0;i<options.size();i++)
+                     if(options.get(i).equals("Outlaw")){
+                         if(!i.isFullHealth())
+                             return -1;
+                         else 
+                             return f.nextInt(((options.size()-1)+1))+1;
+             }
+                 
+             }
+  
            }
+  }
+           
 }
+           
  
