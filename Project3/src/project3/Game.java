@@ -361,7 +361,7 @@ public class Game {
             if(p.isAI())
             {
                 ArrayList<Player> options = getOneAway(p);
-                int x = ai.who_toshoot(options);
+                int x = ai.who_toshoot(options,p.getRole());
                 oneShot(options.get(x));
                 if(getWinner(players))
                     break;
@@ -371,7 +371,7 @@ public class Game {
         {
             for(int i=0; i<totalBeer;i++)
             {
-              int x = ai.who_toheal(players);
+              int x = ai.who_toheal(players,p.getRole());
               if(x == -1)
                   heal(p);
               else
@@ -391,7 +391,7 @@ public class Game {
                 else
                      options = getTwoAway(p);
                 
-                int x = ai.who_toshoot(options);
+                int x = ai.who_toshoot(options,p.getRole());
                 twoShot(options.get(x));
                 if(getWinner(players))
                     break;
