@@ -20,22 +20,6 @@ public class Project3 {
 
         Game g = new Game();
         g.play();
-       
-       
-       
-        
-        
-        /*
-       Object lock = new Object();
-       int x;
-       UI input = new UI();
-
-
-       x = input.getStartNumPlayers();
-   
-       
-       System.out.println(x);*/
-           
     }
     
 }
