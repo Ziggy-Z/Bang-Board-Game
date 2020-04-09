@@ -49,9 +49,7 @@ public class Game {
         B.setVisible(true);
         B.pChoice(numPlayers-2);
         B.tArrow(9);
-        if(numPlayers == 3)
-            three = true;
-            System.out.println(three);
+        
         
         for(int i =1; i <=numPlayers; i++)
         {
@@ -84,22 +82,46 @@ public class Game {
         assignCharacters();
  
     }
-    public Game(int numPlayers){
-        if(numPlayers == 3)
-            three = true;
+    /***
+     * creates Game instance for testing purposes
+     * @param numPlayers 
+     */
+    public Game(int numPlayers){                
+        B.setVisible(true);
+        B.pChoice(numPlayers-2);
+        B.tArrow(9);
         for(int i =1; i <=numPlayers; i++)
         {
-            Player p = new Player("p"+i); 
-            //if(i == 1)
-              //  p.setType("User");
-            //else
-            players.add(p); 
+           if(numPlayers == 4){
+                    Player p = new Player("p"+((2*i)-1));
+                    players.add(p);
+           }
+           else if(numPlayers == 5){
+                Player p = new Player("p"+((2*(i-1))));
+                players.add(p);
+                
+            }
+           else if(numPlayers == 6){
+                Player p = new Player("p"+((2*(i-1))));
+                players.add(p);
+           }
+           else if(numPlayers == 7){
+                Player p = new Player("p"+((i)));
+                players.add(p);
+           }
+           else if(numPlayers == 8){
+                Player p = new Player("p"+((i+1)));
+                
+                players.add(p);
+           }
         }
+        //creates the board gui with correct information
         
         setupRoles();
         assignCharacters();
  
     }
+    
     /***
      * Assigns each character a role 
      * @author Nathan Clough
@@ -577,4 +599,5 @@ public class Game {
             options.add(players.get(index-2));
         return(options);
     }
+
 }
