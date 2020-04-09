@@ -74,6 +74,9 @@ public class Dice implements Comparable<Dice>{
     public String getResult(){
         return result;
     }
+    public int getValue(){
+        return dice;
+    }
     
     @Override 
     public int compareTo(Dice d){
