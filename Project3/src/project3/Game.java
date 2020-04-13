@@ -200,7 +200,6 @@ public class Game {
             Thread.sleep(1200);
             if(i >= players.size() )
                 i = 0;
-            System.out.println(i);
             Player temp = players.get(i);
             takeTurn(temp);
             if(getWinner(players))
@@ -568,9 +567,6 @@ public class Game {
             options.add(players.get(players.size()-1));
         else
         {
-            for(Player t : players)
-                System.out.print(t.getRole() +" " );
-            System.out.println();
             options.add(players.get(index-1));
         }
         return options;

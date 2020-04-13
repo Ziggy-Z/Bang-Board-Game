@@ -228,14 +228,22 @@ public class GameTest {
      * Test of heal method, of class Game.
      */
     @Test
-    public void testHeal() {
+    public void Heal_anyHealth_previousHealthPlusOne() {
         System.out.println("heal");
-        Player p = null;
+        //Arrange
         Game instance = new Game(4);
+        Player p = instance.getPlayers().get(0);
+        int healthBefore = p.getHealth();
+        int expectedResult = healthBefore +1;
+        //act 
         instance.heal(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // assert
+        assertEquals(expectedResult,p.getHealth());
+        
     }
+    /**
+     * Test of Heal when health is already full
+     */
 
     /**
      * Test of getOneAway method, of class Game.
