@@ -210,6 +210,13 @@ public class UserOption extends javax.swing.JFrame {
     public int shoot(){
         return shoot;
     }
+    public void choose(ArrayList<Dice> die){
+        
+        ArrayList<Integer> reroll = new ArrayList<Integer>();
+        
+}
+    
+    
     private void rightBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBActionPerformed
         System.out.println(right());
     }//GEN-LAST:event_rightBActionPerformed
@@ -232,10 +239,7 @@ public class UserOption extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void choose(ArrayList<Dice> die){
-        ArrayList<Integer> reroll = new ArrayList<Integer>();
-        
-    }
+
     /**
      * @param args the command line arguments
      */
