@@ -1434,10 +1434,6 @@ public class board extends javax.swing.JFrame {
         int y = MouseInfo.getPointerInfo().getLocation().y;
         p.setLocation(x-80, y+25);
         p.setVisible(true);
-        UserOption d = new UserOption();
-        d.setLocation(x-300, y+25);
-        d.setVisible(true);
-        d.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     

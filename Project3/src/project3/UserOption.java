@@ -213,7 +213,10 @@ public class UserOption extends javax.swing.JFrame {
     public void choose(ArrayList<Dice> die){
         
         ArrayList<Integer> reroll = new ArrayList<Integer>();
-        
+//        UserOption d = new UserOption();
+//        d.setVisible(true);
+//        d.setLocation(x-300, y+25);
+//        d.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 }
     
     
@@ -223,9 +226,7 @@ public class UserOption extends javax.swing.JFrame {
 
     private void leftBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBActionPerformed
         System.out.println(left());
-        if(jCheckBox1.isSelected()){
-            System.out.println(12);
-        }
+
     }//GEN-LAST:event_leftBActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
