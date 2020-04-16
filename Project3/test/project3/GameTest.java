@@ -42,9 +42,7 @@ public class GameTest {
      */
     @Test(timeout =100000)
     public void testPlay() throws Exception {
-        System.out.println("play");
-        Game instance = new Game(4);
-        instance.play();
+
     }
 
 
@@ -187,14 +185,35 @@ public class GameTest {
      * Test of gatlingGun method, of class Game.
      */
     @Test
-    public void testGatlingGun() {
-        System.out.println("gatlingGun");
-        Player p = null;
+    public void testGatGun_p1_FourPlayerGamme() {
+        System.out.println("getOneAway");
+        
         Game instance = new Game(4);
-        instance.gatlingGun(p);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<4; i++)
+        {
+            Player p = new Player("p" + i);
+            p.setRole("Outlaw");
+            p.setHealth(0);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        instance.gatlingGun(players.get(0));
+        players = instance.getPlayers();
+        for (Player p: players)
+        {
+            if(p.getNumber() == "p1")
+            {
+                fail(p.getNumber() + " " + p.getHealth());
+            }
+         
+                
+        }
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
+    
 
     /**
      * Test of oneShot method, of class Game.
@@ -216,12 +235,13 @@ public class GameTest {
      */
     @Test
     public void testTwoShot() {
-        System.out.println("twoShot");
-        Player p = null;
+        System.out.println("twoShot Test");
+        Player p = new Player("P1");
+        p.setHealth(3);
         Game instance = new Game(4);
         instance.twoShot(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        if(p.getHealth() != 2)
+            fail("Health didnt decriment");
     }
 
     /**
@@ -249,30 +269,125 @@ public class GameTest {
      * Test of getOneAway method, of class Game.
      */
     @Test
-    public void testGetOneAway() {
+    public void testGetOneAway_firstPosition_FourPlayerGamme() {
         System.out.println("getOneAway");
-        Player p = null;
+        
         Game instance = new Game(4);
-        ArrayList<Player> expResult = null;
-        ArrayList<Player> result = instance.getOneAway(p);
-        assertEquals(expResult, result);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<4; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getOneAway(players.get(0));
+        assertEquals(Options.get(0).getNumber(),"p1");
+        assertEquals(Options.get(1).getNumber(),"p3");
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+    }
+    @Test
+    public void testGetOneAway_lastPosition_FourPlayerGamme() {
+        System.out.println("getOneAway");
+        
+        Game instance = new Game(4);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<4; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getOneAway(players.get(3));
+        assertEquals(Options.get(0).getNumber(),"p0");
+        assertEquals(Options.get(1).getNumber(),"p2");
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+    @Test
+    public void testGetOneAway_middlePosition_FourPlayerGamme() {
+        System.out.println("getOneAway");
+        
+        Game instance = new Game(4);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<4; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getOneAway(players.get(2));
+        assertEquals(Options.get(0).getNumber(),"p3");
+        assertEquals(Options.get(1).getNumber(),"p1");
+        // TODO review the generated test code and remove the default call to fail.
+        
     }
 
     /**
      * Test of getTwoAway method, of class Game.
      */
     @Test
-    public void testGetTwoAway() {
-        System.out.println("getTwoAway");
-        Player p = null;
-        Game instance = new Game(4);
-        ArrayList<Player> expResult = null;
-        ArrayList<Player> result = instance.getTwoAway(p);
-        assertEquals(expResult, result);
+    public void testGetTwoAway_firstPosition_FivePlayerGamme() {
+        System.out.println("getOneAway");
+        
+        Game instance = new Game(5);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<5; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getTwoAway(players.get(0));
+        
+        assertEquals(Options.get(0).getNumber(),"p2");
+        assertEquals(Options.get(1).getNumber(),"p3");
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+    }
+    @Test
+    public void testGetTwoAway_MiddlePosition_FivePlayerGamme() {
+        System.out.println("getOneAway");
+        
+        Game instance = new Game(5);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<5; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getTwoAway(players.get(2));
+        
+        assertEquals(Options.get(0).getNumber(),"p4");
+        assertEquals(Options.get(1).getNumber(),"p0");
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+        @Test
+        public void testGetTwoAway_LastPosition_FivePlayerGamme() {
+        System.out.println("getOneAway");
+        
+        Game instance = new Game(5);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<5; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getTwoAway(players.get(4));
+        
+        assertEquals(Options.get(0).getNumber(),"p1");
+        assertEquals(Options.get(1).getNumber(),"p2");
+        // TODO review the generated test code and remove the default call to fail.
+        
     }
     
 }
