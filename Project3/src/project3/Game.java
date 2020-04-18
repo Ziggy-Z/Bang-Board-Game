@@ -426,21 +426,7 @@ public class Game {
         }
     }
     
-    public String getWinners(){
-        return winners;
-    }
-    public int getNumPlayers(){
-        return players.size() + 1;
-    }
-    public ArrayList<Player> getPlayers(){
-        return players;
-    }
-    public void display(){
-        for(Player t: players)
-        {
-            System.out.println(t.getNumber());
-        }
-    }
+    
     /**
      * creates the list of dice objects to use when taking a turn
      * @author Nathan Clough
@@ -594,6 +580,26 @@ public class Game {
         else 
             options.add(players.get(index-2));
         return(options);
+    }
+    
+    // Functions to aid with testing by allowing to set up specific situations 
+    public String getWinners(){
+        return winners;
+    }
+    public int getNumPlayers(){
+        return players.size();
+    }
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
+    public void display(){
+        for(Player t: players)
+        {
+            System.out.println(t.getNumber());
+        }
+    }
+    public void setPlayers( ArrayList<Player> newPlayers ){
+        players = newPlayers;
     }
 
 }
