@@ -12,13 +12,13 @@ import java.nio.file.*;
  */
 public class Player {
     
-    private int CurrentHealth;
-    private int MaxHealth;
+    private int CurrentHealth= 0;
+    private int MaxHealth = 0;
     private int Arrows=0;
-    private String Role;
-    private String Character;
-    private String ability;
-    private String number;
+    private String Role = "";
+    private String Character = "";
+    private String ability = "";
+    private String number = "";
     private boolean AI = true;
     
     

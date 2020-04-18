@@ -485,21 +485,15 @@ public class Game {
     public void gatlingGun(Player p){
         //show gat gun
         System.out.println("Gattling Gun");
+        totalArrows += p.getArrows();
+        B.tArrow(totalArrows);
         p.setArrows(0);
         B.pArrow(p.getArrows(), p.getCharacter());
-        totalArrows = 0;
-        B.tArrow(totalArrows);
+        
         for(Player t : players)
         {
-            t.setHealth(t.getHealth()-1);
-            B.update_Health(p.getHealth(), t.getCharacter());
-            System.out.println("Player " + t.getCharacter() + " was shot by gat");
-            if(p.getHealth() <= 0)
-            {
-                players.remove(p);
-                if (getWinner(players)) 
-                    break;
-            }
+            if(t.getNumber() != p.getNumber())
+                oneShot(t);
         }
     }
     /** 
@@ -507,9 +501,18 @@ public class Game {
      * @author Krystyna Urbanczyk
      */
     public void oneShot(Player p){
+        if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
+        {
+                totalArrows--;
+                p.setArrows(p.getArrows()+1);
+                B.pArrow(p.getArrows(), p.getNumber());
+        }
+        else{
         p.setHealth(p.getHealth()-1);
         B.update_Health(p.getHealth(), p.getNumber());
         System.out.println("Player " + p.getNumber() + " was shot by 1shot");
+
+        }
         if(p.getHealth() <= 0)
             players.remove(p);
     }
@@ -518,9 +521,18 @@ public class Game {
      * @author Krystyna Urbanczyk
      */
     public void twoShot(Player p){
+        if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
+        {
+                totalArrows--;
+                p.setArrows(p.getArrows()+1);
+                B.pArrow(p.getArrows(), p.getNumber());
+        }
+        else{
         p.setHealth(p.getHealth()-1);
         B.update_Health(p.getHealth(), p.getNumber());
         System.out.println("Player " + p.getNumber() + " was shot by 2shot");
+
+        }
         if(p.getHealth() <= 0)
             players.remove(p);
         
@@ -586,6 +598,12 @@ public class Game {
     public String getWinners(){
         return winners;
     }
+    public int getTotalArrows(){
+        return totalArrows;
+    }
+    public void setTotalArrows(int ta){
+        totalArrows = ta;
+    }
     public int getNumPlayers(){
         return players.size();
     }
@@ -601,5 +619,5 @@ public class Game {
     public void setPlayers( ArrayList<Player> newPlayers ){
         players = newPlayers;
     }
-
+    
 }

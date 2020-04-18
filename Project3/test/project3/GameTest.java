@@ -185,36 +185,71 @@ public class GameTest {
      * Test of gatlingGun method, of class Game.
      */
     @Test
-    public void testGatGun_p1_FourPlayerGamme() {
-        System.out.println("getOneAway");
+    public void testGatGun_p1_FourPlayerGame() {
         
+        //arrange
         Game instance = new Game(4);
         ArrayList<Player> players = new ArrayList<Player>();
+       
+        
         for(int i = 0; i<4; i++)
         {
-            Player p = new Player("p" + i);
-            p.setRole("Outlaw");
-            p.setHealth(0);
+            Player p = new Player("p"+i);
+            p.setHealth(2);
             players.add(p);
-            
         }
+        //act
         instance.setPlayers(players);
         instance.gatlingGun(players.get(0));
+       
+        
+      
+        //assert
         players = instance.getPlayers();
-        for (Player p: players)
-        {
-            if(p.getNumber() == "p1")
-            {
-                fail(p.getNumber() + " " + p.getHealth());
-            }
-         
-                
+        int i= 0;
+        for(Player p: players){
+            if(i > 0)
+                assertEquals(p.getHealth(),1);
+            i++;
         }
         // TODO review the generated test code and remove the default call to fail.
         
     }
-    
+    /**
+     * 
+     */
+    @Test
+    public void testGatGun_BartCassidy_FourPlayerGame() {
+        //arrange
+        Game instance = new Game(4);
+        int expectedHealth = 8;
+        int expectedPlayerArrows = 1;
+        int expectedTotalGameArrows = instance.getTotalArrows()-1;
 
+        ArrayList<Player> players = new ArrayList<Player>();
+       
+        
+        for(int i = 0; i<4; i++)
+        {
+            Player p = new Player("p"+i);
+            p.setHealth(2);
+            if(i == 1)
+                p.setCharacterTraits(0);
+            players.add(p);
+            
+        }
+        //act
+        instance.setPlayers(players);
+        instance.gatlingGun(players.get(0));
+        players = instance.getPlayers();
+       
+        
+      
+        //assert
+        assertEquals(expectedHealth,players.get(1).getHealth());
+        assertEquals(expectedPlayerArrows,players.get(1).getArrows());
+        assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
+    }
     /**
      * Test of oneShot method, of class Game.
      */
@@ -229,6 +264,47 @@ public class GameTest {
             fail("Health didnt decriment");
         
     }
+    /**
+     * Test of oneShotMethod with Bart Cassidy ability
+     */
+    @Test
+    public void OneShot_BartCassidyTA9_SameHealthArrowPlus1(){
+        //arrange
+        Game instance = new Game(4);
+        Player p = new Player("P1");
+        p.setCharacterTraits(0); 
+        System.out.println(p.getCharacter());
+        int expectedHealth = p.getHealth();
+        int expectedPlayerArrows = p.getArrows()+1;
+        int expectedTotalGameArrows = instance.getTotalArrows()-1;
+        //act
+        instance.oneShot(p);
+        //assert
+        assertEquals(expectedHealth,p.getHealth());
+        assertEquals(expectedPlayerArrows,p.getArrows());
+        assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
+    }
+     /**
+     * Test of oneShotMethod with Bart Cassidy ability
+     */
+    @Test
+    public void OneShot_BartCassidyTA1_SameHealthArrowPlus1(){
+        //arrange
+        Game instance = new Game(4);
+        instance.setTotalArrows(1);
+        Player p = new Player("P1");
+        p.setCharacterTraits(0);
+        int expectedHealth = p.getHealth() -1;
+        int expectedArrows = p.getArrows();
+        int expectedTotalGameArrows = instance.getTotalArrows();
+        //act
+        instance.oneShot(p);
+        //assert
+        assertEquals(expectedHealth,p.getHealth());
+        assertEquals(expectedArrows,p.getArrows());
+        assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
+    }
+    
 
     /**
      * Test of twoShot method, of class Game.
@@ -242,6 +318,46 @@ public class GameTest {
         instance.twoShot(p);
         if(p.getHealth() != 2)
             fail("Health didnt decriment");
+    }
+    /**
+     * Test of oneShotMethod with Bart Cassidy ability
+     */
+    @Test
+    public void TwoShot_BartCassidyTA9_SameHealthArrowPlus1(){
+        //arrange
+        Game instance = new Game(4);
+        Player p = new Player("P1");
+        p.setCharacterTraits(0); 
+        System.out.println(p.getCharacter());
+        int expectedHealth = p.getHealth();
+        int expectedPlayerArrows = p.getArrows()+1;
+        int expectedTotalGameArrows = instance.getTotalArrows()-1;
+        //act
+        instance.twoShot(p);
+        //assert
+        assertEquals(expectedHealth,p.getHealth());
+        assertEquals(expectedPlayerArrows,p.getArrows());
+        assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
+    }
+     /**
+     * Test of oneShotMethod with Bart Cassidy ability
+     */
+    @Test
+    public void TwoShot_BartCassidyTA1_SameHealthArrowPlus1(){
+        //arrange
+        Game instance = new Game(4);
+        instance.setTotalArrows(1);
+        Player p = new Player("P1");
+        p.setCharacterTraits(0);
+        int expectedHealth = p.getHealth() -1;
+        int expectedArrows = p.getArrows();
+        int expectedTotalGameArrows = instance.getTotalArrows();
+        //act
+        instance.twoShot(p);
+        //assert
+        assertEquals(expectedHealth,p.getHealth());
+        assertEquals(expectedArrows,p.getArrows());
+        assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
     }
 
     /**
