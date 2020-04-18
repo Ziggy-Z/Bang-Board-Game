@@ -361,7 +361,7 @@ public class Game {
      * @param p 
      * @author Nathan Clough
      */
-    private void performActions(Player p){
+    public void performActions(Player p){
         int totalGat=0;
         int totalTwoShot=0;
         int totalOneShot=0;
@@ -376,7 +376,11 @@ public class Game {
                 totalBeer ++;
             else if(d.getResult().equals("Gatling"))
                 totalGat++;
-        
+        if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
+        {
+            p.setHealth(p.getHealth()+2);
+            B.update_Health(p.getHealth(), p.getNumber());
+        }
         for(int i=0; i<totalOneShot;i++)
         {
             if(p.isAI())
@@ -465,9 +469,24 @@ public class Game {
        
         for(int i = 0; i<players.size(); i++){
             Player t = players.get(i);
-            B.pArrow(t.getArrows(), t.getNumber());
-            t.setHealth(t.getHealth()-t.getArrows());
-            t.setArrows(0);
+                if(t.getCharacter().equals("JOURDONNAIS"))
+                {
+                    int damage = t.getArrows();
+                    if(damage > 1)
+                        damage = 1;
+                    t.setHealth(t.getHealth()-damage);
+                    B.update_Health(t.getHealth(), t.getNumber());
+                    t.setArrows(0);
+                    B.pArrow(t.getArrows(), t.getNumber());
+                }
+                else
+                {
+                    
+                    t.setHealth(t.getHealth()-t.getArrows());
+                    B.update_Health(t.getHealth(), t.getNumber());
+                    t.setArrows(0);
+                    B.pArrow(t.getArrows(), t.getNumber());
+                }
             if(t.getHealth() <= 0)
             {
                 players.remove(t);
@@ -492,8 +511,13 @@ public class Game {
         
         for(Player t : players)
         {
-            if(t.getNumber() != p.getNumber())
-                oneShot(t);
+            if(!t.getNumber().equals(p.getNumber() ))
+            {
+                if(!t.getCharacter().equals("PAUL REGRET" ) )
+                {
+                        oneShot(t);
+                }
+            }
         }
     }
     /** 
@@ -618,6 +642,9 @@ public class Game {
     }
     public void setPlayers( ArrayList<Player> newPlayers ){
         players = newPlayers;
+    }
+    public void setDie(ArrayList<Dice> dices){
+        die = dices;
     }
     
 }

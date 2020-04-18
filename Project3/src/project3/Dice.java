@@ -87,5 +87,9 @@ public class Dice implements Comparable<Dice>{
         else 
             return 0;
     }
+    //functions for testing 
+    public void setDice(String r){
+        result = r;
+    }
     
 }

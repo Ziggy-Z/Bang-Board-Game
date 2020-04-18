@@ -150,9 +150,35 @@ public class GameTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-
-    
-
+    /**
+     * test for adding in suzzy lafyate character ability 
+     */
+    @Test 
+    public void performActions_SuzzyLafyatteNoShots_heathIncTwo(){
+        //arrange
+        
+        Game instance = new Game(4);
+        ArrayList<Dice> dice = new ArrayList<Dice>();
+        ArrayList<Player> players = instance.getPlayers();
+        players.get(0).setCharacterTraits(13);
+        instance.setPlayers(players);
+        for(int i = 0; i<5; i++ )
+        {
+            Dice d = new Dice();
+            d.setDice("Arrow");
+            dice.add(d);
+            
+        }
+        instance.setDie(dice);
+        
+        int expectedHealth = 10;
+       //act
+       
+       instance.performActions(players.get(0));
+       players = instance.getPlayers();
+       //assert
+       assertEquals(expectedHealth,players.get(0).getHealth());
+    }
 
 
     /**
@@ -179,6 +205,21 @@ public class GameTest {
                 fail("Health didnt decrease by correct amount");
             i++;
         }
+    }
+        @Test
+    public void IndianAttack_Jourdonnais() {
+    //arange 
+    int expectedHealth = 6;
+    Game instance = new Game(4);
+    ArrayList<Player> players = instance.getPlayers();
+    players.get(0).setCharacterTraits(5);
+    players.get(0).setArrows(5);
+    instance.setPlayers(players);
+    // act
+    instance.IndianAttack();
+    players = instance.getPlayers();
+    //assert
+    assertEquals(expectedHealth,players.get(0).getHealth());
     }
 
     /**
@@ -249,6 +290,37 @@ public class GameTest {
         assertEquals(expectedHealth,players.get(1).getHealth());
         assertEquals(expectedPlayerArrows,players.get(1).getArrows());
         assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
+    }
+       @Test
+    public void testGatGun_PaulRegret_FourPlayerGame() {
+        //arrange
+        Game instance = new Game(4);
+        int expectedHealth = 9;
+        ArrayList<Player> players = new ArrayList<Player>();
+        
+        for(int i = 0; i<4; i++)
+        {
+            Player p = new Player("p"+i);
+            p.setHealth(2);
+            if(i == 1)
+            {
+                p.setCharacterTraits(8);
+                System.out.println(p.getCharacter()+" " +p.getHealth());
+            }
+            players.add(p);
+            
+        }
+       
+        //act
+        instance.setPlayers(players);
+        instance.gatlingGun(players.get(0));
+        players = instance.getPlayers();
+       
+        
+      
+        //assert
+        assertEquals(expectedHealth,players.get(1).getHealth());
+ 
     }
     /**
      * Test of oneShot method, of class Game.
