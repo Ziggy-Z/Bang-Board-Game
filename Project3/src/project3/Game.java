@@ -218,6 +218,9 @@ public class Game {
     private void takeTurn(Player p){
         int totalDynamite=0;
         int turnNum =1;
+        int maxRerolls = 3;
+        if(p.getCharacter().equals("LUCKY DUKE"));
+            maxRerolls =4;
         boolean rollAgain = true;
         die.clear();
         createDie();
@@ -244,6 +247,7 @@ public class Game {
                 }
                 else if(d.getResult().equals("Dynamite"))
                 {
+                    
                     rollingDie.remove(d);
                     die.add(d);
                     totalDynamite++;
@@ -287,7 +291,7 @@ public class Game {
                 rollAgain = false;
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
-        }while(turnNum <= 3 && totalDynamite < 3 && rollAgain);
+        }while(turnNum <= maxRerolls && totalDynamite < 3 && rollAgain);
         if(totalDynamite>=3)
         {
             System.out.println("Explosion");
