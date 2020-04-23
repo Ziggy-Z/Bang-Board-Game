@@ -15,6 +15,7 @@ public class Dice implements Comparable<Dice>{
      * initializes dice value
      */
     private int dice;
+    private int test;
 
     /**
      * stores the result of the dice roll
