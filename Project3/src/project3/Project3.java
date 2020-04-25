@@ -36,6 +36,7 @@ public class Project3 {
         else if(mod == 1)
         {
             OldSaloon g = new OldSaloon(numPlayers);
+            g.play();
         }
     }
     
