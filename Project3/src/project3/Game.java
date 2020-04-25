@@ -400,13 +400,9 @@ public class Game {
         {
             for(int i=0; i<totalBeer;i++)
             {
-              int x = ai.who_toheal(players,p);
+              int x = ai.who_toheal(players,p.getRole());
               if(x == -1)
                   heal(p);
-              else if (x == -2)
-              {
-                  //no players to heal
-              } 
               else
                   heal(players.get(x));
             }   
