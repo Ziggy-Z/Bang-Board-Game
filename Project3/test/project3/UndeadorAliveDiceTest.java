@@ -1,6 +1,9 @@
+// CS 2365 OOP Section 002 Spring 2020 
+//Krystyna Urbanczyk
 
 package project3;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Tests dice for Undead or Alive Expansion
  * @author krystynaurbanczyk
  */
 public class UndeadorAliveDiceTest {
@@ -34,9 +37,20 @@ public class UndeadorAliveDiceTest {
     }
 
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testUndeadorAliveDiceCompatability() {
+        //Arrange 
+        ArrayList<Dice> D = new ArrayList<Dice>();
+        Dice original = new Dice();
+        UndeadorAliveDice prac = new UndeadorAliveDice();
+        
+        D.add(prac);
+        D.add(original);
+        
+        //Act
+        for(Dice d: D){
+            d.rollDie();
+            System.out.println(d.getResult());
+        }
     }
     
 }

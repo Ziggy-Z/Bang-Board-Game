@@ -1,37 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// CS 2365 OOP Section 002 Spring 2020 
+//Krystyna Urbanczyk
+
 package project3;
 
-import java.util.Random;
-
 /**
- *
+ * Creates the Loudmouth dice to be used in Old Saloon Expansion
  * @author krystynaurbanczyk
  */
 public class LoudmouthDice extends Dice{
-    
-    /**
-     * initializes dice value
-     */
-    private int dice;
-
-    /**
-     * stores the result of the dice roll
-     */
-    private String result;
-    
-    Random diceface = new Random();
-    
-    /**
-     * default constructor, initializes dice to a random value
-     */
-    public LoudmouthDice(){
-        dice = diceface.nextInt((6 - 1) + 1) + 1;
-        result = null;
-    }
     
     /**
      * Generates random numbers that are assigned to the dice face which simulates rolling dice.
