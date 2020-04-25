@@ -38,15 +38,6 @@ public class GameTest {
     }
 
     /**
-     * Test of play method, of class Game.
-     */
-    @Test(timeout =100000)
-    public void testPlay() throws Exception {
-
-    }
-
-
-    /**
      * Test of getWinners method, of class Game.
      */
     @Test

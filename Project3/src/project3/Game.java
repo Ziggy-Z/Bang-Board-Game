@@ -23,13 +23,13 @@ Nathan Clough
  * 
  */
 public class Game {
-    private ArrayList<Player> players = new ArrayList<Player>();
-    private LinkedList<String> roles = new LinkedList<String>();
-    private LinkedList<Integer> characters = new LinkedList<Integer>();
-    private ArrayList<Dice> die = new ArrayList<Dice>();
-    private boolean finished;
-    private boolean three = false;
-    private int totalArrows = 9;
+    public ArrayList<Player> players = new ArrayList<Player>();
+    public LinkedList<String> roles = new LinkedList<String>();
+    public LinkedList<Integer> characters = new LinkedList<Integer>();
+    public ArrayList<Dice> die = new ArrayList<Dice>();
+    public boolean finished;
+    public boolean three = false;
+    public int totalArrows = 9;
     int start;
     private String winners;
     board B = new board();
@@ -39,13 +39,7 @@ public class Game {
      * @param numPlayers 
      */
     public Game(){
-        UI ui = new UI();
-        int numPlayers= 0;
-        try {
-            numPlayers = ui.getStartNumPlayers();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        int numPlayers = 4;
         B.setVisible(true);
         B.pChoice(numPlayers-2);
         B.tArrow(9);
@@ -126,9 +120,15 @@ public class Game {
      * Assigns each character a role 
      * @author Nathan Clough
      */
-    private void assignCharacters(){
-        for (int i =0; i<15; i++ )
-           characters.add(i);
+    public void assignCharacters(){
+        characters.add(0);
+        characters.add(5);
+        characters.add(5);
+        characters.add(7);
+        characters.add(8);
+        characters.add(7);
+        characters.add(13);
+        characters.add(14);
         Collections.shuffle(characters);
         for(Player t : players)
         {

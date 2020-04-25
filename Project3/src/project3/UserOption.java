@@ -6,6 +6,7 @@
 package project3;
 
 import java.util.ArrayList;
+import jdk.nashorn.internal.runtime.options.Options;
 
 /**
  *
@@ -16,9 +17,13 @@ public class UserOption extends javax.swing.JFrame {
      * Creates new form UserOption
      */
     private int shoot;
-    public UserOption() {
+    public UserOption(ArrayList<Player> options) {
+       
+
         initComponents();
         this.setLocationRelativeTo(null);
+        leftB.setText(options.get(0).getNumber());
+        rightB.setText(options.get(1).getNumber());
     }
 
     /**
@@ -240,11 +245,7 @@ public class UserOption extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -268,13 +269,21 @@ public class UserOption extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+ 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserOption().setVisible(true);
+                        ArrayList<Player> options = new ArrayList<Player>();
+                        Player p1 = new Player("p1");
+                        Player p2 = new Player("p2");
+                        options.add(p1);
+                        options.add(p2);
+                        new UserOption(options).setVisible(true);
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
