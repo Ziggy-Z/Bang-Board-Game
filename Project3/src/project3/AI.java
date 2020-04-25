@@ -5,9 +5,6 @@
  */
 package project3;
 import java.util.ArrayList;
-import java.util.*;
-import java.lang.Math;
-import java.util.Random;
 /*
 CS 2365 OOP Spring 2020 Section 2
 Rohit Gurnani
@@ -175,61 +172,88 @@ public class AI {
             * 
             */
  
-           public int who_toheal(ArrayList<Player> options,String role){
-             
-             Random f=new Random();  
-             if(role.equals("Deputy")){
-                 for(int i=0;i<options.size();i++)
-                     if(options.get(i).getRole().equals("Deputy")){
-                         if(options.get(i).isFullHealth()==false)
-                             return -1;
-                         else if(1==1)
-                             for(i=0;i<options.size();i++)
-                                 if(options.get(i).getRole().equals("Sherrif"))
-                                    if(options.get(i).isFullHealth()==false)
-                                       return i;
-                         else 
-                             return f.nextInt(((options.size()-1)+1))+1;
-                 
-             }   
-             else if(role.equals("Sherrif")){
-                 for(i=0;i<options.size();i++)
-                     if(options.get(i).getRole().equals("Sherrif")){
-                         if(options.get(i).isFullHealth()==false)
-                             return -1;
-                         else 
-                             return f.nextInt(((options.size()-1)+1))+1;
-              }
-                 
+           public int who_toheal(ArrayList<Player> options, Player p){
+              int heal = -2;
+             if(p.isFullHealth() == false)
+             {
+                 heal = -1;
              }
-             else if(role.equals("Renegade")){
-                 for(i=0;i<options.size();i++)
-                     if(options.get(i).getRole().equals("Renegade")){
-                         if(options.get(i).isFullHealth()==false)
-                             return -1;
-                         else 
-                             return f.nextInt(((options.size()-1)+1))+1;
-             }
-                 
-                 
-             }
-             else if(role.equals("Outlaw")){
-                 for(i=0;i<options.size();i++)
-                     if(options.get(i).getRole().equals("Outlaw")){
-                         if(options.get(i).isFullHealth()==false)
-                             return -1;
-                         else 
-                             return f.nextInt(((options.size()-1)+1))+1;
-             }
-                 
-             }
-  
-
-           
-  }
+             else{
+                int indexLowestHealth = -2;
+                int lowestHealth = 20;
+                int HighestHealthNotMax =0;
+                int indexHighestHealthNotMax = -2;
+                int indexSheriff = -1;
+                for(int i = 0; i < options.size(); i ++)
+                        {
+                            Player temp = options.get(i);
+                            if(temp.getRole().equals("Sheriff"))
+                            {
+                                indexSheriff = i;
+                            }
+                            
+                            if(temp.isFullHealth() == false && temp.getHealth() > HighestHealthNotMax)
+                            {
+                                indexHighestHealthNotMax = i;
+                                HighestHealthNotMax = temp.getHealth();
+                            }
+                            if(temp.getHealth() < lowestHealth  && temp.isFullHealth() == false)
+                            {
+                                indexLowestHealth = i;
+                                lowestHealth = temp.getHealth(); 
+                            }
+                        }
+                String role = p.getRole();
+                Boolean SheriffIsFullHealth = options.get(indexSheriff).isFullHealth();
                
-            return 0;         
-}
+                switch (role) {
+                    case "Sheriff":
+                        heal = indexHighestHealthNotMax;
+                        break;
+                    case "Deputy":
+                        if(!SheriffIsFullHealth)
+                        {
+                            heal = indexSheriff;
+                        }
+                        else 
+                            heal = indexHighestHealthNotMax;
+                        break;
+                    case "Outlaw":
+                        if (indexLowestHealth != indexSheriff)
+                        {
+                            heal = indexLowestHealth;
+                        }
+                        else if(indexHighestHealthNotMax != indexSheriff){
+                            heal = indexHighestHealthNotMax;
+                        }
+                        break;
+                    case "Renegade": //heals sheriff if other players are still alive 
+                        if((options.size() > 2) && (!SheriffIsFullHealth)) {
+                        {
+                            heal = indexSheriff;
+                        }
+                        }
+                        else if(indexLowestHealth != -2)
+                         {
+                             heal = indexLowestHealth;
+                         }
+                         else if(indexHighestHealthNotMax != -2)
+                         {
+                             heal = indexHighestHealthNotMax;
+                         }
+                         break;
+                    default:
+                        break;
+                        }
+                 
+                 
+                 
+                 
+                }
+                
+             
+             return heal;
+            }
 }
            
  
