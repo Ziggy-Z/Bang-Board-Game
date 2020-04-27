@@ -14,4 +14,4 @@ Slab the Killer;8;Once per turn, you can use a:beer to double your shooting:dama
 Suzy Lafayette;8;If you didn’t roll any bullseye,:you gain two life points:(applies to end of your turn)
 Vulture Sam;9;Each time another player is:eliminated, you gain two life:points
 Willy the Kid;8;you only need two gattling dice:to use the Gatling Gun:(Only use Gatling gun once per turn)
-Doc Holyday;8;Each time you use three or more oneshot or twoshot you also regain two life points. rember that double oneshot and double twoshot count as two 
+Doc Holyday;8;Each time you use three or more oneshot or twoshot you also regain two life points. remember that double oneshot and double twoshot count as two 

@@ -48,32 +48,46 @@ public class Game {
         for(int i =1; i <=numPlayers; i++)
         {
            if(numPlayers == 4){
-                    Player p = new Player("p"+((2*i)-1));
-                    players.add(p);
+                Player p = new Player("p"+((2*i)-1));
+     
+                players.add(p);
+                
            }
            else if(numPlayers == 5){
                 Player p = new Player("p"+((2*(i-1))));
+                                if(i ==1 )
+                p.setUser();
                 players.add(p);
+
                 
             }
            else if(numPlayers == 6){
                 Player p = new Player("p"+((2*(i-1))));
+      
                 players.add(p);
+
            }
            else if(numPlayers == 7){
                 Player p = new Player("p"+((i)));
+                
+           
                 players.add(p);
            }
            else if(numPlayers == 8){
                 Player p = new Player("p"+((i+1)));
                 
+                
+           
                 players.add(p);
            }
+          
         }
         //creates the board gui with correct information
-        
+       
         setupRoles();
         assignCharacters();
+        players.get(0).setUser();
+
  
     }
     /***
@@ -113,6 +127,8 @@ public class Game {
         
         setupRoles();
         assignCharacters();
+        players.get(0).setUser();
+
  
     }
     
@@ -215,7 +231,7 @@ public class Game {
      * @param p a 
      * @author Nathan Clough
      */
-    private void takeTurn(Player p){
+    public void takeTurn(Player p){
         int totalDynamite=0;
         int turnNum =1;
         int maxRerolls = 3;
@@ -440,13 +456,10 @@ public class Game {
      * @author Nathan Clough
      */
     private void createDie(){
-        for(int i =0; i<5; i++)
-        {
-            Dice d = new Dice();
-           // d.rollDie();
-            die.add(d);
-        }
-
+       for(int i =0; i<5;i++){
+           Dice d = new Dice();
+           die.add(d);
+       }
     }
 
     /**
@@ -455,7 +468,7 @@ public class Game {
      * @return 
      * @author Nathan Clough
      */
-    private ArrayList<Dice> rollDie(ArrayList<Dice> rerolling ){
+    public ArrayList<Dice> rollDie(ArrayList<Dice> rerolling ){
         for(Dice d: rerolling )
             d.rollDie();
         return rerolling;

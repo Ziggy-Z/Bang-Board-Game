@@ -22,7 +22,7 @@ public class LoudmouthDice extends Dice{
         //Loudmouth Die is Risky, more damage chances
         switch (face) {                         
             case 1:
-                result = "Indian Arrow";
+                result = "Arrow";
                 break;
             case 2:
                 result = "Bullet";

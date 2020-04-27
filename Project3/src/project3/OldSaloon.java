@@ -56,6 +56,14 @@ public class OldSaloon extends Game{
                 totalBeer ++;
             else if(d.getResult().equals("Gatling"))
                 totalGat++;
+            else if(d.getResult().equals("Double One"))
+                totalOneShot +=2;
+            else if(d.getResult().equals("Double Two"))
+                totalTwoShot+=2;
+            else if(d.getResult().equals("Double Beer"))
+                totalBeer +=2;
+            else if(d.getResult().equals("Double Gatling"))
+                totalGat+=2;
         if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
         {
             p.setHealth(p.getHealth()+2);
@@ -112,5 +120,164 @@ public class OldSaloon extends Game{
             if(totalGat >= 3)
                 gatlingGun(p);
         }
+    }
+    
+    @Override
+    public void takeTurn(Player p){
+        int totalDynamite=0;
+        int turnNum =1;
+        int maxRerolls = 3;
+        if(p.getCharacter().equals("LUCKY DUKE"));
+            maxRerolls =4;
+        boolean rollAgain = true;
+        die.clear();
+        createDie(p);
+        // start the turn dialog 
+        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
+        die.clear();
+        do 
+        {
+            
+            rollDie(rollingDie);
+            //arrayList to iterate through since cannot itterate and edit at same time 
+            ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
+            for(Dice d: temp)
+            {
+                if(d.getResult().equals("Arrow"))
+                {
+                    p.setArrows(p.getArrows()+1);
+                    B.pArrow(p.getArrows(), p.getNumber());
+                    totalArrows --;
+                    B.tArrow(totalArrows);
+                    if(totalArrows == 0)
+                        IndianAttack();
+                }
+                else if(d.getResult().equals("Broken Arrow"))
+                {
+                    int playerArrows = p.getArrows();
+                    if(playerArrows>1)
+                    {
+                        p.setArrows(playerArrows -1);
+                    }
+                    B.pArrow(p.getArrows(), p.getNumber());
+                }
+                else if(d.getResult().equals("Bullet")){
+                    p.setHealth(p.getHealth() -1);
+                    
+                    if(p.getHealth() <= 0)
+                    {
+                        players.remove(p);
+                        if(getWinner(players));
+                            break;
+                    }
+                    
+                }
+                else if(d.getResult().equals("Dynamite"))
+                {
+                    
+                    rollingDie.remove(d);
+                    die.add(d);
+                    totalDynamite++;
+                }
+                
+                
+                
+            }
+            temp.clear();
+            //display the dice to the user
+            Collections.sort(rollingDie);
+            for(Dice d: die)
+                System.out.print(d.getResult() + " ");
+            System.out.print('-');
+            for(Dice d: rollingDie)
+                System.out.print(d.getResult() + " ");
+            System.out.println();
+            
+            //System.out.println("  - Dynamite " + totalDynamite
+            //resets the roling with the ones that 
+            
+            if(p.isAI())
+            {
+                AI ai = new AI();
+                ArrayList<Dice> temp2 = new ArrayList<Dice>();
+                ArrayList<Integer> indecies = new ArrayList<Integer>();
+                indecies = ai.rollagain(rollingDie, p.getRole() );
+                
+                for(int i =0; i <rollingDie.size(); i++)
+                {
+                   if(!indecies.contains(i))
+                   {
+                       die.add(rollingDie.get(i));
+                   }
+                   else 
+                      temp.add(rollingDie.get(i));
+                }
+               rollingDie = (ArrayList<Dice>)temp.clone();
+            }
+            turnNum++;
+            if(rollingDie.size() == 0)
+                rollAgain = false;
+            // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
+            
+        }while(turnNum <= maxRerolls && totalDynamite < 3 && rollAgain);
+        if(totalDynamite>=3)
+        {
+            System.out.println("Explosion");
+            p.setHealth(p.getHealth()-1);
+            B.update_Health(p.getHealth(),p.getNumber());
+        }
+        //displays final value of die 
+        System.out.print("Final Dice:");
+        for(Dice d: rollingDie)
+            die.add(d);
+        for(Dice d: die)
+            System.out.print(d.getResult() + " ");
+        System.out.println();
+        if(players.contains(p))
+            performActions(p);
+    }
+    public void createDie(Player p){
+        
+        if(p.isAI())
+       {
+           int remainingDice = 3;
+           LoudmouthDice d1 = new LoudmouthDice();
+           CowardDice c = new CowardDice();
+           die.add(c);
+           die.add(d1);
+           for(int i =0; i<remainingDice; i++)
+           {
+               Dice d = new Dice();
+               die.add(d);
+           }
+           
+       }
+       else
+       {
+           int totalDice = 5;
+           UserSelectDice u = new UserSelectDice();
+           boolean  selected [] = u.getUserSelectedDice();
+           int count = 0;
+           if(selected[0] == true)
+           {
+               LoudmouthDice d = new LoudmouthDice();
+               die.add(d);
+               count ++;
+           }
+           if(selected[1] == true)
+           {
+               CowardDice d = new CowardDice();
+               die.add(d);
+               count ++;
+           }
+           while(count <totalDice )
+           {
+               Dice d = new Dice();
+               die.add(d);
+               count ++;
+           }
+           
+       }
     }
 }

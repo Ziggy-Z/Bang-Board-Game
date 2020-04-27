@@ -568,5 +568,9 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+        @Test
+        public void testCreateDie(){
+            
+        }
     
 }

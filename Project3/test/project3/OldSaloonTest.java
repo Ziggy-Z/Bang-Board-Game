@@ -88,5 +88,17 @@ public class OldSaloonTest {
        //assert
        assertEquals(expectedHealth,players.get(0).getHealth());
     }
+        @Test
+        public void CreateDice_User(){
+           //arrange
+            OldSaloon instance = new OldSaloon(4);
+            
+            Player p = new Player("p1");
+            p.setUser();
+            
+           //act
+           instance.createDie(p);
+            
+        }
     
 }

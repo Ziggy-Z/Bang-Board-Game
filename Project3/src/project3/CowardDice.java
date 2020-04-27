@@ -22,7 +22,7 @@ public class CowardDice extends Dice{
         //Coward Die is Safe, more health chances                       
         switch (face) {                         
             case 1:
-                result = "Indian Arrow";
+                result = "Arrow";
                 break;
             case 2:
                 result = "Broken Arrow";
