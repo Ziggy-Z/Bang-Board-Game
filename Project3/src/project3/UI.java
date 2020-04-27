@@ -76,7 +76,7 @@ public class UI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
-        Box1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "4", "5", "6", "7", "8" }));
+        Box1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "4", "5", "6", "7", "8" }));
         Box1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Box1ActionPerformed(evt);
@@ -135,11 +135,11 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(jCheckBox1)
                         .addGap(47, 47, 47)
                         .addComponent(jCheckBox2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(62, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Box1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Box1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(22, 22, 22))))
@@ -188,7 +188,7 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Box1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Box1ActionPerformed
-       choice = Box1.getSelectedIndex()+2;
+       choice = Box1.getSelectedIndex()+3;
        
     }//GEN-LAST:event_Box1ActionPerformed
 

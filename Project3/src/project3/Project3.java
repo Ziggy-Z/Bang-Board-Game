@@ -28,6 +28,7 @@ public class Project3 {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
         int mod = ui.getModules();
+        System.out.println(numPlayers);
         if(mod == 0)
         {
             Game g = new Game();
@@ -35,7 +36,7 @@ public class Project3 {
         }
         else if(mod == 1)
         {
-            System.out.println("Here");
+
             OldSaloon g = new OldSaloon(numPlayers);
             g.play();
         }
