@@ -18,7 +18,7 @@ public class UserOption extends javax.swing.JFrame {
     /**
      * Creates new form UserOption
      */
-    private int shoot;
+    private boolean shoot;
     private ArrayList<Integer> reroll = new ArrayList<Integer>();
     /**
      *
@@ -28,7 +28,7 @@ public class UserOption extends javax.swing.JFrame {
        
 
         initComponents();
-        this.setLocationRelativeTo(null);
+        
         setVisible(true);
         jLabel1.setText("Choose Who to Shoot");
         leftB.setText(options.get(0).getNumber());
@@ -57,21 +57,38 @@ public class UserOption extends javax.swing.JFrame {
      */
     public UserOption(ArrayList<Dice> die, String d){
         initComponents();
-        this.setLocationRelativeTo(null);
+        
         setVisible(true);
         jLabel1.setText("Check Dice to Reroll");
-        if(die.size()>1)
+        if(die.size()>0)
             jCheckBox1.setText(die.get(0).getResult());
-        if(die.size()>2)
+        else
+            jCheckBox1.setVisible(false);
+        
+        if(die.size()>1)
             jCheckBox2.setText(die.get(1).getResult());
-        if(die.size()>3)
+        else
+            jCheckBox2.setVisible(false);
+        
+        if(die.size()>2)
             jCheckBox3.setText(die.get(2).getResult());
-        if(die.size()>4)
+        else
+            jCheckBox3.setVisible(false);
+       
+        if(die.size()>3)
             jCheckBox4.setText(die.get(3).getResult());
-        if(die.size()>5)
+        else
+            jCheckBox4.setVisible(false);
+        
+        if(die.size()>4)
             jCheckBox5.setText(die.get(4).getResult());
-        if(die.size()>6)
+        else
+            jCheckBox5.setVisible(false);
+        
+        if(die.size()>5)
             jCheckBox6.setText(die.get(5).getResult());
+        else
+            jCheckBox6.setVisible(false);
         
         leftB.setVisible(false);
         rightB.setVisible(false);
@@ -303,32 +320,24 @@ public class UserOption extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public int left(){
-        if (leftB.isEnabled()){
-            shoot = 1;
-        }
-        return shoot;
-    }
-    public int right(){
-        if (leftB.isEnabled()){
-            shoot = 0;
-        }
-        return shoot;
-    }
-    public int shoot(){
-        return shoot;
-    }
+    
     public ArrayList<Integer> getReroll(){
         return reroll;
+    }
+    public int shootWho(){
+        if(shoot)
+            return 0;
+        else 
+            return 1;
     }
     
     
     private void rightBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBActionPerformed
-        System.out.println(right());
+        shoot = false;
     }//GEN-LAST:event_rightBActionPerformed
 
     private void leftBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftBActionPerformed
-        System.out.println(left());
+        shoot = true;
 
     }//GEN-LAST:event_leftBActionPerformed
 

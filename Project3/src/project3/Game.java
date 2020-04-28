@@ -302,12 +302,12 @@ public class Game {
                 }
                rollingDie = (ArrayList<Dice>)temp.clone();
             }
-            else{
+            else {
                 UserOption instance = new UserOption(rollingDie,"dice");
                 ArrayList<Integer> indecies = new ArrayList<Integer>();
                 indecies = instance.getReroll();
                 
-                for(int i =0; i <rollingDie.size(); i++)
+               for(int i =0; i <rollingDie.size(); i++)
                 {
                    if(!indecies.contains(i))
                    {
@@ -323,12 +323,13 @@ public class Game {
                 rollAgain = false;
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
-        }while(turnNum <= maxRerolls && totalDynamite < 3 && rollAgain);
+        }while(turnNum < maxRerolls && totalDynamite < 3 && rollAgain);
         if(totalDynamite>=3)
         {
             System.out.println("Explosion");
             p.setHealth(p.getHealth()-1);
             B.update_Health(p.getHealth(),p.getNumber());
+           
         }
         //displays final value of die 
         System.out.print("Final Dice:");
@@ -337,7 +338,7 @@ public class Game {
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
         System.out.println();
-        if(players.contains(p))
+        if(players.contains(p) && !getWinner(players))
             performActions(p);
     }
     /***
@@ -419,14 +420,23 @@ public class Game {
         }
         for(int i=0; i<totalOneShot;i++)
         {
+            ArrayList<Player> options = getOneAway(p);
             if(p.isAI())
             {
-                ArrayList<Player> options = getOneAway(p);
+                
                 int x = ai.who_toshoot(options,p.getRole());
                 oneShot(options.get(x));
                 if(getWinner(players))
                     break;
-            }     
+            }
+            else
+            {   
+                UserOption ChooseWho = new UserOption(options);
+                int x = ChooseWho.shootWho();
+                oneShot(options.get(x));
+                if(getWinner(players))
+                    break;
+            }
         }
         if(!getWinner(players))
         {
@@ -443,20 +453,27 @@ public class Game {
         for(int i=0; i<totalTwoShot;i++)
         {
             ArrayList<Player> options = new ArrayList<Player>();
-            if(p.isAI())
-            {
-                if (players.size() <4)
+            if (players.size() <4)
                 {
                     options = getOneAway(p);
                 }
                 else
                      options = getTwoAway(p);
-                
+            if(p.isAI())
+            { 
                 int x = ai.who_toshoot(options,p.getRole());
                 twoShot(options.get(x));
                 if(getWinner(players))
                     break;
-            }         
+            } 
+            else
+            {   
+                UserOption ChooseWho = new UserOption(options);
+                int x = ChooseWho.shootWho();
+                twoShot(options.get(x));
+                if(getWinner(players))
+                    break;
+            }
         }  
         }
         if(!getWinner(players))
