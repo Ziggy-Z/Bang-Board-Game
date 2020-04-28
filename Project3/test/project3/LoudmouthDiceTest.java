@@ -55,5 +55,11 @@ public class LoudmouthDiceTest {
             System.out.println(d.getResult());
         }
     }
+    @Test
+    public void testLoudmouthDiceCompaability() {
+ 
+       int [] var = new int [3];
+       System.out.println("ab".compareTo("aB"));
+    }
     
 }

@@ -302,6 +302,22 @@ public class Game {
                 }
                rollingDie = (ArrayList<Dice>)temp.clone();
             }
+            else{
+                UserOption instance = new UserOption(rollingDie,"dice");
+                ArrayList<Integer> indecies = new ArrayList<Integer>();
+                indecies = instance.getReroll();
+                
+                for(int i =0; i <rollingDie.size(); i++)
+                {
+                   if(!indecies.contains(i))
+                   {
+                       die.add(rollingDie.get(i));
+                   }
+                   else 
+                      temp.add(rollingDie.get(i));
+                }
+               rollingDie = (ArrayList<Dice>)temp.clone();
+            }
             turnNum++;
             if(rollingDie.size() == 0)
                 rollAgain = false;

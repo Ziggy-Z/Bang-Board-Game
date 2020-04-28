@@ -6,6 +6,8 @@
 package project3;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jdk.nashorn.internal.runtime.options.Options;
 
 /**
@@ -17,13 +19,70 @@ public class UserOption extends javax.swing.JFrame {
      * Creates new form UserOption
      */
     private int shoot;
+    private ArrayList<Integer> reroll = new ArrayList<Integer>();
+    /**
+     *
+     * @param options
+     */
     public UserOption(ArrayList<Player> options) {
        
 
         initComponents();
         this.setLocationRelativeTo(null);
+        setVisible(true);
+        jLabel1.setText("Choose Who to Shoot");
         leftB.setText(options.get(0).getNumber());
         rightB.setText(options.get(1).getNumber());
+        
+        jCheckBox1.setVisible(false);
+        jCheckBox2.setVisible(false);
+        jCheckBox3.setVisible(false);
+        jCheckBox4.setVisible(false);
+        jCheckBox5.setVisible(false);
+        jCheckBox6.setVisible(false);
+        
+        synchronized(this)
+        {try {
+            this.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UserOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        }
+    }
+
+    /**
+     *
+     * @param die
+     */
+    public UserOption(ArrayList<Dice> die, String d){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        setVisible(true);
+        jLabel1.setText("Check Dice to Reroll");
+        if(die.size()>1)
+            jCheckBox1.setText(die.get(0).getResult());
+        if(die.size()>2)
+            jCheckBox2.setText(die.get(1).getResult());
+        if(die.size()>3)
+            jCheckBox3.setText(die.get(2).getResult());
+        if(die.size()>4)
+            jCheckBox4.setText(die.get(3).getResult());
+        if(die.size()>5)
+            jCheckBox5.setText(die.get(4).getResult());
+        if(die.size()>6)
+            jCheckBox6.setText(die.get(5).getResult());
+        
+        leftB.setVisible(false);
+        rightB.setVisible(false);
+        synchronized(this)
+        {try {
+            this.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UserOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        }
     }
 
     /**
@@ -54,7 +113,7 @@ public class UserOption extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 153, 0));
 
         leftB.setBackground(new java.awt.Color(51, 51, 255));
-        leftB.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        leftB.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
         leftB.setForeground(new java.awt.Color(255, 255, 255));
         leftB.setText("Left");
         leftB.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +123,7 @@ public class UserOption extends javax.swing.JFrame {
         });
 
         rightB.setBackground(new java.awt.Color(51, 51, 255));
-        rightB.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        rightB.setFont(new java.awt.Font("Dialog", 1, 40)); // NOI18N
         rightB.setForeground(new java.awt.Color(255, 255, 255));
         rightB.setText("Right");
         rightB.addActionListener(new java.awt.event.ActionListener() {
@@ -74,10 +133,17 @@ public class UserOption extends javax.swing.JFrame {
         });
 
         jCheckBox1.setBackground(new java.awt.Color(204, 153, 0));
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Dynamite");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox2.setBackground(new java.awt.Color(204, 153, 0));
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setText("One");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,30 +153,54 @@ public class UserOption extends javax.swing.JFrame {
         });
 
         jCheckBox3.setBackground(new java.awt.Color(204, 153, 0));
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox3.setText("Two");
         jCheckBox3.setActionCommand("jCheckBox3");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
 
         jCheckBox4.setBackground(new java.awt.Color(204, 153, 0));
+        jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox4.setText("Arrow");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
 
         jCheckBox5.setBackground(new java.awt.Color(204, 153, 0));
+        jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox5.setText("Gatling");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Dice Re-Roll Option");
 
         jCheckBox6.setBackground(new java.awt.Color(204, 153, 0));
+        jCheckBox6.setFont(new java.awt.Font("Tahoma", 0, 40)); // NOI18N
         jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox6.setText("Beer");
+        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox6ActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 45)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Play");
+        jButton1.setText("Done");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -132,59 +222,72 @@ public class UserOption extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(106, 106, 106)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(6, 6, 6))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2))
-                    .addComponent(leftB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCheckBox3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCheckBox4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCheckBox5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCheckBox6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(leftB)
+                        .addGap(198, 198, 198)
                         .addComponent(rightB))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox6)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGap(166, 166, 166)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox1)))
+                .addGap(27, 27, 27)
+                .addComponent(jCheckBox2)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox3)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox4)
+                .addGap(22, 22, 22)
+                .addComponent(jCheckBox5)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leftB)
-                    .addComponent(rightB)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(rightB))
+                .addGap(66, 66, 66)
+                .addComponent(jButton1)
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,14 +318,9 @@ public class UserOption extends javax.swing.JFrame {
     public int shoot(){
         return shoot;
     }
-    public void choose(ArrayList<Dice> die){
-        
-        ArrayList<Integer> reroll = new ArrayList<Integer>();
-//        UserOption d = new UserOption();
-//        d.setVisible(true);
-//        d.setLocation(x-300, y+25);
-//        d.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-}
+    public ArrayList<Integer> getReroll(){
+        return reroll;
+    }
     
     
     private void rightBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBActionPerformed
@@ -235,7 +333,7 @@ public class UserOption extends javax.swing.JFrame {
     }//GEN-LAST:event_leftBActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
+       reroll.add(1); // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -243,8 +341,33 @@ public class UserOption extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+      synchronized(this)
+        {
+        this.notify();
+        }
+        this.dispose();
+    
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        reroll.add(2);// TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+               reroll.add(0); // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+            reroll.add(3);        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+        reroll.add(4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
+
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        reroll.add(5);        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
      public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

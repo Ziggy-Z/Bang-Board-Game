@@ -27,11 +27,12 @@ public class Project3 {
         } catch (InterruptedException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(numPlayers);
         int mod = ui.getModules();
         System.out.println(numPlayers);
         if(mod == 0)
         {
-            Game g = new Game();
+            Game g = new Game(numPlayers);
             g.play();
         }
         else if(mod == 1)

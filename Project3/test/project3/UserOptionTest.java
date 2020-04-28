@@ -38,16 +38,31 @@ public class UserOptionTest {
     public void tearDown() {
     }
     @Test
-     public void newInit_withTwoOptions(){
+     public void newInit_withPlayers(){
         ArrayList<Player> options = new ArrayList<Player>();
         Player p1 = new Player("p1");
         Player p2 = new Player("p2");
         options.add(p1);
         options.add(p2);
         UserOption instance = new UserOption(options);
-        instance.setVisible(true);
-        instance.setLocation(300, 25);
-       // instance.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
-    
+    @Test
+     public void newInit_withDice(){
+        ArrayList<Dice> d = new ArrayList<Dice>();
+        for(int i =0; i<6; i++){
+            Dice die = new Dice();
+            die.rollDie();
+            d.add(die);
+        }
+        
+        
+        UserOption instance = new UserOption(d,"dice");
+        
+        ArrayList<Integer> re = instance.getReroll();
+        for(Integer temp: re){
+            d.get(temp).rollDie();
+        }
+    }
+     
 }
