@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package project3;
-
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jdk.nashorn.internal.runtime.options.Options;
 
 /**
@@ -17,13 +18,34 @@ public class UserOption extends javax.swing.JFrame {
      * Creates new form UserOption
      */
     private int shoot;
+    private ArrayList<Integer> reroll = new ArrayList<Integer>();
+    /**
+     *
+     * @param options
+     */
     public UserOption(ArrayList<Player> options) {
-       
-
         initComponents();
         this.setLocationRelativeTo(null);
+        setVisible(true);
+        jLabel1.setText("Choose Who to Shoot");
         leftB.setText(options.get(0).getNumber());
         rightB.setText(options.get(1).getNumber());
+        
+        jCheckBox1.setVisible(false);
+        jCheckBox2.setVisible(false);
+        jCheckBox3.setVisible(false);
+        jCheckBox4.setVisible(false);
+        jCheckBox5.setVisible(false);
+        jCheckBox6.setVisible(false);
+        
+        synchronized(this)
+        {try {
+            this.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UserOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        }
     }
 
     /**
@@ -200,6 +222,36 @@ public class UserOption extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
+    public UserOption(ArrayList<Dice> die, String d){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        setVisible(true);
+        jLabel1.setText("Check Dice to Reroll");
+        if(die.size()>1)
+            jCheckBox1.setText(die.get(0).getResult());
+        if(die.size()>2)
+            jCheckBox2.setText(die.get(1).getResult());
+        if(die.size()>3)
+            jCheckBox3.setText(die.get(2).getResult());
+        if(die.size()>4)
+            jCheckBox4.setText(die.get(3).getResult());
+        if(die.size()>5)
+            jCheckBox5.setText(die.get(4).getResult());
+        if(die.size()>6)
+            jCheckBox6.setText(die.get(5).getResult());
+        
+        leftB.setVisible(false);
+        rightB.setVisible(false);
+        synchronized(this)
+        {try {
+            this.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UserOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        }
+    }
     public int left(){
         if (leftB.isEnabled()){
             shoot = 1;
@@ -215,16 +267,9 @@ public class UserOption extends javax.swing.JFrame {
     public int shoot(){
         return shoot;
     }
-    public void choose(ArrayList<Dice> die){
-        
-        ArrayList<Integer> reroll = new ArrayList<Integer>();
-//        UserOption d = new UserOption();
-//        d.setVisible(true);
-//        d.setLocation(x-300, y+25);
-//        d.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-}
-    
-    
+    public ArrayList<Integer> getReroll(){
+        return reroll;
+    }
     private void rightBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightBActionPerformed
         System.out.println(right());
     }//GEN-LAST:event_rightBActionPerformed
@@ -235,7 +280,7 @@ public class UserOption extends javax.swing.JFrame {
     }//GEN-LAST:event_leftBActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
+        reroll.add(1);
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -243,7 +288,11 @@ public class UserOption extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+      synchronized(this)
+        {
+        this.notify();
+        }
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
      public static void main(String args[]) {
         /* Set the Nimbus look and feel */
