@@ -108,7 +108,7 @@ public class OldSaloon extends Game{
         for(int i=0; i<totalTwoShot;i++)
         {
             ArrayList<Player> options = new ArrayList<Player>();
-             if (players.size() <4)
+             if (players.size() <=4)
                 {
                     options = getOneAway(p);
                 }
@@ -254,7 +254,7 @@ public class OldSaloon extends Game{
                 rollAgain = false;
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
-        }while(turnNum <= maxRerolls && totalDynamite < 3 && rollAgain);
+        }while(turnNum < maxRerolls && totalDynamite < 3 && rollAgain);
         if(totalDynamite>=3)
         {
             System.out.println("Explosion");

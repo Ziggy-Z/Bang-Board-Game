@@ -453,7 +453,7 @@ public class Game {
         for(int i=0; i<totalTwoShot;i++)
         {
             ArrayList<Player> options = new ArrayList<Player>();
-            if (players.size() <4)
+            if (players.size() <= 4)
                 {
                     options = getOneAway(p);
                 }
@@ -660,9 +660,9 @@ public class Game {
             options.add(players.get(index+2));
         //gets player 2 behind 
         if(index - 2 == -1)
-            options.add(players.get(players.size()-1));
+            options.add(players.get(players.size()-2));
         else if(index - 2 == -2 )
-            options.add(players.get(players.size() - 2));
+            options.add(players.get(players.size() - 3));
         else 
             options.add(players.get(index-2));
         return(options);
