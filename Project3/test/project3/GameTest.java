@@ -5,6 +5,8 @@ Nathan Clough
 package project3;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -588,9 +590,6 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
-        @Test
-        public void testCreateDie(){
-            
-        }
+        
     
 }

@@ -220,8 +220,7 @@ public class Game {
             takeTurn(temp);
             if(getWinner(players))
                 finished = true;
-            Scanner kb = new Scanner(System.in);   
-            //gitkb.next();
+
             i++;
         }while(players.size() > 1 && finished != true);
      System.out.println(winners + " wins!!!!!!!");
@@ -244,10 +243,11 @@ public class Game {
         System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
+        rollDie(rollingDie);
         do 
         {
             
-            rollDie(rollingDie);
+           
             //arrayList to iterate through since cannot itterate and edit at same time 
             ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
             for(Dice d: temp)
@@ -267,16 +267,18 @@ public class Game {
                     rollingDie.remove(d);
                     die.add(d);
                     totalDynamite++;
+                    if(totalDynamite >= 3)
+                        break;
                 }
                 
                 
             }
             temp.clear();
             //display the dice to the user
-            Collections.sort(rollingDie);
+             Collections.sort(rollingDie);
             for(Dice d: die)
                 System.out.print(d.getResult() + " ");
-            System.out.print('-');
+            System.out.println();
             for(Dice d: rollingDie)
                 System.out.print(d.getResult() + " ");
             System.out.println();
@@ -287,34 +289,42 @@ public class Game {
             if(p.isAI())
             {
                 AI ai = new AI();
-                ArrayList<Dice> temp2 = new ArrayList<Dice>();
                 ArrayList<Integer> indecies = new ArrayList<Integer>();
                 indecies = ai.rollagain(rollingDie, p.getRole() );
                 
-                for(int i =0; i <rollingDie.size(); i++)
+                 for(int i =0; i <rollingDie.size(); i++)
                 {
                    if(!indecies.contains(i))
                    {
-                       die.add(rollingDie.get(i));
+                       temp.add(rollingDie.get(i));
                    }
                    else 
-                      temp.add(rollingDie.get(i));
+                   {
+                       Dice temporary = rollingDie.get(i);
+                       temporary.rollDie();
+                      temp.add(temporary);
+                   }
                 }
-               rollingDie = (ArrayList<Dice>)temp.clone();
+               rollingDie = (ArrayList<Dice>)temp.clone();;
             }
             else {
                 UserOption instance = new UserOption(rollingDie,"dice");
                 ArrayList<Integer> indecies = new ArrayList<Integer>();
                 indecies = instance.getReroll();
-                
+                if(indecies.size() ==0)
+                    rollAgain = false;
                for(int i =0; i <rollingDie.size(); i++)
                 {
                    if(!indecies.contains(i))
                    {
-                       die.add(rollingDie.get(i));
+                       temp.add(rollingDie.get(i));
                    }
                    else 
-                      temp.add(rollingDie.get(i));
+                   {
+                       Dice temporary = rollingDie.get(i);
+                       temporary.rollDie();
+                      temp.add(temporary);
+                   }
                 }
                rollingDie = (ArrayList<Dice>)temp.clone();
             }
@@ -440,14 +450,16 @@ public class Game {
         }
         if(!getWinner(players))
         {
-            for(int i=0; i<totalBeer;i++)
-            {
-              int x = ai.who_toheal(players,p.getRole());
-              if(x == -1)
+             int x = ai.who_toheal(players,p);
+              if(x == -2)
+              {
+                  //
+              }
+              else if(x == -1)
                   heal(p);
               else
                   heal(players.get(x));
-            }   
+              
         }
         if(!getWinner(players)){
         for(int i=0; i<totalTwoShot;i++)

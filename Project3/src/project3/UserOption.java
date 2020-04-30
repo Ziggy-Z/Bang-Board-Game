@@ -320,8 +320,12 @@ public class UserOption extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    boolean [] checked = {false,false,false,false,false,false};
     public ArrayList<Integer> getReroll(){
+        for (int i = 0; i<6; i ++){
+            if(checked[i])
+                reroll.add(i);
+        }
         return reroll;
     }
     public int shootWho(){
@@ -342,7 +346,7 @@ public class UserOption extends javax.swing.JFrame {
     }//GEN-LAST:event_leftBActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-       reroll.add(1); // TODO add your handling code here:
+       checked[1] = !checked[1]; // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -359,23 +363,23 @@ public class UserOption extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        reroll.add(2);// TODO add your handling code here:
+        checked[2] = !checked[2];// TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-               reroll.add(0); // TODO add your handling code here:
+               checked[0] = !checked[0]; // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-            reroll.add(3);        // TODO add your handling code here:
+            checked[3] = !checked[3];        // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
-        reroll.add(4);        // TODO add your handling code here:
+        checked[4] = !checked[4];// TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
-        reroll.add(5);        // TODO add your handling code here:
+       checked[5] = !checked[5];       // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox6ActionPerformed
      public static void main(String args[]) {
         /* Set the Nimbus look and feel */

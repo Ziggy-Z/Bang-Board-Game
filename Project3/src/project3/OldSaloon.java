@@ -69,7 +69,7 @@ public class OldSaloon extends Game{
             p.setHealth(p.getHealth()+2);
             B.update_Health(p.getHealth(), p.getNumber());
         }
-        if(p.getCharacter().equals("DOC HOLYDAY") && (totalOneShot + totalTwoShot) >= 3){
+        if(p.getCharacter().equals("DOC HOLYDAY") && (totalOneShot + totalTwoShot) >= 3 && !(p.isFullHealth()) ){
             p.setHealth(p.getHealth()+2);
             B.update_Health(p.getHealth(),p.getNumber());
         }
@@ -97,8 +97,12 @@ public class OldSaloon extends Game{
         {
             for(int i=0; i<totalBeer;i++)
             {
-              int x = ai.who_toheal(players,p.getRole());
-              if(x == -1)
+              int x = ai.who_toheal(players,p);
+              if(x == -2)
+              {
+                  //
+              }
+              else if(x == -1)
                   heal(p);
               else
                   heal(players.get(x));
@@ -154,10 +158,11 @@ public class OldSaloon extends Game{
         System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
+        rollDie(rollingDie);
         do 
         {
             
-            rollDie(rollingDie);
+            
             //arrayList to iterate through since cannot itterate and edit at same time 
             ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
             for(Dice d: temp)
@@ -182,6 +187,7 @@ public class OldSaloon extends Game{
                 }
                 else if(d.getResult().equals("Bullet")){
                     p.setHealth(p.getHealth() -1);
+                    B.update_Health(p.getHealth(), p.getNumber());
                     
                     if(p.getHealth() <= 0)
                     {
@@ -197,6 +203,8 @@ public class OldSaloon extends Game{
                     rollingDie.remove(d);
                     die.add(d);
                     totalDynamite++;
+                    if(totalDynamite >= 3)
+                        break;
                 }
                 
                 
@@ -207,7 +215,7 @@ public class OldSaloon extends Game{
             Collections.sort(rollingDie);
             for(Dice d: die)
                 System.out.print(d.getResult() + " ");
-            System.out.print('-');
+            System.out.println();
             for(Dice d: rollingDie)
                 System.out.print(d.getResult() + " ");
             System.out.println();
@@ -218,41 +226,47 @@ public class OldSaloon extends Game{
             if(p.isAI())
             {
                 AI ai = new AI();
-                ArrayList<Dice> temp2 = new ArrayList<Dice>();
                 ArrayList<Integer> indecies = new ArrayList<Integer>();
                 indecies = ai.rollagain(rollingDie, p.getRole() );
                 
-                for(int i =0; i <rollingDie.size(); i++)
+                 for(int i =0; i <rollingDie.size(); i++)
                 {
                    if(!indecies.contains(i))
                    {
-                       die.add(rollingDie.get(i));
+                       temp.add(rollingDie.get(i));
                    }
                    else 
-                      temp.add(rollingDie.get(i));
+                   {
+                       Dice temporary = rollingDie.get(i);
+                       temporary.rollDie();
+                      temp.add(temporary);
+                   }
                 }
-               rollingDie = (ArrayList<Dice>)temp.clone();
+               rollingDie = (ArrayList<Dice>)temp.clone();;
             }
             else {
                 UserOption instance = new UserOption(rollingDie,"dice");
                 ArrayList<Integer> indecies = new ArrayList<Integer>();
                 indecies = instance.getReroll();
-                
+                if(indecies.size() ==0)
+                    rollAgain = false;
                for(int i =0; i <rollingDie.size(); i++)
                 {
                    if(!indecies.contains(i))
                    {
-                       die.add(rollingDie.get(i));
+                       temp.add(rollingDie.get(i));
                    }
                    else 
-                      temp.add(rollingDie.get(i));
+                   {
+                       Dice temporary = rollingDie.get(i);
+                       temporary.rollDie();
+                      temp.add(temporary);
+                   }
                 }
                rollingDie = (ArrayList<Dice>)temp.clone();
             }
             turnNum++;
-            if(rollingDie.size() == 0)
-                rollAgain = false;
-            // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
+           
             
         }while(turnNum < maxRerolls && totalDynamite < 3 && rollAgain);
         if(totalDynamite>=3)
@@ -265,6 +279,7 @@ public class OldSaloon extends Game{
         System.out.print("Final Dice:");
         for(Dice d: rollingDie)
             die.add(d);
+        System.out.println();
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
         System.out.println();
