@@ -521,10 +521,30 @@ public class GameTest {
             
         }
         instance.setPlayers(players);
-        ArrayList<Player> Options = instance.getTwoAway(players.get(0));
+        ArrayList<Player> Options = instance.getTwoAway(players.get(1));
         
-        assertEquals(Options.get(0).getNumber(),"p2");
-        assertEquals(Options.get(1).getNumber(),"p3");
+        assertEquals("p3",Options.get(0).getNumber());
+        assertEquals("p4",Options.get(1).getNumber());
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
+    @Test
+    public void testGetTwoAway_secondPosition_FivePlayerGamme() {
+        System.out.println("getOneAway");
+        
+        Game instance = new Game(5);
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<5; i++)
+        {
+            Player p = new Player("p" + i);
+            players.add(p);
+            
+        }
+        instance.setPlayers(players);
+        ArrayList<Player> Options = instance.getTwoAway(players.get(1));
+        
+        assertEquals("p4",Options.get(0).getNumber());
+        assertEquals("p3",Options.get(1).getNumber());
         // TODO review the generated test code and remove the default call to fail.
         
     }

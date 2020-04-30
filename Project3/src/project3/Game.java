@@ -660,9 +660,9 @@ public class Game {
             options.add(players.get(index+2));
         //gets player 2 behind 
         if(index - 2 == -1)
-            options.add(players.get(players.size()-2));
+            options.add(players.get(players.size()-1));
         else if(index - 2 == -2 )
-            options.add(players.get(players.size() - 3));
+            options.add(players.get(players.size() - 2));
         else 
             options.add(players.get(index-2));
         return(options);
