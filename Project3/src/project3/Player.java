@@ -24,8 +24,6 @@ public class Player {
     
     public Player(String number)
     {
-        if(number == "p1")
-            AI=false;
         this.number = number;
         
         /*
@@ -48,6 +46,9 @@ public class Player {
     public int getHealth()
     {
         return CurrentHealth;
+    }
+    public void setUser(){
+        AI = false;
     }
     public void setHealth(int num)
     {

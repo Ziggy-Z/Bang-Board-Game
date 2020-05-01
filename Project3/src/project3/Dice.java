@@ -14,12 +14,12 @@ public class Dice implements Comparable<Dice>{
     /**
      * initializes dice value
      */
-    private int dice;
+    int dice;
 
     /**
      * stores the result of the dice roll
      */
-    private String result;
+    String result;
     
     Random diceface = new Random();
     
