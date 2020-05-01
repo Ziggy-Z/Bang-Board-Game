@@ -97,15 +97,31 @@ public class OldSaloon extends Game{
         {
             for(int i=0; i<totalBeer;i++)
             {
-              int x = ai.who_toheal(players,p);
-              if(x == -2)
-              {
+              if(p.isAI())
+                {
+                int x = ai.who_toheal(players,p);
+                if(x == -2)
+                {
                   //
-              }
-              else if(x == -1)
-                  heal(p);
-              else
+                }
+                else if(x == -1)
+                      heal(p);
+                else
                   heal(players.get(x));
+                }
+                else
+                {
+                        UIWhoToHeal h = new UIWhoToHeal(players);
+                        int x = h.healPlayer();
+                        if(x == -1)
+                        {
+                
+                        }
+                        else
+                        {
+                            heal(players.get(x));
+                        }
+                }   
             }   
         }
         if(!getWinner(players)){
@@ -287,32 +303,72 @@ public class OldSaloon extends Game{
             performActions(p);
     }
     public void createDie(Player p){
+        int totalDice = 5;
         
         if(p.isAI())
        {
-           int remainingDice = 3;
-           LoudmouthDice d1 = new LoudmouthDice();
-           CowardDice c = new CowardDice();
-           die.add(c);
-           die.add(d1);
-           for(int i =0; i<remainingDice; i++)
+           
+           AI ai = new AI();
+           int selection = ai.selectDice(p);
+           LoudmouthDice L = new LoudmouthDice();
+           CowardDice C = new CowardDice();
+           int count =0;
+           
+           if (selection == 1)
+           {
+               die.add(C);
+               count ++;
+           }
+           else if(selection == 2)
+           {
+                   if(!p.getCharacter().equals("JOSE DELGADO"))
+                   {           
+                        die.add(L);
+                        count++;
+                    }
+                   else 
+                   {
+                   die.add(L);
+                   
+               }
+           }
+           else if(selection == 3)
+           {
+               if(!p.getCharacter().equals("JOSE DELGADO"))
+                   {           
+                        die.add(L);
+                        count++;
+                    }
+                   else 
+               {
+                   die.add(L);
+                   
+               }
+               die.add(C);
+               count ++;
+               
+           }
+           while(count <totalDice )
            {
                Dice d = new Dice();
                die.add(d);
+               count ++;
            }
-           
        }
        else
        {
-           int totalDice = 5;
            UserSelectDice u = new UserSelectDice();
            boolean  selected [] = u.getUserSelectedDice();
            int count = 0;
            if(selected[0] == true)
            {
+               if(!p.getCharacter().equals("JOSE DELGADO"))
+                {
+                   count ++; 
+                }
                LoudmouthDice d = new LoudmouthDice();
                die.add(d);
-               count ++;
+              
            }
            if(selected[1] == true)
            {
@@ -329,4 +385,7 @@ public class OldSaloon extends Game{
            
        }
     }
+    public ArrayList<Dice> getDie(){
+        return die;
+    }                  
 }

@@ -88,6 +88,7 @@ public class OldSaloonTest {
        //assert
        assertEquals(expectedHealth,players.get(0).getHealth());
     }
+     
         @Test
         public void CreateDice_User(){
            //arrange
@@ -99,6 +100,37 @@ public class OldSaloonTest {
            //act
            instance.createDie(p);
             
+        }
+        @Test
+        public void CreateDice_UserJoseDelgado(){
+           //arrange
+            OldSaloon instance = new OldSaloon(4);
+            
+            Player p = new Player("p1");
+            p.setCharacterTraits(17);
+            p.setUser();
+           
+           //act
+           instance.createDie(p);
+           for(Dice d: instance.getDie()){
+               System.out.println(d.rollDie());
+           }
+        }
+         @Test
+        public void CreateDice_AIJoseDelgado(){
+           //arrange
+            OldSaloon instance = new OldSaloon(4);
+            
+            Player p = new Player("p1");
+            p.setCharacterTraits(17);
+            p.setHealth(1);
+           
+           
+           //act
+           instance.createDie(p);
+           for(Dice d: instance.getDie()){
+               System.out.println(d.rollDie());
+           }
         }
     
 }

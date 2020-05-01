@@ -449,17 +449,29 @@ public class Game {
             }
         }
         if(!getWinner(players))
-        {
-             int x = ai.who_toheal(players,p);
-              if(x == -2)
-              {
+        {    if(p.isAI())
+            {
+                int x = ai.who_toheal(players,p);
+                if(x == -2)
+                {
                   //
-              }
-              else if(x == -1)
-                  heal(p);
-              else
+                }
+                else if(x == -1)
+                      heal(p);
+                else
                   heal(players.get(x));
-              
+            }
+        else{
+            UIWhoToHeal h = new UIWhoToHeal(players);
+            int x = h.healPlayer();
+            if(x == -1)
+            {
+                
+            }
+            else{
+                heal(players.get(x));
+            }
+        }
         }
         if(!getWinner(players)){
         for(int i=0; i<totalTwoShot;i++)
