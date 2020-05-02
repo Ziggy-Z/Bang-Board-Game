@@ -16,6 +16,7 @@ public class Player {
     private int CurrentHealth= 0;
     private int MaxHealth = 0;
     private int Arrows=0;
+    private ArrayList<String> tokens = new ArrayList<String>();
     private String Role = "";
     private String Character = "";
     private String ability = "";
@@ -58,6 +59,12 @@ public class Player {
     {
         CurrentHealth=num;
 
+    }
+    public void addToken(String t){
+        tokens.add(t);
+    }
+    public void removeToken(String t){
+        tokens.remove(t);
     }
     public int getArrows()
     {
