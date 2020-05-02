@@ -433,7 +433,8 @@ public class Game {
             }
         }
         if(!getWinner(players))
-        {    if(p.isAI())
+        {    for(int i =0; i<totalBeer; i++){
+            if(p.isAI())
             {
 
                 int x = ai.who_toheal(players,p);
@@ -456,6 +457,7 @@ public class Game {
             else{
                 heal(players.get(x));
             }
+        }
         }
         }
         if(!getWinner(players)){

@@ -464,6 +464,7 @@ public class Undead extends Game{
         int totalTwoShot=0;
         int totalOneShot=0;
         int totalBeer=0;
+        int totalWhiskey=0;
         AI ai = new AI();
         for(Dice d :die)
             if(d.getResult().equals("One"))
@@ -474,6 +475,8 @@ public class Undead extends Game{
                 totalBeer ++;
             else if(d.getResult().equals("Gatling"))
                 totalGat++;
+            else if(d.getResult().equals("Whiskey"))
+                totalWhiskey ++;
         if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
         {
             p.setHealth(p.getHealth()+2);
@@ -502,7 +505,8 @@ public class Undead extends Game{
             }
         }
         if(!getWinner(players))
-        {    if(p.isAI())
+        {   for(int i =0; i<totalBeer; i++){
+            if(p.isAI())
             {
 
                 int x = ai.who_toheal(players,p);
@@ -525,6 +529,7 @@ public class Undead extends Game{
             else{
                 heal(players.get(x));
             }
+        }
         }
         }
         if(!getWinner(players)){
