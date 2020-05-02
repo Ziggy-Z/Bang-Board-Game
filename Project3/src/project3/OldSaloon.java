@@ -13,7 +13,8 @@ import java.util.Collections;
  Nathan Clough
  */
 public class OldSaloon extends Game{
-
+ChiefArrow arrow = new ChiefArrow();
+public int totalArrows = 10;
     public OldSaloon(){
         super();
     }
@@ -185,6 +186,10 @@ public class OldSaloon extends Game{
             {
                 if(d.getResult().equals("Arrow"))
                 {
+                    if (arrow.getArrow()==1)
+                    {
+                        p.setChief_Arrow();
+                    }
                     p.setArrows(p.getArrows()+1);
                     B.pArrow(p.getArrows(), p.getNumber());
                     totalArrows --;
@@ -387,5 +392,70 @@ public class OldSaloon extends Game{
     }
     public ArrayList<Dice> getDie(){
         return die;
-    }                  
+    }
+    
+    @Override
+        public void IndianAttack(){
+        //show indian attack
+        System.out.println("Indian Attack");
+        totalArrows = 10;
+        B.tArrow(totalArrows);
+       int Chief_Arrows=0;
+       int flag=0;
+        for (int i = 0; i<players.size(); i++)
+        {
+            Player t = players.get(i);
+            if (t.isChief_Arrow()==true)
+            {
+                Chief_Arrows=t.getArrows();
+            }
+        }
+        for (int i = 0; i<players.size(); i++)
+        {
+            Player t = players.get(i);
+            if (t.getArrows() > Chief_Arrows)
+            {
+                flag=1;
+            }
+        }
+        for (int i = 0; i<players.size(); i++)
+        {
+            Player t = players.get(i);
+            if (t.isChief_Arrow()==true&& flag ==0)
+            {
+                t.setArrows(0);
+                t.setChief_Arrow(false);
+            }
+            else
+                if (t.isChief_Arrow()==true)
+                {
+                    t.setChief_Arrow(false);
+                    t.setArrows(t.getArrows()+1);
+                }
+                if(t.getCharacter().equals("JOURDONNAIS"))
+                {
+                    int damage = t.getArrows();
+                    if(damage > 1)
+                        damage = 1;
+                    t.setHealth(t.getHealth()-damage);
+                    B.update_Health(t.getHealth(), t.getNumber());
+                    t.setArrows(0);
+                    B.pArrow(t.getArrows(), t.getNumber());
+                }
+                else
+                {
+                    t.setHealth(t.getHealth()-t.getArrows());
+                    B.update_Health(t.getHealth(), t.getNumber());
+                    t.setArrows(0);
+                    B.pArrow(t.getArrows(), t.getNumber());
+                }
+            arrow.Reset_Arrows();
+            if(t.getHealth() <= 0)
+            {
+                players.remove(t);
+                if(getWinner(players))
+                    break;
+            }
+        }
+    }
 }
