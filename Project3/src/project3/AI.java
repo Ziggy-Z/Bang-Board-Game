@@ -259,6 +259,10 @@ public class AI {
              
              return heal;
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             
             /**
             * Returns the die loudmouth or coward that will be used 

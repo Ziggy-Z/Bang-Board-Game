@@ -2,13 +2,16 @@ package project3;
 
 import java.awt.Color;
 import java.awt.MouseInfo;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /*
  * CS 2365 OOP Spring 2020
  * Zegedam Zegeye
  */
 public class board extends javax.swing.JFrame {
+  
     project3.charDisc p = new project3.charDisc();
     int hp1;
     int hp2;
@@ -604,7 +607,7 @@ public class board extends javax.swing.JFrame {
                             .addComponent(pa1)
                             .addComponent(A1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
@@ -657,147 +660,103 @@ public class board extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void pChoice(int ch){
-        if(ch == 1){
-            p2.setVisible(false);
-            p4.setVisible(false);
-            p5.setVisible(false);
-            p6.setVisible(false);
-            p8.setVisible(false);
-            h7.setVisible(false);
-            h4.setVisible(false);
-            h3.setVisible(false);
-            h2.setVisible(false);
-            h5.setVisible(false);
-            n7.setVisible(false);
-            n4.setVisible(false);
-            n3.setVisible(false);
-            n2.setVisible(false);
-            n5.setVisible(false);
-            A5.setVisible(false);
-            A2.setVisible(false);
-            A4.setVisible(false);
-            A6.setVisible(false);
-            A8.setVisible(false);
-            pa2.setVisible(false);
-            pa5.setVisible(false);
-            pa4.setVisible(false);
-            pa6.setVisible(false);
-            pa8.setVisible(false);
-            pc2.setVisible(false);
-            pc4.setVisible(false);
-            pc5.setVisible(false);
-            pc6.setVisible(false);
-            pc8.setVisible(false);
+    public void pChoice(ArrayList<Player> players){
+        
+        ArrayList<JLabel> names = new ArrayList<JLabel>();
+        names.add(p1);
+        names.add(p2);
+        names.add(p3);
+        names.add(p4);
+        names.add(p5);
+        names.add(p6);
+        names.add(p7);
+        names.add(p8);
+        
+        ArrayList<JLabel> healthLabel = new ArrayList<JLabel>();
+        healthLabel.add(h1);
+        healthLabel.add(h7);
+        healthLabel.add(h8);
+        healthLabel.add(h3);
+        healthLabel.add(h4);
+        healthLabel.add(h2);
+        healthLabel.add(h6);
+        healthLabel.add(h5);
+        
+        ArrayList<JLabel> healths = new ArrayList<JLabel>();
+        healths.add(n1);
+        healths.add(n7);
+        healths.add(n8);
+        healths.add(n3);
+        healths.add(n4);
+        healths.add(n2);
+        healths.add(n6);
+        healths.add(n5);
+        ArrayList<JLabel> Arrows = new ArrayList<JLabel>();
+        Arrows.add(A1);
+        Arrows.add(A2);
+        Arrows.add(A3);
+        Arrows.add(A4);
+        Arrows.add(A5);
+        Arrows.add(A6);
+        Arrows.add(A7);
+        Arrows.add(A8);
+        ArrayList<JLabel> ArrowsLabel = new ArrayList<JLabel>();
+        ArrowsLabel.add(pa1);
+        ArrowsLabel.add(pa2);
+        ArrowsLabel.add(pa3);
+        ArrowsLabel.add(pa4);
+        ArrowsLabel.add(pa5);
+        ArrowsLabel.add(pa6);
+        ArrowsLabel.add(pa7);
+        ArrowsLabel.add(pa8);
+        ArrayList<JLabel> Characters = new ArrayList<JLabel>();
+        Characters.add(null);
+        Characters.add(pc2);
+        Characters.add(pc3);
+        Characters.add(pc4);
+        Characters.add(pc5);
+        Characters.add(pc6);
+        Characters.add(pc7);
+        Characters.add(pc8);
+        
+        for(int i =0; i< 8; i++){
+            if(i<players.size())
+            {
+                //Player Name "pn"
+                JLabel name = names.get(i);
+                Player p = players.get(i);
+                name.setText(p.getNumber());
+                name.setVisible(true);
+                //health label "Health"
+                healthLabel.get(i).setVisible(true);
+                //sets health number to a value
+                 JLabel health = healths.get(i);
+                 health.setText(String.valueOf(p.getHealth()));
+                 health.setVisible(true);
+                 //sets character names 
+                 if(i > 0)
+                 {
+                   Characters.get(i).setVisible(true);
+                   Characters.get(i).setText(p.getCharacter());
+                 }
+                 //arrows 
+                 Arrows.get(i).setVisible(true);
+                 Arrows.get(i).setText(String.valueOf(p.getArrows()));
+                 ArrowsLabel.get(i).setVisible(true);
+            }
+            else{
+                healths.get(i).setVisible(false);
+                healthLabel.get(i).setVisible(false);
+                names.get(i).setVisible(false);
+                if(i>0)
+                {
+                    Characters.get(i).setVisible(false);
+                }
+                Arrows.get(i).setVisible(false);
+                ArrowsLabel.get(i).setVisible(false);
+            }
         }
-        else if(ch == 2){
-            seen();
-            p2.setVisible(false);
-            p4.setVisible(false);
-            p6.setVisible(false);
-            p8.setVisible(false);
-            h7.setVisible(false);
-            h3.setVisible(false);
-            h2.setVisible(false);
-            h5.setVisible(false);
-            n7.setVisible(false);
-            n3.setVisible(false);
-            n2.setVisible(false);
-            n5.setVisible(false);
-            A2.setVisible(false);
-            A4.setVisible(false);
-            A6.setVisible(false);
-            A8.setVisible(false);
-            pa2.setVisible(false);
-            pa4.setVisible(false);
-            pa6.setVisible(false);
-            pa8.setVisible(false);
-            pc2.setVisible(false);
-            pc4.setVisible(false);
-            pc6.setVisible(false);
-            pc8.setVisible(false);
-
-        }
-        else if(ch == 3){
-            seen();
-            p3.setVisible(false);
-            p5.setVisible(false);
-            p7.setVisible(false);
-            h8.setVisible(false);
-            h4.setVisible(false);
-            h6.setVisible(false);
-            n8.setVisible(false);
-            n4.setVisible(false);
-            n6.setVisible(false);
-            A3.setVisible(false);
-            A5.setVisible(false);
-            A7.setVisible(false);
-            pa3.setVisible(false);
-            pa5.setVisible(false);
-            pa7.setVisible(false);
-            pc3.setVisible(false);
-            pc5.setVisible(false);
-            pc7.setVisible(false);
-        }
-        else if(ch == 4){
-            seen();
-            p3.setVisible(false);
-            p7.setVisible(false);
-            h8.setVisible(false);
-            h6.setVisible(false);
-            n8.setVisible(false);
-            n6.setVisible(false);
-            A3.setVisible(false);
-            A7.setVisible(false);
-            pa3.setVisible(false);
-            pa7.setVisible(false);
-            pc3.setVisible(false);
-            pc7.setVisible(false);
-        }
-        else if(ch == 5){
-            seen();
-            p8.setVisible(false);
-            h5.setVisible(false);
-            n5.setVisible(false);
-            A8.setVisible(false);
-            pa8.setVisible(false);
-            pc8.setVisible(false);
-        }
-        else if(ch == 6){
-            seen();
-        }
-        else{
-            p2.setVisible(false);
-            p4.setVisible(false);
-            p5.setVisible(false);
-            p6.setVisible(false);
-            p8.setVisible(false);
-            h7.setVisible(false);
-            h4.setVisible(false);
-            h3.setVisible(false);
-            h2.setVisible(false);
-            h5.setVisible(false);
-            n7.setVisible(false);
-            n4.setVisible(false);
-            n3.setVisible(false);
-            n2.setVisible(false);
-            n5.setVisible(false);
-            A5.setVisible(false);
-            A2.setVisible(false);
-            A4.setVisible(false);
-            A6.setVisible(false);
-            A8.setVisible(false);
-            pa2.setVisible(false);
-            pa5.setVisible(false);
-            pa4.setVisible(false);
-            pa6.setVisible(false);
-            pa8.setVisible(false);
-            pc2.setVisible(false);
-            pc4.setVisible(false);
-            pc5.setVisible(false);
-            pc6.setVisible(false);
-            pc8.setVisible(false);
-        }
+        
     }
     
     public void setRole(String role, String player){
@@ -936,356 +895,7 @@ public class board extends javax.swing.JFrame {
                 p.title(name16);
             }
         }
-        else if("p2".equals(player)){
-            if(name.equals(name1)){
-                pc2.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc2.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc2.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc2.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc2.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc2.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc2.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc2.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc2.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc2.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc2.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc2.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc2.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc2.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc2.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc2.setText(name16);
-            }
-        }
-        else if("p3".equals(player)){
-            if(name.equals(name1)){
-                pc3.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc3.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc3.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc3.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc3.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc3.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc3.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc3.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc3.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc3.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc3.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc3.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc3.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc3.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc3.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc3.setText(name16);
-            }
-        }
-        else if("p4".equals(player)){
-            if(name.equals(name1)){
-                pc4.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc4.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc4.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc4.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc4.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc4.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc4.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc4.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc4.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc4.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc4.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc4.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc4.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc4.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc4.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc4.setText(name16);
-            }
-        }
-        else if("p5".equals(player)||"p10".equals(player)){
-            if(name.equals(name1)){
-                pc5.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc5.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc5.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc5.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc5.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc5.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc5.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc5.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc5.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc5.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc5.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc5.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc5.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc5.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc5.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc5.setText(name16);
-            }
-        }
-        else if("p6".equals(player)){
-            if(name.equals(name1)){
-                pc6.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc6.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc6.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc6.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc6.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc6.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc6.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc6.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc6.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc6.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc6.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc6.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc6.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc6.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc6.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc6.setText(name16);
-            }
-        }
-        else if("p7".equals(player)){
-            if(name.equals(name1)){
-                pc7.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc7.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc7.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc7.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc7.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc7.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc7.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc7.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc7.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc7.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc7.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc7.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc7.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc7.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc7.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc7.setText(name16);
-            }
-        }
-        else if("p8".equals(player)){
-            if(name.equals(name1)){
-                pc8.setText(name1);
-            }
-            else if(name.equals(name2)){
-                pc8.setText(name2);
-            }
-            else if(name.equals(name3)){
-                pc8.setText(name3);
-            }
-            else if(name.equals(name4)){
-                pc8.setText(name4);
-            }
-            else if(name.equals(name5)){
-                pc8.setText(name5);
-            }
-            else if(name.equals(name6)){
-                pc8.setText(name6);
-            }
-            else if(name.equals(name7)){
-                pc8.setText(name7);
-            }
-            else if(name.equals(name8)){
-                pc8.setText(name8);
-            }
-            else if(name.equals(name9)){
-                pc8.setText(name9);
-            }
-            else if(name.equals(name10)){
-                pc8.setText(name10);
-            }
-            else if(name.equals(name11)){
-                pc8.setText(name11);
-            }
-            else if(name.equals(name12)){
-                pc8.setText(name12);
-            } 
-            else if(name.equals(name13)){
-                pc8.setText(name13);
-            }
-            else if(name.equals(name14)){
-                pc8.setText(name14);
-            }
-            else if(name.equals(name15)){
-                pc8.setText(name15);
-            }
-            else if(name.equals(name16)){
-                pc8.setText(name16);
-            }
-        }
+        
     }
     
     public void update_Health(int value, String player){
