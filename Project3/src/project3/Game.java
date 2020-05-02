@@ -23,13 +23,13 @@ Nathan Clough
  * 
  */
 public class Game {
-    private ArrayList<Player> players = new ArrayList<Player>();
-    private LinkedList<String> roles = new LinkedList<String>();
-    private LinkedList<Integer> characters = new LinkedList<Integer>();
-    private ArrayList<Dice> die = new ArrayList<Dice>();
-    private boolean finished;
-    private boolean three = false;
-    private int totalArrows = 9;
+    public ArrayList<Player> players = new ArrayList<Player>();
+    public LinkedList<String> roles = new LinkedList<String>();
+    public LinkedList<Integer> characters = new LinkedList<Integer>();
+    public ArrayList<Dice> die = new ArrayList<Dice>();
+    public boolean finished;
+    public boolean three = false;
+    public int totalArrows = 9;
     int start;
     private String winners;
     board B = new board();
@@ -39,13 +39,7 @@ public class Game {
      * @param numPlayers 
      */
     public Game(){
-        UI ui = new UI();
-        int numPlayers= 0;
-        try {
-            numPlayers = ui.getStartNumPlayers();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        int numPlayers = 4;
         B.setVisible(true);
         B.pChoice(numPlayers-2);
         B.tArrow(9);
@@ -54,32 +48,46 @@ public class Game {
         for(int i =1; i <=numPlayers; i++)
         {
            if(numPlayers == 4){
-                    Player p = new Player("p"+((2*i)-1));
-                    players.add(p);
+                Player p = new Player("p"+((2*i)-1));
+     
+                players.add(p);
+                
            }
            else if(numPlayers == 5){
                 Player p = new Player("p"+((2*(i-1))));
+                                if(i ==1 )
+                p.setUser();
                 players.add(p);
+
                 
             }
            else if(numPlayers == 6){
                 Player p = new Player("p"+((2*(i-1))));
+      
                 players.add(p);
+
            }
            else if(numPlayers == 7){
                 Player p = new Player("p"+((i)));
+                
+           
                 players.add(p);
            }
            else if(numPlayers == 8){
                 Player p = new Player("p"+((i+1)));
                 
+                
+           
                 players.add(p);
            }
+          
         }
         //creates the board gui with correct information
-        
+       
         setupRoles();
         assignCharacters();
+        players.get(0).setUser();
+
  
     }
     /***
@@ -87,38 +95,20 @@ public class Game {
      * @param numPlayers 
      */
     public Game(int numPlayers){                
-        B.setVisible(true);
-        B.pChoice(numPlayers-2);
-        B.tArrow(9);
+        
         for(int i =1; i <=numPlayers; i++)
         {
-           if(numPlayers == 4){
-                    Player p = new Player("p"+((2*i)-1));
-                    players.add(p);
-           }
-           else if(numPlayers == 5){
-                Player p = new Player("p"+((2*(i-1))));
-                players.add(p);
-                
-            }
-           else if(numPlayers == 6){
-                Player p = new Player("p"+((2*(i-1))));
-                players.add(p);
-           }
-           else if(numPlayers == 7){
-                Player p = new Player("p"+((i)));
-                players.add(p);
-           }
-           else if(numPlayers == 8){
-                Player p = new Player("p"+((i+1)));
-                
-                players.add(p);
-           }
+           Player p = new Player("p"+i);
+           players.add(p);
         }
         //creates the board gui with correct information
         
         setupRoles();
         assignCharacters();
+        players.get(0).setUser();
+        B.setVisible(true);
+        B.pChoice(players);
+        B.tArrow(9);
  
     }
     
@@ -126,9 +116,15 @@ public class Game {
      * Assigns each character a role 
      * @author Nathan Clough
      */
-    private void assignCharacters(){
-        for (int i =0; i<15; i++ )
-           characters.add(i);
+    public void assignCharacters(){
+        characters.add(0);
+        characters.add(5);
+        characters.add(5);
+        characters.add(7);
+        characters.add(8);
+        characters.add(7);
+        characters.add(13);
+        characters.add(14);
         Collections.shuffle(characters);
         for(Player t : players)
         {
@@ -204,8 +200,7 @@ public class Game {
             takeTurn(temp);
             if(getWinner(players))
                 finished = true;
-            Scanner kb = new Scanner(System.in);   
-            //gitkb.next();
+
             i++;
         }while(players.size() > 1 && finished != true);
      System.out.println(winners + " wins!!!!!!!");
@@ -215,7 +210,7 @@ public class Game {
      * @param p a 
      * @author Nathan Clough
      */
-    private void takeTurn(Player p){
+    public void takeTurn(Player p){
         int totalDynamite=0;
         int turnNum =1;
         int maxRerolls = 3;
@@ -228,10 +223,11 @@ public class Game {
         System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
+        rollDie(rollingDie);
         do 
         {
             
-            rollDie(rollingDie);
+           
             //arrayList to iterate through since cannot itterate and edit at same time 
             ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
             for(Dice d: temp)
@@ -251,16 +247,18 @@ public class Game {
                     rollingDie.remove(d);
                     die.add(d);
                     totalDynamite++;
+                    if(totalDynamite >= 3)
+                        break;
                 }
                 
                 
             }
             temp.clear();
             //display the dice to the user
-            Collections.sort(rollingDie);
+             Collections.sort(rollingDie);
             for(Dice d: die)
                 System.out.print(d.getResult() + " ");
-            System.out.print('-');
+            System.out.println();
             for(Dice d: rollingDie)
                 System.out.print(d.getResult() + " ");
             System.out.println();
@@ -271,18 +269,42 @@ public class Game {
             if(p.isAI())
             {
                 AI ai = new AI();
-                ArrayList<Dice> temp2 = new ArrayList<Dice>();
                 ArrayList<Integer> indecies = new ArrayList<Integer>();
                 indecies = ai.rollagain(rollingDie, p.getRole() );
                 
-                for(int i =0; i <rollingDie.size(); i++)
+                 for(int i =0; i <rollingDie.size(); i++)
                 {
                    if(!indecies.contains(i))
                    {
-                       die.add(rollingDie.get(i));
+                       temp.add(rollingDie.get(i));
                    }
                    else 
-                      temp.add(rollingDie.get(i));
+                   {
+                       Dice temporary = rollingDie.get(i);
+                       temporary.rollDie();
+                      temp.add(temporary);
+                   }
+                }
+               rollingDie = (ArrayList<Dice>)temp.clone();;
+            }
+            else {
+                UserOption instance = new UserOption(rollingDie,"dice");
+                ArrayList<Integer> indecies = new ArrayList<Integer>();
+                indecies = instance.getReroll();
+                if(indecies.size() ==0)
+                    rollAgain = false;
+               for(int i =0; i <rollingDie.size(); i++)
+                {
+                   if(!indecies.contains(i))
+                   {
+                       temp.add(rollingDie.get(i));
+                   }
+                   else 
+                   {
+                       Dice temporary = rollingDie.get(i);
+                       temporary.rollDie();
+                      temp.add(temporary);
+                   }
                 }
                rollingDie = (ArrayList<Dice>)temp.clone();
             }
@@ -291,12 +313,13 @@ public class Game {
                 rollAgain = false;
             // calls roll againn which returns an array list of dice to rolll again or null if  they want to not continue 
             
-        }while(turnNum <= maxRerolls && totalDynamite < 3 && rollAgain);
+        }while(turnNum < maxRerolls && totalDynamite < 3 && rollAgain);
         if(totalDynamite>=3)
         {
             System.out.println("Explosion");
             p.setHealth(p.getHealth()-1);
             B.update_Health(p.getHealth(),p.getNumber());
+           
         }
         //displays final value of die 
         System.out.print("Final Dice:");
@@ -305,7 +328,7 @@ public class Game {
         for(Dice d: die)
             System.out.print(d.getResult() + " ");
         System.out.println();
-        if(players.contains(p))
+        if(players.contains(p) && !getWinner(players))
             performActions(p);
     }
     /***
@@ -387,19 +410,28 @@ public class Game {
         }
         for(int i=0; i<totalOneShot;i++)
         {
+            ArrayList<Player> options = getOneAway(p);
             if(p.isAI())
             {
-                ArrayList<Player> options = getOneAway(p);
+                
                 int x = ai.who_toshoot(options,p.getRole());
                 oneShot(options.get(x));
                 if(getWinner(players))
                     break;
-            }     
+            }
+            else
+            {   
+                UserOption ChooseWho = new UserOption(options);
+                int x = ChooseWho.shootWho();
+                oneShot(options.get(x));
+                if(getWinner(players))
+                    break;
+            }
         }
         if(!getWinner(players))
-        {
-            for(int i=0; i<totalBeer;i++)
+        {    if(p.isAI())
             {
+<<<<<<< HEAD
               int x = ai.who_toheal(players,p);
               if(x == -1)
                   heal(p);
@@ -408,27 +440,55 @@ public class Game {
                   //no one to heal 
               }
               else
+=======
+                int x = ai.who_toheal(players,p);
+                if(x == -2)
+                {
+                  //
+                }
+                else if(x == -1)
+                      heal(p);
+                else
+>>>>>>> OldSaloon
                   heal(players.get(x));
-            }   
+            }
+        else{
+            UIWhoToHeal h = new UIWhoToHeal(players);
+            int x = h.healPlayer();
+            if(x == -1)
+            {
+                
+            }
+            else{
+                heal(players.get(x));
+            }
+        }
         }
         if(!getWinner(players)){
         for(int i=0; i<totalTwoShot;i++)
         {
             ArrayList<Player> options = new ArrayList<Player>();
-            if(p.isAI())
-            {
-                if (players.size() <4)
+            if (players.size() <= 4)
                 {
                     options = getOneAway(p);
                 }
                 else
                      options = getTwoAway(p);
-                
+            if(p.isAI())
+            { 
                 int x = ai.who_toshoot(options,p.getRole());
                 twoShot(options.get(x));
                 if(getWinner(players))
                     break;
-            }         
+            } 
+            else
+            {   
+                UserOption ChooseWho = new UserOption(options);
+                int x = ChooseWho.shootWho();
+                twoShot(options.get(x));
+                if(getWinner(players))
+                    break;
+            }
         }  
         }
         if(!getWinner(players))
@@ -444,13 +504,10 @@ public class Game {
      * @author Nathan Clough
      */
     private void createDie(){
-        for(int i =0; i<5; i++)
-        {
-            Dice d = new Dice();
-           // d.rollDie();
-            die.add(d);
-        }
-
+       for(int i =0; i<5;i++){
+           Dice d = new Dice();
+           die.add(d);
+       }
     }
 
     /**
@@ -459,7 +516,7 @@ public class Game {
      * @return 
      * @author Nathan Clough
      */
-    private ArrayList<Dice> rollDie(ArrayList<Dice> rerolling ){
+    public ArrayList<Dice> rollDie(ArrayList<Dice> rerolling ){
         for(Dice d: rerolling )
             d.rollDie();
         return rerolling;

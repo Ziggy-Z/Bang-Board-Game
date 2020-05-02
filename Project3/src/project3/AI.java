@@ -259,6 +259,32 @@ public class AI {
              
              return heal;
             }
+<<<<<<< HEAD
+=======
+            
+            /**
+            * Returns the die loudmouth or coward that will be used 
+            * by the Automated Player
+            * 
+            * returns 1 for coward and 2 for loudmouth and 3 for both the die
+            * and 0 for none
+            */ 
+            public int selectDice(Player p){
+              Random saloon = new Random(); 
+              int saloon_die = saloon.nextInt((2 - 1) + 1) + 1;
+                if (p.getHealth()<=3)
+                    return 1;
+                else if(p.getHealth()>7)
+                    return 2;
+                else if(p.getHealth()<=5&&p.getHealth()>=4)
+                    return saloon_die;
+                else if(p.getHealth()<=7&&p.getHealth()>=6)
+                    return 3;
+                else if(p.getHealth()==8)
+                    return 0;
+            return 0;
+            }
+>>>>>>> OldSaloon
 }
            
  
