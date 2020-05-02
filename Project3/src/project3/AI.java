@@ -259,8 +259,7 @@ public class AI {
              
              return heal;
             }
-<<<<<<< HEAD
-=======
+
             
             /**
             * Returns the die loudmouth or coward that will be used 
@@ -284,7 +283,7 @@ public class AI {
                     return 0;
             return 0;
             }
->>>>>>> OldSaloon
+
 }
            
  

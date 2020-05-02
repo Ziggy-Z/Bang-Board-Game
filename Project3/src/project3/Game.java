@@ -431,16 +431,7 @@ public class Game {
         if(!getWinner(players))
         {    if(p.isAI())
             {
-<<<<<<< HEAD
-              int x = ai.who_toheal(players,p);
-              if(x == -1)
-                  heal(p);
-              else if(x == -2)
-              {
-                  //no one to heal 
-              }
-              else
-=======
+
                 int x = ai.who_toheal(players,p);
                 if(x == -2)
                 {
@@ -449,7 +440,7 @@ public class Game {
                 else if(x == -1)
                       heal(p);
                 else
->>>>>>> OldSaloon
+
                   heal(players.get(x));
             }
         else{
