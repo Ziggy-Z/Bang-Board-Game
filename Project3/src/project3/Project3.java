@@ -41,6 +41,11 @@ public class Project3 {
             OldSaloon g = new OldSaloon(numPlayers);
             g.play();
         }
+        else if (mod == 2)
+        {
+            Undead g = new Undead(numPlayers);
+            g.play();
+        }
     }
     
 }

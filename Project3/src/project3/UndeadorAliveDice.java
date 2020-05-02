@@ -22,7 +22,7 @@ public class UndeadorAliveDice extends Dice{
         //Look me in the Eyes Dice have two duel faces on each die
         switch (face) {
             case 1:
-                result = "Indian Arrow";
+                result = "Arrow";
                 break;
             case 2:
                 result = "Dynamite";

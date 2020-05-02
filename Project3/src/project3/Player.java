@@ -75,6 +75,9 @@ public class Player {
     {
         Role=temp;
     }
+    public void setCharacter(String input){
+        Character = input;
+    }
     public String getCharacter()
     {
         return Character;
@@ -88,7 +91,7 @@ public class Player {
         {
             Zombie = true;
             woundTokens.clear();
-            Character = "";
+            Character = "Zombie";
             first = false;
             return Zombie;
         }

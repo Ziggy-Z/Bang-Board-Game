@@ -239,7 +239,11 @@ public class Game {
                     totalArrows --;
                     B.tArrow(totalArrows);
                     if(totalArrows == 0)
+                    {
                         IndianAttack();
+                        if(finished == true || p.getHealth() <= 0)
+                            break;
+                    }
                 }
                 else if(d.getResult().equals("Dynamite"))
                 {
@@ -440,10 +444,6 @@ public class Game {
                 else if(x == -1)
                       heal(p);
                 else
-<<<<<<< HEAD
-=======
-
->>>>>>> master
                   heal(players.get(x));
             }
         else{
@@ -550,7 +550,10 @@ public class Game {
             {
                 players.remove(t);
                 if(getWinner(players))
+                {
+                   finished = true;
                     break;
+                }
             }
         }
             
