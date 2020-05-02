@@ -95,40 +95,20 @@ public class Game {
      * @param numPlayers 
      */
     public Game(int numPlayers){                
-        B.setVisible(true);
-        B.pChoice(numPlayers-2);
-        B.tArrow(9);
+        
         for(int i =1; i <=numPlayers; i++)
         {
-           if(numPlayers == 4){
-                    Player p = new Player("p"+((2*i)-1));
-                    players.add(p);
-           }
-           else if(numPlayers == 5){
-                Player p = new Player("p"+((2*(i-1))));
-                players.add(p);
-                
-            }
-           else if(numPlayers == 6){
-                Player p = new Player("p"+((2*(i-1))));
-                players.add(p);
-           }
-           else if(numPlayers == 7){
-                Player p = new Player("p"+((i)));
-                players.add(p);
-           }
-           else if(numPlayers == 8){
-                Player p = new Player("p"+((i+1)));
-                
-                players.add(p);
-           }
+           Player p = new Player("p"+i);
+           players.add(p);
         }
         //creates the board gui with correct information
         
         setupRoles();
         assignCharacters();
         players.get(0).setUser();
-
+        B.setVisible(true);
+        B.pChoice(players);
+        B.tArrow(9);
  
     }
     
