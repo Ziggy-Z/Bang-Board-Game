@@ -20,6 +20,7 @@ public class Player {
     private String ability = "";
     private String number = "";
     private boolean AI = true;
+    private boolean Chief_Arrow = false;
     
     
     public Player(String number)
@@ -109,6 +110,14 @@ public class Player {
     public boolean isAI()
     {
         return AI;
+    }
+    public boolean isChief_Arrow()
+    {
+        return Chief_Arrow;
+    }
+    public void setChief_Arrow(boolean Choice)
+    {
+        Chief_Arrow = Choice;
     }
 }
 
