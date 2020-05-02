@@ -132,5 +132,81 @@ public class OldSaloonTest {
                System.out.println(d.rollDie());
            }
         }
-    
+    @Test
+    public void testIndianAttack() {
+        System.out.println("IndianAttack");
+        OldSaloon instance = new OldSaloon(4);
+        ArrayList<Player> players = instance.getPlayers();
+       int [] Health = new int[4]; 
+       int i = 0;
+        for(Player p: players )
+        {
+         Health[i] = p.getHealth()-p.getArrows();
+         i++;
+        }
+        instance.IndianAttack();
+        i =0;
+        for(Player p: instance.getPlayers())
+        {
+
+            if(p.getHealth() != Health[i])
+                fail("Health didnt decrease by correct amount");
+            i++;
+        }
+        
+    }
+     @Test
+    public void testIndianAttack_MostArrowsNODamange() {
+        System.out.println("IndianAttack");
+        OldSaloon instance = new OldSaloon(4);
+        ArrayList<Player> players = instance.getPlayers();
+       int [] Health = new int[4]; 
+       int i = 0;
+       players.get(0).setChief_Arrow(true);
+       
+       
+        for(Player p: players )
+        {
+         p.setArrows(3);
+         Health[i] = p.getHealth()-p.getArrows();
+         i++;
+        }
+         Health[0]=players.get(0).getHealth();
+        instance.setPlayers(players);
+        instance.IndianAttack();
+        i =0;
+        for(Player p: instance.getPlayers())
+        {
+               
+            if(p.getHealth() != Health[i])
+                fail("Health didnt decrease by correct amount");
+            i++;
+        }
+    }
+    @Test
+    public void testIndianAttack_LeastArrows() {
+        System.out.println("IndianAttack");
+        OldSaloon instance = new OldSaloon(4);
+        ArrayList<Player> players = instance.getPlayers();
+       int [] Health = new int[4]; 
+       int i = 0;
+       players.get(0).setChief_Arrow(true);
+       
+       
+        for(Player p: players )
+        {
+         p.setArrows(3);
+         Health[i] = p.getHealth()-p.getArrows();
+         i++;
+        }
+        System.out.println(players.get(0).getHealth());
+        players.get(0).setArrows(2); 
+        Health[0]=players.get(0).getHealth()-3;
+        instance.setPlayers(players);
+        instance.IndianAttack();
+        i =0;
+        System.out.println(Health[0]);
+        System.out.println(instance.getPlayers().get(0).getHealth());
+        assertEquals(instance.getPlayers().get(0).getHealth(),Health[0]);
+    }
 }

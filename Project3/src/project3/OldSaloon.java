@@ -20,6 +20,7 @@ public int totalArrows = 10;
     }
     public OldSaloon(int num){
         super(num);
+        B.tArrow(10);
     }
     @Override
     public void assignCharacters(){
@@ -432,8 +433,8 @@ public int totalArrows = 10;
                     t.setChief_Arrow(false);
                     t.setArrows(t.getArrows()+1);
                 }
-                if(t.getCharacter().equals("JOURDONNAIS"))
-                {
+               if(t.getCharacter().equals("JOURDONNAIS"))
+               {
                     int damage = t.getArrows();
                     if(damage > 1)
                         damage = 1;
@@ -441,7 +442,7 @@ public int totalArrows = 10;
                     B.update_Health(t.getHealth(), t.getNumber());
                     t.setArrows(0);
                     B.pArrow(t.getArrows(), t.getNumber());
-                }
+               }
                 else
                 {
                     t.setHealth(t.getHealth()-t.getArrows());
