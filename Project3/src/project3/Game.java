@@ -31,7 +31,7 @@ public class Game {
     public boolean three = false;
     public int totalArrows = 9;
     int start;
-    private String winners;
+    public String winners;
     board B = new board();
     /***
      * Constructor for game object that takes in a number of players 
@@ -513,7 +513,7 @@ public class Game {
      * creates the list of dice objects to use when taking a turn
      * @author Nathan Clough
      */
-    private void createDie(){
+    public void createDie(){
        for(int i =0; i<5;i++){
            Dice d = new Dice();
            die.add(d);

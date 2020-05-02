@@ -7,6 +7,7 @@ package project3;
  */
 import java.io.*;
 import java.nio.file.*;
+import java.util.ArrayList;
 /**
  * @author Joseph McClaine
  */
@@ -19,7 +20,10 @@ public class Player {
     private String Character = "";
     private String ability = "";
     private String number = "";
-    private boolean AI = true;
+    public boolean AI = true;
+    public boolean first = true;
+    private boolean Zombie = false;
+    ArrayList<String> woundTokens = new ArrayList<String>();
     
     
     public Player(String number)
@@ -53,6 +57,7 @@ public class Player {
     public void setHealth(int num)
     {
         CurrentHealth=num;
+
     }
     public int getArrows()
     {
@@ -78,6 +83,20 @@ public class Player {
     {
         return ability;
     }
+    public boolean isZombie(){
+        if(CurrentHealth <= 0 && first)
+        {
+            Zombie = true;
+            woundTokens.clear();
+            Character = "";
+            first = false;
+            return Zombie;
+        }
+        else
+        {
+                    return Zombie;
+        }
+    }
     public boolean isFullHealth()
     {
         if (CurrentHealth == MaxHealth)
@@ -96,6 +115,9 @@ public class Player {
         {
             System.out.println(e);
         }
+    }
+    private void setZombieTraits(){
+        
     }
     private void AssignTraits(String temp)
     {
