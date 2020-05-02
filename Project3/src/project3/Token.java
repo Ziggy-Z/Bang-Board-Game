@@ -15,7 +15,10 @@ Nathan Clough
  */
 public class Token {
     
-    private static LinkedList<String> tokens = new LinkedList<String>() { 
+  LinkedList<String> tokens = new LinkedList<String>();
+    
+    public Token(){
+          tokens = new LinkedList<String>() { 
             { 
                 add("Dynamite"); 
                 add("Dynamite"); 
@@ -34,14 +37,13 @@ public class Token {
                 add("Two");
             } 
         }; 
-    
-    
-    public static String drawToken(){
+    } 
+    public String drawToken(){
         Collections.shuffle(tokens);
         String token = tokens.pop();
         return token;
     }
-    public static void returnToken(String token){
+    public void returnToken(String token){
         tokens.addFirst(token);
     }
     
