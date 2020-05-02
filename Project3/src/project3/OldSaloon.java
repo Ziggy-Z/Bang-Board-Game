@@ -400,7 +400,7 @@ public int totalArrows = 10;
         System.out.println("Indian Attack");
         totalArrows = 10;
         B.tArrow(totalArrows);
-       int Chief_Arrows;
+       int Chief_Arrows=0;
        int flag=0;
         for (int i = 0; i<players.size(); i++)
         {
