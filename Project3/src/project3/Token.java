@@ -15,7 +15,7 @@ Nathan Clough
  */
 public class Token {
     
-  LinkedList<String> tokens = new LinkedList<String>();
+  static LinkedList<String> tokens = new LinkedList<String>();
     
     public Token(){
           tokens = new LinkedList<String>() { 

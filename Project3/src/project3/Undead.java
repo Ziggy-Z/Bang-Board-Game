@@ -375,8 +375,11 @@ public class Undead extends Game{
                         break;
                 }
                 else if(d.getResult().equals("Whiskey")){
-                    //select a duel token to remove 
+                    
+                    Token t = new Token();
+                    t.returnToken("Beer");
                 }
+               
                 
                 
             }
@@ -465,6 +468,7 @@ public class Undead extends Game{
         int totalOneShot=0;
         int totalBeer=0;
         int totalWhiskey=0;
+        int totalDuel=0;
         AI ai = new AI();
         for(Dice d :die)
             if(d.getResult().equals("One"))
@@ -477,6 +481,8 @@ public class Undead extends Game{
                 totalGat++;
             else if(d.getResult().equals("Whiskey"))
                 totalWhiskey ++;
+            else if(d.getResult().equals("Duel"))
+                totalDuel ++;
         if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
         {
             p.setHealth(p.getHealth()+2);
@@ -565,6 +571,14 @@ public class Undead extends Game{
         {
             if(totalGat >= 3)
                 gatlingGun(p);
+        }
+        if(!getWinner(players)){
+            for(int i =0; i<totalDuel; i++){
+               Duel.performDuel(p, players);
+               if(getWinner(players)){
+                   break;
+               }
+            }
         }
     }
      
