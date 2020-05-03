@@ -41,7 +41,7 @@ public class Game {
     public Game(){
         int numPlayers = 4;
         B.setVisible(true);
-        B.pChoice(numPlayers-2);
+        B.pChoice(players);
         B.tArrow(9);
         
         
@@ -289,7 +289,7 @@ public class Game {
                       temp.add(temporary);
                    }
                 }
-               rollingDie = (ArrayList<Dice>)temp.clone();;
+               rollingDie = (ArrayList<Dice>)temp.clone();
             }
             else {
                 UserOption instance = new UserOption(rollingDie,"dice");
