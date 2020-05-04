@@ -334,6 +334,9 @@ public class Undead extends Game{
         int totalDynamite=0;
         int turnNum =1;
         int maxRerolls = 3;
+        if(p.hasToken("Dynamite")){
+            totalDynamite ++;
+        }
         if(p.getCharacter().equals("LUCKY DUKE"));
             maxRerolls =4;
         boolean rollAgain = true;
@@ -477,6 +480,15 @@ public class Undead extends Game{
                 totalGat++;
             else if(d.getResult().equals("Whiskey"))
                 totalWhiskey ++;
+        if(p.hasToken("One")){
+            totalOneShot --;
+        }
+        if(p.hasToken("Two")){
+            totalTwoShot --;
+        }
+        if(p.hasToken("Beer")){
+            totalBeer --;
+        }
         if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
         {
             p.setHealth(p.getHealth()+2);

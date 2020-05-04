@@ -66,6 +66,12 @@ public class Player {
     public void removeToken(String t){
         tokens.remove(t);
     }
+    public boolean hasToken(String s){
+        if(tokens.contains(s))
+            return true;
+        else 
+            return false;
+    }
     public int getArrows()
     {
         return Arrows;
