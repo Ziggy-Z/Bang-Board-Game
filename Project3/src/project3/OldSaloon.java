@@ -10,7 +10,9 @@ import java.util.Collections;
 
 /**
  CS 2365 Section 02
- Nathan Clough
+ @Author Nathan Clough
+ * Contributors - Joseph Mclaine : added in cheifs arrow functionality
+ *     this class is an extension of the original game and implements the old saloon expansion pack         
  */
 public class OldSaloon extends Game{
 ChiefArrow arrow = new ChiefArrow();
@@ -21,6 +23,9 @@ public int totalArrows = 10;
     public OldSaloon(int num){
         super(num);
     }
+    /***
+     * Override of the original game function to add the new players 
+     */
     @Override
     public void assignCharacters(){
         characters.add(0);
@@ -41,6 +46,11 @@ public int totalArrows = 10;
         }
 
     }
+    /***
+     * @author Nathan Clough 
+     * takes in a player object and performs necessary actions based on the final dice 
+     * @param p 
+     */
     @Override
     public void performActions(Player p){
         int totalGat=0;
@@ -160,7 +170,11 @@ public int totalArrows = 10;
                 gatlingGun(p);
         }
     }
-    
+    /***
+     * @author Nathan Clough
+     * takes in a player object and allows them to take their turn rerolling dice as neccessary 
+     * @param p 
+     */
     @Override
     public void takeTurn(Player p){
         int totalDynamite=0;
@@ -188,7 +202,7 @@ public int totalArrows = 10;
                 {
                     if (arrow.getArrow()==1)
                     {
-                        p.setChief_Arrow();
+                        p.setChief_Arrow(true);
                     }
                     p.setArrows(p.getArrows()+1);
                     B.pArrow(p.getArrows(), p.getNumber());
@@ -307,6 +321,10 @@ public int totalArrows = 10;
         if(players.contains(p)&& !getWinner(players))
             performActions(p);
     }
+    /***
+     * takes a player object and allows them to select the dice they want to use for their turn 
+     * @param p 
+     */
     public void createDie(Player p){
         int totalDice = 5;
         
@@ -390,10 +408,17 @@ public int totalArrows = 10;
            
        }
     }
+    /**
+     * used for testing to manipulate the dice in the game 
+     * @return 
+     */
     public ArrayList<Dice> getDie(){
         return die;
     }
-    
+    /***
+     * Indian attack function that accounts for cheifs arrow 
+     * @author Joey mcclain
+     */
     @Override
         public void IndianAttack(){
         //show indian attack

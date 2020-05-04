@@ -34,56 +34,25 @@ public class Game {
     private String winners;
     board B = new board();
     /***
-     * Constructor for game object that takes in a number of players 
+     * Constructor for game object that doesn't require input of players  
      * @author Nathan Clough
      * @param numPlayers 
      */
     public Game(){
         int numPlayers = 4;
         B.setVisible(true);
-        B.pChoice(numPlayers-2);
-        B.tArrow(9);
         
+        B.tArrow(9);
         
         for(int i =1; i <=numPlayers; i++)
         {
-           if(numPlayers == 4){
-                Player p = new Player("p"+((2*i)-1));
-     
-                players.add(p);
-                
-           }
-           else if(numPlayers == 5){
-                Player p = new Player("p"+((2*(i-1))));
-                                if(i ==1 )
-                p.setUser();
-                players.add(p);
-
-                
-            }
-           else if(numPlayers == 6){
-                Player p = new Player("p"+((2*(i-1))));
-      
-                players.add(p);
-
-           }
-           else if(numPlayers == 7){
-                Player p = new Player("p"+((i)));
-                
-           
-                players.add(p);
-           }
-           else if(numPlayers == 8){
-                Player p = new Player("p"+((i+1)));
-                
-                
-           
-                players.add(p);
-           }
-          
+           Player p = new Player("p"+i);
+           players.add(p);
         }
+        
+        
         //creates the board gui with correct information
-       
+         B.pChoice(players);
         setupRoles();
         assignCharacters();
         players.get(0).setUser();
@@ -91,7 +60,7 @@ public class Game {
  
     }
     /***
-     * creates Game instance for testing purposes
+     * creates Game instance based on a number of players  
      * @param numPlayers 
      */
     public Game(int numPlayers){                
@@ -207,7 +176,7 @@ public class Game {
     }
     /**
      * Takes in a Player object and then runs through the rolls and applies any actions
-     * @param p a 
+     * @param p a player object 
      * @author Nathan Clough
      */
     public void takeTurn(Player p){
