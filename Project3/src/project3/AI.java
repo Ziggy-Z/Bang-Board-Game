@@ -10,8 +10,10 @@ Rohit Gurnani
  */
 
 /**
+ * CS 2365 Section 02
  * Creates the AI to be used in the game for automated players.
  * @author Rohit Gurnani
+ * Contributors - Nathan Clough : Added the functionality for the AI to select who to heal.
 */
 public class AI {
     
