@@ -26,7 +26,13 @@ public class AI {
     
                 }
                  
-           public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
+    /**
+     *
+     * @param die
+     * @param role
+     * @return
+     */
+    public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i;
                    ArrayList<Integer> roll_list = new ArrayList<Integer>();
                     if(role.equals("Sheriff")){
@@ -173,6 +179,9 @@ public class AI {
           /**
             * returns  player object that should be healed.
             * 
+     * @param options
+     * @param p
+     * @return 
             */
  
          
@@ -267,6 +276,8 @@ public class AI {
             * 
             * returns 1 for coward and 2 for loudmouth and 3 for both the die
             * and 0 for none
+     * @param p
+     * @return 
             */ 
             public int selectDice(Player p){
               Random saloon = new Random(); 
