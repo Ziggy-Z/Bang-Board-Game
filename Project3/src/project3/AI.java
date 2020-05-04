@@ -1,26 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project3;
 import java.util.ArrayList;
 import java.util.*;
 import java.lang.Math;
 import java.util.Random;
+
 /*
 CS 2365 OOP Spring 2020 Section 2
 Rohit Gurnani
  */
+
 /**
+ * CS 2365 Section 02
  * Creates the AI to be used in the game for automated players.
- * @author rohitgurnani
- */
+ * @author Rohit Gurnani
+ * Contributors - Nathan Clough : Added the functionality for the AI to select who to heal.
+*/
 public class AI {
     
           /**
-            * returns array of integers of indexes of dice that needs to be re-rolled.
-            * 
+            * returns array of integers of indexes of dice that needs to be re-rolled by the automated players.
+            * @param  die
+            * @param  role
+            * @return roll_list
             */
            public AI(){
     
@@ -29,6 +30,10 @@ public class AI {
            public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i;
                    ArrayList<Integer> roll_list = new ArrayList<Integer>();
+                  
+                  // Use if-else statement to check role of the AI and then uses a for loop to iterate through 
+                  // Dice and stores the dice that needs to be re-rolled in a arraylist.
+               
                     if(role.equals("Sheriff")){
                        for(i=0;i<die.size();i++)
                        {
@@ -68,11 +73,11 @@ public class AI {
                }
            
            /**
-            * returns  player object that should be shot.
+            * returns player object that should be shot by the automated player.
             * 
-     * @param options
-     * @param role
-     * @return 
+            * @param options
+            * @param role
+            * @return i
             */
            
  
@@ -81,6 +86,8 @@ public class AI {
                int i=0;
                int x=0;
                int y=0;
+              // Uses if statement to check the role and then uses a for loop to iterate through the players.
+              // Check the health of the players and return the player to be shot. 
                if(role.equals("Deputy")){
                 for(i=0;i<options.size();i++)
                     if(options.get(i).getRole().equals("Outlaw")){
@@ -171,8 +178,11 @@ public class AI {
            }
            
           /**
-            * returns  player object that should be healed.
-            * 
+            * returns  player object that should be healed by the automated player.
+            * @param p
+            * @param options
+            * @return heal
+            * @author Nathan Clough
             */
  
          
@@ -263,14 +273,18 @@ public class AI {
             
             /**
             * Returns the die loudmouth or coward that will be used 
-            * by the Automated Player
+            * by the Automated Player.
             * 
             * returns 1 for coward and 2 for loudmouth and 3 for both the die
-            * and 0 for none
+            * and 0 for none.
+            * @param  p 
+            * @return int
             */ 
             public int selectDice(Player p){
               Random saloon = new Random(); 
               int saloon_die = saloon.nextInt((2 - 1) + 1) + 1;
+                // Checks the health of the player using if statement 
+                // and return the die decision accordingly
                 if (p.getHealth()<=3)
                     return 1;
                 else if(p.getHealth()>7)
