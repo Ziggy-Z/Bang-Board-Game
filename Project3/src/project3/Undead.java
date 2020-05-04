@@ -13,12 +13,33 @@ import java.util.Collections;
  Nathan Clough
  */
 public class Undead extends Game{
+
+    /**
+     *
+     */
     public ArrayList<Player> totalPlayers;
+
+    /**
+     *
+     */
     public boolean outbreak;
+
+    /**
+     *
+     */
     public BoneYardCard deck = new BoneYardCard();
+
+    /**
+     *
+     */
     public Undead(){
         super();
     }
+
+    /**
+     *
+     * @param num
+     */
     public Undead(int num){
         super(num);
     }
@@ -64,6 +85,12 @@ public class Undead extends Game{
         System.out.println(winners + " wins!!!!!!!");
     }
     }
+
+    /**
+     *
+     * @param i
+     * @throws InterruptedException
+     */
     public void playOutbreak(int i ) throws InterruptedException{
         
        setupOutbreak();
@@ -82,6 +109,10 @@ public class Undead extends Game{
         
         System.out.println(winners + " win!!!");
     }
+
+    /**
+     *
+     */
     public void setupOutbreak(){
        finished = false;
        for(Player p: totalPlayers)
@@ -103,6 +134,11 @@ public class Undead extends Game{
        
            
     }
+
+    /**
+     *
+     * @param p
+     */
     public void takeOutbreakTurn(Player p){
         int totalDynamite=0;
         int turnNum =1;
@@ -239,6 +275,11 @@ public class Undead extends Game{
            
        }
     }
+
+    /**
+     *
+     * @param p
+     */
     public void createDie(Player p){
         int totalDice=5;
         if(p.isZombie())

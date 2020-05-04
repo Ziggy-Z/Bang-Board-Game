@@ -19,6 +19,7 @@ public class UIWhoToHeal extends javax.swing.JFrame {
 
     /**
      * Creates new form UIWhoToHeal
+     * @param players
      */
     public UIWhoToHeal(ArrayList<Player> players) {
         
@@ -46,6 +47,11 @@ public class UIWhoToHeal extends javax.swing.JFrame {
         }
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public int healPlayer(){
        Enumeration<AbstractButton> em  = buttonGroup1.getElements();
        int i = 0;

@@ -54,6 +54,7 @@ public class UserOption extends javax.swing.JFrame {
     /**
      *
      * @param die
+     * @param d
      */
     public UserOption(ArrayList<Dice> die, String d){
         initComponents();
@@ -321,6 +322,11 @@ public class UserOption extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     boolean [] checked = {false,false,false,false,false,false};
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> getReroll(){
         for (int i = 0; i<6; i ++){
             if(checked[i])
@@ -328,6 +334,11 @@ public class UserOption extends javax.swing.JFrame {
         }
         return reroll;
     }
+
+    /**
+     *
+     * @return
+     */
     public int shootWho(){
         if(shoot)
             return 0;
@@ -381,7 +392,12 @@ public class UserOption extends javax.swing.JFrame {
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
        checked[5] = !checked[5];       // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox6ActionPerformed
-     public static void main(String args[]) {
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -14,9 +14,17 @@ import java.util.Collections;
  */
 public class OldSaloon extends Game{
 
+    /**
+     *
+     */
     public OldSaloon(){
         super();
     }
+
+    /**
+     *
+     * @param num
+     */
     public OldSaloon(int num){
         super(num);
     }
@@ -302,6 +310,11 @@ public class OldSaloon extends Game{
         if(players.contains(p)&& !getWinner(players))
             performActions(p);
     }
+
+    /**
+     *
+     * @param p
+     */
     public void createDie(Player p){
         int totalDice = 5;
         
@@ -385,6 +398,11 @@ public class OldSaloon extends Game{
            
        }
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Dice> getDie(){
         return die;
     }                  

@@ -23,20 +23,51 @@ Nathan Clough
  * 
  */
 public class Game {
+
+    /**
+     *
+     */
     public ArrayList<Player> players = new ArrayList<Player>();
+
+    /**
+     *
+     */
     public LinkedList<String> roles = new LinkedList<String>();
+
+    /**
+     *
+     */
     public LinkedList<Integer> characters = new LinkedList<Integer>();
+
+    /**
+     *
+     */
     public ArrayList<Dice> die = new ArrayList<Dice>();
+
+    /**
+     *
+     */
     public boolean finished;
+
+    /**
+     *
+     */
     public boolean three = false;
+
+    /**
+     *
+     */
     public int totalArrows = 9;
     int start;
+
+    /**
+     *
+     */
     public String winners;
     board B = new board();
     /***
      * Constructor for game object that takes in a number of players 
-     * @author Nathan Clough
-     * @param numPlayers 
+     * @author Nathan Clough 
      */
     public Game(){
         int numPlayers = 4;
@@ -187,6 +218,7 @@ public class Game {
     /**
      * Function for looping through the players arrayList and having each player take turn in order
      * @author Nathan Clough
+     * @throws java.lang.InterruptedException
      */
     public void play() throws InterruptedException{
 //loops through the list allowing to keep taking turns in the correct order
@@ -587,6 +619,7 @@ public class Game {
     /** 
      * Shots given player who is one position away
      * @author Krystyna Urbanczyk
+     * @param p
      */
     public void oneShot(Player p){
         if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
@@ -607,6 +640,7 @@ public class Game {
     /** 
      * Shots given player who is two positions away
      * @author Krystyna Urbanczyk
+     * @param p
      */
     public void twoShot(Player p){
         if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
@@ -683,30 +717,69 @@ public class Game {
     }
     
     // Functions to aid with testing by allowing to set up specific situations 
+
+    /**
+     *
+     * @return
+     */
     public String getWinners(){
         return winners;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getTotalArrows(){
         return totalArrows;
     }
+
+    /**
+     *
+     * @param ta
+     */
     public void setTotalArrows(int ta){
         totalArrows = ta;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getNumPlayers(){
         return players.size();
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Player> getPlayers(){
         return players;
     }
+
+    /**
+     *
+     */
     public void display(){
         for(Player t: players)
         {
             System.out.println(t.getNumber());
         }
     }
+
+    /**
+     *
+     * @param newPlayers
+     */
     public void setPlayers( ArrayList<Player> newPlayers ){
         players = newPlayers;
     }
+
+    /**
+     *
+     * @param dices
+     */
     public void setDie(ArrayList<Dice> dices){
         die = dices;
     }

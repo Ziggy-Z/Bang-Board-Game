@@ -12,6 +12,12 @@ import java.util.ArrayList;
  Nathan Clough
  */
 public class Turn {
+
+    /**
+     *
+     * @param p
+     * @return
+     */
     public static ArrayList<Dice> takeTurn(Player p){
         ArrayList<Dice> die = new ArrayList<Dice>();
         

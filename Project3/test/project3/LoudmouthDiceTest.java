@@ -17,21 +17,36 @@ import static org.junit.Assert.*;
  */
 public class LoudmouthDiceTest {
     
+    /**
+     *
+     */
     public LoudmouthDiceTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -55,6 +70,10 @@ public class LoudmouthDiceTest {
             System.out.println(d.getResult());
         }
     }
+
+    /**
+     *
+     */
     @Test
     public void testLoudmouthDiceCompaability() {
  
