@@ -14,9 +14,10 @@ import java.util.ArrayList;
 public class Duel {
        static UndeadorAliveDice temp = new UndeadorAliveDice();
        static Token tokens = new Token();
-       static boolean win = false;
+       
        
     public static void performDuel(Player p, ArrayList<Player> players){
+            boolean win = false;
             DuelUI d = null;
             String s = "Duel";
             Player c = null;
