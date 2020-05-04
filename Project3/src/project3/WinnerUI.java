@@ -18,6 +18,10 @@ public class WinnerUI extends javax.swing.JFrame {
      */
     public WinnerUI(Boolean Set) {
         initComponents();
+        if(Set)
+            this.win();
+        else
+            this.lose();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         synchronized(this)
@@ -79,7 +83,7 @@ public class WinnerUI extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
