@@ -4,6 +4,9 @@
  */
 package project3;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author zeged
@@ -13,8 +16,17 @@ public class DuelUI extends javax.swing.JFrame {
     /**
      * Creates new form DuelUI
      */
+    
     public DuelUI() {
         initComponents();
+        this.setVisible(true);
+        synchronized(this)
+        {try {
+            this.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
         
     }
     String Splayer = "";
@@ -182,31 +194,33 @@ public class DuelUI extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
-    WinnerUI w = new WinnerUI();
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(JB2.isSelected()){
-            Splayer = "P2";
+            Splayer = "p2";
         }
         else if(JB3.isSelected()){
-            Splayer = "P4";
+            Splayer = "p4";
         }
         else if(JB5.isSelected()){
-            Splayer = "P5";
+            Splayer = "p5";
         }
         if(JB6.isSelected()){
-            Splayer = "P6";
+            Splayer = "p6";
         }
         else if(JB7.isSelected()){
-           Splayer = "P7";
+           Splayer = "p7";
         }
         else if(JB8.isSelected()){
-            Splayer = "P8";
+            Splayer = "p8";
         }
-
+        
             System.out.println(Splayer);
-            w.lose();
-            w.setVisible(true);
-            this.dispose();
+            synchronized(this)
+        {
+        this.notify();
+        }
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
