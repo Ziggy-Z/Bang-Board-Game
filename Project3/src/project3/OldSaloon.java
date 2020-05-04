@@ -186,7 +186,7 @@ public int totalArrows = 10;
         die.clear();
         createDie(p);
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        System.out.println("\n=====New Turn ======\n" + p.getNumber() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         rollDie(rollingDie);
@@ -227,6 +227,7 @@ public int totalArrows = 10;
                     if(p.getHealth() <= 0)
                     {
                         players.remove(p);
+                        System.out.println(p.getNumber() + "'s role was " + p.getRole());
                         if(getWinner(players));
                             break;
                     }
@@ -478,6 +479,7 @@ public int totalArrows = 10;
             if(t.getHealth() <= 0)
             {
                 players.remove(t);
+                System.out.println(t.getNumber() + "'s role was " + t.getRole());
                 if(getWinner(players))
                     break;
             }

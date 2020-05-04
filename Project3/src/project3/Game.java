@@ -189,7 +189,7 @@ public class Game {
         die.clear();
         createDie();
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        System.out.println("\n=====New Turn ======\n" + p.getNumber() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         rollDie(rollingDie);
@@ -515,6 +515,7 @@ public class Game {
             if(t.getHealth() <= 0)
             {
                 players.remove(t);
+                System.out.println(t.getNumber() + "'s role was " + t.getRole());
                 if(getWinner(players))
                     break;
             }
@@ -563,7 +564,10 @@ public class Game {
 
         }
         if(p.getHealth() <= 0)
+        {
+            System.out.println(p.getNumber() + "'s role was " + p.getRole());
             players.remove(p);
+        }
     }
     /** 
      * Shots given player who is two positions away
@@ -583,7 +587,11 @@ public class Game {
 
         }
         if(p.getHealth() <= 0)
+        {
+            System.out.println(p.getNumber() + "'s role was " + p.getRole());
             players.remove(p);
+            
+        }
         
     }
     /**

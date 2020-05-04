@@ -916,7 +916,9 @@ public class board extends javax.swing.JFrame {
             n7.setText(s2);
             int N2 = Integer.parseInt(n7.getText());
             if(N2 <= 0)
+            {
                 n7.setForeground(Color.RED);
+            }
             if(n7.getText().contains("-")){
                 n7.setText("0");
             }
