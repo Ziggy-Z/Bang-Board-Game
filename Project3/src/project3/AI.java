@@ -14,12 +14,13 @@ Rohit Gurnani
  */
 /**
  * Creates the AI to be used in the game for automated players.
- * @author rohitgurnani
+ * @author Rohit Gurnani
+ * Contributor: Nathan Clough : Added functionality for AI to choose who to heal.
  */
 public class AI {
     
           /**
-            * returns array of integers of indexes of dice that needs to be re-rolled.
+            * returns array of integers of indexes of dice that needs to be re-rolled by the automated players
             * 
             */
            public AI(){
@@ -30,7 +31,7 @@ public class AI {
      *
      * @param die
      * @param role
-     * @return
+     * @return roll_list
      */
     public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i;
@@ -74,11 +75,11 @@ public class AI {
                }
            
            /**
-            * returns  player object that should be shot.
+            * Returns player object that should be shot by the automated player.
             * 
-     * @param options
-     * @param role
-     * @return 
+            * @param options
+            * @param role
+            * @return i
             */
            
  
@@ -177,11 +178,11 @@ public class AI {
            }
            
           /**
-            * returns  player object that should be healed.
+            * Returns player object that should be healed by the automated Player.
             * 
-     * @param options
-     * @param p
-     * @return 
+            * @param options
+            * @param p
+            * @return heal
             */
  
          
@@ -276,8 +277,9 @@ public class AI {
             * 
             * returns 1 for coward and 2 for loudmouth and 3 for both the die
             * and 0 for none
-     * @param p
-     * @return 
+            *
+            * @param p
+            * @return int 
             */ 
             public int selectDice(Player p){
               Random saloon = new Random(); 
