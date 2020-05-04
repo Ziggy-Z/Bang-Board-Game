@@ -15,35 +15,35 @@ public class Duel {
        static Token tokens = new Token();
        static boolean win = false;
     public static void performDuel(Player p, ArrayList<Player> players){
-        //prompt player to choose person
+            DuelUI d = new DuelUI();
+            d.setVisible(true);
             //if user use UI 
             //if ai just select random that isnt p
-        
-        Player c = new Player("");
+        Player c = new Player(d.Splayer);
         String s = "Duel";
-        
-       
+        WinnerUI w = new WinnerUI();
             while(s == "Duel")
             {
                 win = !win;
                 s = temp.rollDie();
-                //show in the User Interface 
+                d.setVisible(true);
             }
            
             if(win)
             {
-                //says you win in User Interface
-                //add token to  
+                w.win();
+                w.setVisible(true);
                 c.addToken(tokens.drawToken());
             }
             else
             {
-                //says you Lose in User Interface
-                //Show what token they draw
-                //add token to p
+                w.lose();
+                w.setVisible(true);
                 String drawnToken = tokens.drawToken();
                 p.addToken(drawnToken);
-              
+                if(w.ext1==true){
+                    w.showToken(drawnToken);
+                }
             }
    
         
