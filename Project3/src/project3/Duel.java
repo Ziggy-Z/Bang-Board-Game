@@ -38,7 +38,8 @@ public class Duel {
             }while(!players.get(random).getNumber().equals(p.getNumber()));
                c=players.get(random);
            }
-            while(s == "Duel")
+            
+           while(s == "Duel")
             {
                 win = !win;
                 s = temp.rollDie();
