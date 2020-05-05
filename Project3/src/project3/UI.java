@@ -68,6 +68,7 @@ public class UI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Box1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -80,7 +81,7 @@ public class UI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setBackground(new java.awt.Color(250, 153, 51));
 
         Box1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "4", "5", "6", "7", "8" }));
         Box1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +112,7 @@ public class UI extends javax.swing.JFrame {
         jLabel4.setText("Select Modules");
 
         jCheckBox1.setBackground(new java.awt.Color(255, 153, 51));
+        buttonGroup1.add(jCheckBox1);
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jCheckBox1.setText("OldSaloon");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +122,7 @@ public class UI extends javax.swing.JFrame {
         });
 
         jCheckBox2.setBackground(new java.awt.Color(255, 153, 51));
+        buttonGroup1.add(jCheckBox2);
         jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jCheckBox2.setText("Dead Or Alive");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -220,6 +223,7 @@ public class UI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Box1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
