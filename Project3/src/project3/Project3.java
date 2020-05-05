@@ -14,6 +14,7 @@ public class Project3 {
 //create a lock .notifyb 
     /**
      * @param args the command line arguments
+     * @throws java.lang.InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
        
@@ -39,6 +40,11 @@ public class Project3 {
         {
 
             OldSaloon g = new OldSaloon(numPlayers);
+            g.play();
+        }
+        else if (mod == 2)
+        {
+            Undead g = new Undead(numPlayers);
             g.play();
         }
     }

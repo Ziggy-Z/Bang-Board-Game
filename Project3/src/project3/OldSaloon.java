@@ -15,11 +15,18 @@ import java.util.Collections;
  *     this class is an extension of the original game and implements the old saloon expansion pack         
  */
 public class OldSaloon extends Game{
+
 ChiefArrow arrow = new ChiefArrow();
 public int totalArrows = 10;
+
     public OldSaloon(){
         super();
     }
+
+    /**
+     *
+     * @param num
+     */
     public OldSaloon(int num){
         super(num);
     }
@@ -322,6 +329,7 @@ public int totalArrows = 10;
         if(players.contains(p)&& !getWinner(players))
             performActions(p);
     }
+
     /***
      * takes a player object and allows them to select the dice they want to use for their turn 
      * @param p 
@@ -409,6 +417,7 @@ public int totalArrows = 10;
            
        }
     }
+
     /**
      * used for testing to manipulate the dice in the game 
      * @return 

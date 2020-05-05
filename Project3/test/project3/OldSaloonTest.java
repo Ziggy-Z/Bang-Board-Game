@@ -18,25 +18,43 @@ import static org.junit.Assert.*;
  */
 public class OldSaloonTest {
     
+    /**
+     *
+     */
     public OldSaloonTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void performActions_DOCHOLLYDAY_no1or2shot() {
         OldSaloon instance = new OldSaloon(4);
@@ -61,7 +79,11 @@ public class OldSaloonTest {
        //assert
        assertEquals(expectedHealth,players.get(0).getHealth());
     }
-        @Test
+
+    /**
+     *
+     */
+    @Test
         public void performActions_DOCHOLLYDAY_31shot() {
         OldSaloon instance = new OldSaloon(4);
         ArrayList<Dice> dice = new ArrayList<Dice>();
@@ -89,7 +111,10 @@ public class OldSaloonTest {
        assertEquals(expectedHealth,players.get(0).getHealth());
     }
      
-        @Test
+    /**
+     *
+     */
+    @Test
         public void CreateDice_User(){
            //arrange
             OldSaloon instance = new OldSaloon(4);
@@ -101,7 +126,11 @@ public class OldSaloonTest {
            instance.createDie(p);
             
         }
-        @Test
+
+    /**
+     *
+     */
+    @Test
         public void CreateDice_UserJoseDelgado(){
            //arrange
             OldSaloon instance = new OldSaloon(4);
@@ -116,7 +145,11 @@ public class OldSaloonTest {
                System.out.println(d.rollDie());
            }
         }
-         @Test
+
+    /**
+     *
+     */
+    @Test
         public void CreateDice_AIJoseDelgado(){
            //arrange
             OldSaloon instance = new OldSaloon(4);

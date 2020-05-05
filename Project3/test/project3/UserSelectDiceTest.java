@@ -19,21 +19,36 @@ import static org.junit.Assert.*;
  */
 public class UserSelectDiceTest {
     
+    /**
+     *
+     */
     public UserSelectDiceTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -70,6 +85,10 @@ public class UserSelectDiceTest {
         
         
     }
+
+    /**
+     *
+     */
     @Test
     public void getUserSelectedDice_CowardSelected() {
         //arrange
@@ -85,6 +104,9 @@ public class UserSelectDiceTest {
         
     }
     
+    /**
+     *
+     */
     @Test
     public void getUserSelectedDice_BothSelected() {
         //arrange

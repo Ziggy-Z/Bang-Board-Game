@@ -23,26 +23,63 @@ Nathan Clough
  * 
  */
 public class Game {
+
+    /**
+     *
+     */
     public ArrayList<Player> players = new ArrayList<Player>();
+
+    /**
+     *
+     */
     public LinkedList<String> roles = new LinkedList<String>();
+
+    /**
+     *
+     */
     public LinkedList<Integer> characters = new LinkedList<Integer>();
+
+    /**
+     *
+     */
     public ArrayList<Dice> die = new ArrayList<Dice>();
+
+    /**
+     *
+     */
     public boolean finished;
+
+    /**
+     *
+     */
     public boolean three = false;
+
+    /**
+     *
+     */
     public int totalArrows = 9;
     int start;
-    private String winners;
+
+    /**
+     *
+     */
+    public String winners;
     board B = new board();
-    /***
-     * Constructor for game object that doesn't require input of players  
+    /**
      * @author Nathan Clough
      * @param numPlayers 
+     * Constructor for game object that takes in a number of players 
+     * @author Nathan Clough 
      */
     public Game(){
         int numPlayers = 4;
         B.setVisible(true);
-        
+
+        B.pChoice(players);
         B.tArrow(9);
+
+        
+   
         
         for(int i =1; i <=numPlayers; i++)
         {
@@ -156,6 +193,7 @@ public class Game {
     /**
      * Function for looping through the players arrayList and having each player take turn in order
      * @author Nathan Clough
+     * @throws java.lang.InterruptedException
      */
     public void play() throws InterruptedException{
 //loops through the list allowing to keep taking turns in the correct order
@@ -208,7 +246,11 @@ public class Game {
                     totalArrows --;
                     B.tArrow(totalArrows);
                     if(totalArrows == 0)
+                    {
                         IndianAttack();
+                        if(finished == true || p.getHealth() <= 0)
+                            break;
+                    }
                 }
                 else if(d.getResult().equals("Dynamite"))
                 {
@@ -254,7 +296,7 @@ public class Game {
                       temp.add(temporary);
                    }
                 }
-               rollingDie = (ArrayList<Dice>)temp.clone();;
+               rollingDie = (ArrayList<Dice>)temp.clone();
             }
             else {
                 UserOption instance = new UserOption(rollingDie,"dice");
@@ -398,7 +440,8 @@ public class Game {
             }
         }
         if(!getWinner(players))
-        {    if(p.isAI())
+        {    for(int i =0; i<totalBeer; i++){
+            if(p.isAI())
             {
 
                 int x = ai.who_toheal(players,p);
@@ -409,7 +452,6 @@ public class Game {
                 else if(x == -1)
                       heal(p);
                 else
-
                   heal(players.get(x));
             }
         else{
@@ -422,6 +464,7 @@ public class Game {
             else{
                 heal(players.get(x));
             }
+        }
         }
         }
         if(!getWinner(players)){
@@ -463,7 +506,7 @@ public class Game {
      * creates the list of dice objects to use when taking a turn
      * @author Nathan Clough
      */
-    private void createDie(){
+    public void createDie(){
        for(int i =0; i<5;i++){
            Dice d = new Dice();
            die.add(d);
@@ -512,12 +555,16 @@ public class Game {
                     t.setArrows(0);
                     B.pArrow(t.getArrows(), t.getNumber());
                 }
+           
             if(t.getHealth() <= 0)
             {
                 players.remove(t);
                 System.out.println(t.getNumber() + "'s role was " + t.getRole());
                 if(getWinner(players))
+                {
+                   finished = true;
                     break;
+                }
             }
         }
             
@@ -549,6 +596,7 @@ public class Game {
     /** 
      * Shots given player who is one position away
      * @author Krystyna Urbanczyk
+     * @param p
      */
     public void oneShot(Player p){
         if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
@@ -572,6 +620,7 @@ public class Game {
     /** 
      * Shots given player who is two positions away
      * @author Krystyna Urbanczyk
+     * @param p
      */
     public void twoShot(Player p){
         if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
@@ -652,30 +701,69 @@ public class Game {
     }
     
     // Functions to aid with testing by allowing to set up specific situations 
+
+    /**
+     *
+     * @return
+     */
     public String getWinners(){
         return winners;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getTotalArrows(){
         return totalArrows;
     }
+
+    /**
+     *
+     * @param ta
+     */
     public void setTotalArrows(int ta){
         totalArrows = ta;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getNumPlayers(){
         return players.size();
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Player> getPlayers(){
         return players;
     }
+
+    /**
+     *
+     */
     public void display(){
         for(Player t: players)
         {
             System.out.println(t.getNumber());
         }
     }
+
+    /**
+     *
+     * @param newPlayers
+     */
     public void setPlayers( ArrayList<Player> newPlayers ){
         players = newPlayers;
     }
+
+    /**
+     *
+     * @param dices
+     */
     public void setDie(ArrayList<Dice> dices){
         die = dices;
     }

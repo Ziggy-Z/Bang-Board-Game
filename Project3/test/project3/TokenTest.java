@@ -1,6 +1,7 @@
 /*
-CS 2365 OOP Spring 2020 Section 2
-Nathan Clough
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package project3;
 
@@ -13,14 +14,14 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author X1Gen3
+ * @author rohit
  */
-public class UIWhoToHealTest {
+public class TokenTest {
     
     /**
      *
      */
-    public UIWhoToHealTest() {
+    public TokenTest() {
     }
     
     /**
@@ -52,14 +53,16 @@ public class UIWhoToHealTest {
     }
 
     /**
-     * Test of main method, of class UIWhoToHeal.
+     * Test of drawToken method, of class Token.
      */
     @Test
-    public void testUIWhoToHeal() {
-        Game g = new Game(6); 
-        UIWhoToHeal input = new UIWhoToHeal(g.getPlayers());
-       int x = input.healPlayer();
-       assertEquals(x,0);
-    }
+    
+    public void testdraw() {
+    Token x = new Token();
+    String y = x.drawToken();
+    System.out.println(y);
+  //  Token.drawToken();
+}
+   
     
 }

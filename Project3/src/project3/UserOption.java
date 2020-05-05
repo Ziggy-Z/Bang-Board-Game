@@ -51,6 +51,7 @@ public class UserOption extends javax.swing.JFrame {
      * displays the dice so user can select which ones to reroll;
      * @param die
      * @param d needed to differentiate from the first constructor
+
      */
     public UserOption(ArrayList<Dice> die, String d){
         initComponents();
@@ -321,10 +322,12 @@ public class UserOption extends javax.swing.JFrame {
     
     //array to store what options are selected 
     boolean [] checked = {false,false,false,false,false,false};
+
     /***
      * @return an arraylist with indexes of the dice to reroll
      * 
      */ 
+
     public ArrayList<Integer> getReroll(){
         for (int i = 0; i<6; i ++){
             if(checked[i])
@@ -332,9 +335,10 @@ public class UserOption extends javax.swing.JFrame {
         }
         return reroll;
     }
+
     /*** 
-     * 
-     * @return sends index of who to shoot in the options arraylist 
+   
+
      */
     public int shootWho(){
         if(shoot)
@@ -389,7 +393,12 @@ public class UserOption extends javax.swing.JFrame {
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
        checked[5] = !checked[5];       // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox6ActionPerformed
-     public static void main(String args[]) {
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

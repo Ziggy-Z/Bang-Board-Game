@@ -15,4 +15,6 @@ Suzy Lafayette;8;If you didn’t roll any bullseye,:you gain two life points:(ap
 Vulture Sam;9;Each time another player is:eliminated, you gain two life:points
 Willy the Kid;8;you only need two gattling dice:to use the Gatling Gun:(Only use Gatling gun once per turn)
 Doc Holyday;8;Each time you use three or more oneshot or twoshot you also regain two life points. remember that double oneshot and double twoshot count as two
-Jose Delgado;7;You may use the Loudmouth die without replacing a base die (roll six dice total). If you use the Loudmouth die, you roll 6 dice total; if you use the Coward die, 5. You cannot use the Loudmouth and the Coward dice together.  
+Jose Delgado;7;You may use the Loudmouth die without replacing a base die (roll six dice total). If you use the Loudmouth die, you roll 6 dice total; if you use the Coward die, 5. You cannot use the Loudmouth and the Coward dice together.
+Sam The Healer;7;Each time you use a duel, you may choose one player to gain one life point 
+Greg Digger;7;You may use each whiskey you roll twice   

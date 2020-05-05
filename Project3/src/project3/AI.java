@@ -15,19 +15,33 @@ Rohit Gurnani
  * @author Rohit Gurnani
  * Contributors - Nathan Clough : Added the functionality for the AI to select who to heal.
 */
-public class AI {
+
     
           /**
             * returns array of integers of indexes of dice that needs to be re-rolled by the automated players.
             * @param  die
             * @param  role
             * @return roll_list
+
+ * Contributor: Nathan Clough : Added functionality for AI to choose who to heal.
+ */
+public class AI {
+    
+          /**
+            * returns array of integers of indexes of dice that needs to be re-rolled by the automated players
+            * 
             */
            public AI(){
     
                 }
                  
-           public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
+    /**
+     *
+     * @param die
+     * @param role
+     * @return roll_list
+     */
+    public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i;
                    ArrayList<Integer> roll_list = new ArrayList<Integer>();
                   
@@ -73,7 +87,11 @@ public class AI {
                }
            
            /**
+<<<<<<< HEAD
             * returns player object that should be shot by the automated player.
+=======
+            * Returns player object that should be shot by the automated player.
+>>>>>>> Undead
             * 
             * @param options
             * @param role
@@ -178,11 +196,19 @@ public class AI {
            }
            
           /**
+<<<<<<< HEAD
             * returns  player object that should be healed by the automated player.
             * @param p
             * @param options
             * @return heal
             * @author Nathan Clough
+=======
+            * Returns player object that should be healed by the automated Player.
+            * 
+            * @param options
+            * @param p
+            * @return heal
+>>>>>>> Undead
             */
  
          
@@ -276,9 +302,16 @@ public class AI {
             * by the Automated Player.
             * 
             * returns 1 for coward and 2 for loudmouth and 3 for both the die
+<<<<<<< HEAD
             * and 0 for none.
             * @param  p 
             * @return int
+=======
+            * and 0 for none
+            *
+            * @param p
+            * @return int 
+>>>>>>> Undead
             */ 
             public int selectDice(Player p){
               Random saloon = new Random(); 
@@ -299,5 +332,5 @@ public class AI {
             }
 
 }
-           
+            
  

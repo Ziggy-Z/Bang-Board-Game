@@ -46,6 +46,10 @@ public class board extends javax.swing.JFrame {
     String ch14 = "Each time another player is\neliminated, you gain two life\npoints";
     String ch15 = "You may make one extra re-roll\n(max of four)";
     String ch16 = "you only need two gattling dice\nto use the Gatling Gun\n(Only use Gatling gun once per turn)";
+    String ch17 = "Each time you use three or more\noneshot or twoshot you also regain\ntwo life points. remember\nthat double oneshot and double\ntwoshot count as two";
+    String ch18 = "You may use the Loudmouth die without\nreplacing a base die\n(roll six dice total).If you\nuse the Loudmouth die, you\nroll 6 dice total; if you use the\nCoward die, 5. You cannot use the\nLoudmouth and the Coward\ndice together.";
+    String ch19 = "Each time you use a duel, you\nmay choose one player to\ngain one life point";
+    String ch20 = "You may use each whiskey you\nroll twice";
     String name1 = "BART CASSIDY";
     String name2 = "PAUL REGRET";
     String name3 = "BLACK JACK";
@@ -62,6 +66,10 @@ public class board extends javax.swing.JFrame {
     String name14 = "VULTURE SAM";
     String name15 = "LUCKY DUKE";
     String name16 = "WILLY THE KID";
+    String name17 = "DOC HOLYDAY";
+    String name18 = "JOSE DELGADO";
+    String name19 = "SAM THE HEALER";
+    String name20 = "GREG DIGGER";
     
     /**
      * Creates new form game
@@ -427,12 +435,9 @@ public class board extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(pc4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pc4, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(274, 274, 274)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(pc6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -443,7 +448,10 @@ public class board extends javax.swing.JFrame {
                                 .addComponent(pa6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(A6)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(pc6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(310, 310, 310)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,7 +669,7 @@ public class board extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void pChoice(ArrayList<Player> players){
-        
+         
         ArrayList<JLabel> names = new ArrayList<JLabel>();
         names.add(p1);
         names.add(p2);
@@ -894,8 +902,27 @@ public class board extends javax.swing.JFrame {
                 p.desc(ch16);
                 p.title(name16);
             }
+            else if(name.equals(name17)){
+                jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character17.PNG")));
+                p.desc(ch17);
+                p.title(name17);
+            }
+            else if(name.equals(name18)){
+                jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character18.PNG")));
+                p.desc(ch18);
+                p.title(name18);
+            }
+            else if(name.equals(name19)){
+                jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character19.PNG")));
+                p.desc(ch19);
+                p.title(name19);
+            }
+            else if(name.equals(name20)){
+                jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project3/character20.PNG")));
+                p.desc(ch20);
+                p.title(name20);
+            }
         }
-        
     }
     
     public void update_Health(int value, String player){
@@ -1048,51 +1075,6 @@ public class board extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
-    public void seen(){
-                p6.setVisible(true);
-                p4.setVisible(true);
-                p5.setVisible(true);
-                p8.setVisible(true);
-                p7.setVisible(true);
-                p2.setVisible(true);
-                p3.setVisible(true);
-                h2.setVisible(true);
-                h3.setVisible(true);
-                h4.setVisible(true);
-                h5.setVisible(true);
-                h6.setVisible(true);
-                h7.setVisible(true);
-                h8.setVisible(true);
-                n2.setVisible(true);
-                n3.setVisible(true);
-                n4.setVisible(true);
-                n5.setVisible(true);
-                n6.setVisible(true);
-                n7.setVisible(true);
-                n8.setVisible(true);
-                A6.setVisible(true);
-                A4.setVisible(true);
-                A5.setVisible(true);
-                A8.setVisible(true);
-                A7.setVisible(true);
-                A2.setVisible(true);
-                A3.setVisible(true);    
-                pa6.setVisible(true);
-                pa4.setVisible(true);
-                pa5.setVisible(true);
-                pa8.setVisible(true);
-                pa7.setVisible(true);
-                pa2.setVisible(true);
-                pa3.setVisible(true);
-                pc6.setVisible(true);
-                pc4.setVisible(true);
-                pc5.setVisible(true);
-                pc8.setVisible(true);
-                pc7.setVisible(true);
-                pc2.setVisible(true);
-                pc3.setVisible(true);
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel A1;
     private javax.swing.JLabel A2;

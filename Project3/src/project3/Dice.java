@@ -74,6 +74,11 @@ public class Dice implements Comparable<Dice>{
     public String getResult(){
         return result;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getValue(){
         return dice;
     }
@@ -88,6 +93,11 @@ public class Dice implements Comparable<Dice>{
             return 0;
     }
     //functions for testing 
+
+    /**
+     *
+     * @param r
+     */
     public void setDice(String r){
         result = r;
     }
