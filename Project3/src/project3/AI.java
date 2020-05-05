@@ -1,36 +1,33 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * CS 2365 OOP Spring 2020 Section 2
+ * Rohit Gurnani
  */
 package project3;
 import java.util.ArrayList;
 import java.util.*;
 import java.lang.Math;
 import java.util.Random;
-/*
-CS 2365 OOP Spring 2020 Section 2
-Rohit Gurnani
- */
+
 /**
  * Creates the AI to be used in the game for automated players.
- * @author rohitgurnani
+ * @author Rohit Gurnani
+ * Contributor Nathan Clough
  */
 public class AI {
     
-          /**
-            * returns array of integers of indexes of dice that needs to be re-rolled.
-            * 
-            */
-           public AI(){
+/**
+ * returns array of integers of indexes of dice that needs to be re-rolled.
+ * 
+ */
+    public AI(){
     
-                }
+    }
                  
     /**
      *
      * @param die
      * @param role
-     * @return
+     * @return role_list
      */
     public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i;
@@ -76,12 +73,11 @@ public class AI {
            /**
             * returns  player object that should be shot.
             * 
-     * @param options
-     * @param role
-     * @return 
+            * @param options
+            * @param role
+            * @return i
             */
            
- 
            public int who_toshoot(ArrayList<Player> options,String role){
               
                int i=0;
@@ -179,15 +175,15 @@ public class AI {
           /**
             * returns  player object that should be healed.
             * 
-     * @param options
-     * @param p
-     * @return 
+            * @param options
+            * @param p
+            * @return heal
             */
  
          
              
-             public int who_toheal(ArrayList<Player> options, Player p){
-              int heal = -2;
+        public int who_toheal(ArrayList<Player> options, Player p){
+             int heal = -2;
              if(p.isFullHealth() == false)
              {
                  heal = -1;
@@ -248,26 +244,20 @@ public class AI {
                         }
                         }
                         else if(indexLowestHealth != -2)
-                         {
-                             heal = indexLowestHealth;
-                         }
-                         else if(indexHighestHealthNotMax != -2)
-                         {
-                             heal = indexHighestHealthNotMax;
-                         }
-                         break;
+                        {
+                            heal = indexLowestHealth;
+                        }
+                        else if(indexHighestHealthNotMax != -2)
+                        {
+                            heal = indexHighestHealthNotMax;
+                        }
+                        break;
                     default:
                         break;
-                        }
-                 
-                 
-                 
-                 
-                }
-                
-             
-             return heal;
+                }    
             }
+            return heal;
+        }
 
             
             /**
@@ -276,8 +266,8 @@ public class AI {
             * 
             * returns 1 for coward and 2 for loudmouth and 3 for both the die
             * and 0 for none
-     * @param p
-     * @return 
+            * @param p
+            * @return 
             */ 
             public int selectDice(Player p){
               Random saloon = new Random(); 
@@ -293,7 +283,7 @@ public class AI {
                 else if(p.getHealth()==8)
                     return 0;
             return 0;
-            }
+           }
 
 }
            

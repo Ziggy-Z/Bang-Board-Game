@@ -52,7 +52,7 @@ public class UndeadorAliveDiceTest {
     }
 
     /**
-     *
+     * 
      */
     @Test
     public void testUndeadorAliveDiceCompatability() {

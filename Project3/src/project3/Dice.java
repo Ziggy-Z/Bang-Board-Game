@@ -6,7 +6,7 @@ import java.util.Random;
 
 /**
  * Creates the dice to be used in the game.
- * @author krystynaurbanczyk
+ * @author Krystyna Urbanczyk
  */
 
 public class Dice implements Comparable<Dice>{
@@ -25,6 +25,7 @@ public class Dice implements Comparable<Dice>{
     
     /**
      * default constructor, initializes dice to a random value
+     * @author Krystyna Urbanczyk
      */
     public Dice(){
         dice = diceface.nextInt((6 - 1) + 1) + 1;
@@ -33,6 +34,7 @@ public class Dice implements Comparable<Dice>{
     
     /**
      * Generates random numbers that are assigned to the dice face which simulates rolling dice.
+     * @author Krystyna Urbanczyk
      * @return result of dice roll
      */
     public String rollDie(){
@@ -69,6 +71,7 @@ public class Dice implements Comparable<Dice>{
     
     /**
      * Used for other classes to get result.
+     * @author Krystyna Urbanczyk
      * @return result of dice roll
      */
     public String getResult(){
@@ -76,8 +79,8 @@ public class Dice implements Comparable<Dice>{
     }
 
     /**
-     *
-     * @return
+     * @author Krystyna Urbanczyk
+     * @return dice
      */
     public int getValue(){
         return dice;
@@ -95,7 +98,7 @@ public class Dice implements Comparable<Dice>{
     //functions for testing 
 
     /**
-     *
+     * @author Krystyna Urbanczyk
      * @param r
      */
     public void setDice(String r){

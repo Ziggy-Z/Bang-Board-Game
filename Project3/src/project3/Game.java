@@ -25,27 +25,27 @@ Nathan Clough
 public class Game {
 
     /**
-     *
+     * Array list for players
      */
     public ArrayList<Player> players = new ArrayList<Player>();
 
     /**
-     *
+     * Array list for roles
      */
     public LinkedList<String> roles = new LinkedList<String>();
 
     /**
-     *
+     * Array list for characters
      */
     public LinkedList<Integer> characters = new LinkedList<Integer>();
 
     /**
-     *
+     * Array list for dice
      */
     public ArrayList<Dice> die = new ArrayList<Dice>();
 
     /**
-     *
+     * 
      */
     public boolean finished;
 
@@ -65,7 +65,7 @@ public class Game {
      */
     public String winners;
     board B = new board();
-    /***
+    /**
      * Constructor for game object that takes in a number of players 
      * @author Nathan Clough 
      */
@@ -121,9 +121,10 @@ public class Game {
 
  
     }
-    /***
+    /**
      * creates Game instance for testing purposes
      * @param numPlayers 
+     * @author Nathan Clough
      */
     public Game(int numPlayers){                
         
@@ -143,7 +144,7 @@ public class Game {
  
     }
     
-    /***
+    /**
      * Assigns each character a role 
      * @author Nathan Clough
      */
@@ -370,6 +371,7 @@ public class Game {
     /***
      * Given a  list of players it determines who the winner of the game is if conditions are met
      * @param Players
+     * @author Nathan Clough
      * @return true if game is over false otherwise 
      */
     public boolean getWinner(ArrayList<Player> Players){
@@ -694,6 +696,7 @@ public class Game {
      /**
      * gets all players two distance away from the parameter Player p 
      * @param p
+     * @author Nathan Clough
      * @return list of players two distance away 
      */
     public ArrayList<Player> getTwoAway(Player p){
@@ -719,7 +722,7 @@ public class Game {
     // Functions to aid with testing by allowing to set up specific situations 
 
     /**
-     *
+     * 
      * @return
      */
     public String getWinners(){

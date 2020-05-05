@@ -53,6 +53,7 @@ public class DiceTest {
 
     /**
      * Test of rollDie method, of class Dice.
+     * @author Nathan Clough
      */
     @Test
     public void testRollDie() {
@@ -66,6 +67,7 @@ public class DiceTest {
 
     /**
      * Test of getResult method, of class Dice.
+     * @author Nathan Clough
      */
     @Test
     public void testGetResult() {
@@ -79,6 +81,7 @@ public class DiceTest {
 
     /**
      * Test of compareTo method, of class Dice.
+     * @author Nathan Clough
      */
     @Test
     public void testCompareTo() {
