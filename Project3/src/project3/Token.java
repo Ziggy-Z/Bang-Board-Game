@@ -16,13 +16,14 @@ Nathan Clough
  */
 public class Token {
     
-  LinkedList<String> tokens = new LinkedList<String>();
-   
+
            /**
             * Constructor for Token
             * @author Nathan Clough
             */
- 
+
+  static LinkedList<String> tokens = new LinkedList<String>();
+
     public Token(){
           tokens = new LinkedList<String>() { 
             { 
@@ -53,8 +54,16 @@ public class Token {
  
     public String drawToken(){
         Collections.shuffle(tokens);
-        String token = tokens.pop();
-        return token;
+        String token = "";
+        if(tokens.size() <= 0){
+            return token;
+        }
+        else
+        {
+            token = tokens.pop(); 
+            return token;
+        }
+
     }
           /**
             * Returns a Token to the Pile

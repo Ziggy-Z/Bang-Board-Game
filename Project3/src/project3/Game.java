@@ -321,7 +321,7 @@ public class Game {
                       temp.add(temporary);
                    }
                 }
-               rollingDie = (ArrayList<Dice>)temp.clone();;
+               rollingDie = (ArrayList<Dice>)temp.clone();
             }
             else {
                 UserOption instance = new UserOption(rollingDie,"dice");
@@ -580,6 +580,7 @@ public class Game {
                     t.setArrows(0);
                     B.pArrow(t.getArrows(), t.getNumber());
                 }
+           
             if(t.getHealth() <= 0)
             {
                 players.remove(t);

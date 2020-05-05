@@ -65,7 +65,7 @@ public class charDisc extends javax.swing.JFrame {
         jTextArea2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea2.setRows(5);
-        jTextArea2.setText("You may re-roll a dynamite\n(not if you roll three or more).");
+        jTextArea2.setText("You may re-roll a dynamite\n(not if you roll three or more).\n\n\n");
         jScrollPane2.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

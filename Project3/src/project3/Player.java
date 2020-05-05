@@ -32,6 +32,7 @@ public class Player {
      */
     public boolean first = true;
     private boolean Zombie = false;
+    private boolean token;
     ArrayList<String> woundTokens = new ArrayList<String>();
     
     /**
@@ -99,12 +100,16 @@ public class Player {
         tokens.add(t);
     }
 
+
     /**
      *
      * @param t
      */
     public void removeToken(String t){
         tokens.remove(t);
+
+    public String removeToken(){
+        return tokens.remove(0);
     }
 
     /**
@@ -248,6 +253,14 @@ public class Player {
     public boolean isAI()
     {
         return AI;
+    }
+    public boolean hasToken(){
+        if(tokens.size() > 0){
+            return true;
+            
+        }
+        else 
+            return false;
     }
 }
 

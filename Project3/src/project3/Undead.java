@@ -44,6 +44,31 @@ public class Undead extends Game{
         super(num);
     }
     @Override
+    public void assignCharacters(){
+        
+        characters.add(0);
+        characters.add(5);
+        characters.add(5);
+        characters.add(7);
+        characters.add(8);
+        characters.add(7);
+        characters.add(13);
+        characters.add(14);
+        characters.add(18);
+        characters.add(19); 
+        
+       
+        Collections.shuffle(characters);
+        for(Player t : players)
+        {
+            t.setCharacterTraits(characters.pop());
+            B.setChar(t.getCharacter(),t.getNumber());
+            B.update_Health(t.getHealth(), t.getNumber());
+            
+        }
+        
+    }
+    @Override
     public void play() throws InterruptedException{
 //loops through the list allowing to keep taking turns in the correct order
     totalPlayers = (ArrayList<Player>)players.clone();
@@ -419,8 +444,21 @@ public class Undead extends Game{
                         break;
                 }
                 else if(d.getResult().equals("Whiskey")){
-                    //select a duel token to remove 
+                    int totalMultiplier = 1;
+                    if(p.getCharacter().equals("GREG DIGGER")){
+                            totalMultiplier = totalMultiplier *2;
+                     }
+                    for(int i = 0; i < totalMultiplier; i++){
+                       if(p.hasToken()){
+                           Token t = new Token();
+                           t.returnToken(p.removeToken());
+                           
+                       }
+                       
+                    }
+                    
                 }
+               
                 
                 
             }
@@ -508,7 +546,7 @@ public class Undead extends Game{
         int totalTwoShot=0;
         int totalOneShot=0;
         int totalBeer=0;
-        int totalWhiskey=0;
+        int totalDuel=0;
         AI ai = new AI();
         for(Dice d :die)
             if(d.getResult().equals("One"))
@@ -519,8 +557,9 @@ public class Undead extends Game{
                 totalBeer ++;
             else if(d.getResult().equals("Gatling"))
                 totalGat++;
-            else if(d.getResult().equals("Whiskey"))
-                totalWhiskey ++;
+            else if(d.getResult().equals("Duel"))
+                totalDuel ++;
+
         if(p.hasToken("One")){
             totalOneShot --;
         }
@@ -530,6 +569,9 @@ public class Undead extends Game{
         if(p.hasToken("Beer")){
             totalBeer --;
         }
+   
+        
+
         if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
         {
             p.setHealth(p.getHealth()+2);
@@ -618,6 +660,45 @@ public class Undead extends Game{
         {
             if(totalGat >= 3)
                 gatlingGun(p);
+        }
+        if(!getWinner(players)){
+            for(int i =0; i<totalDuel; i++)
+            {
+                if(p.getCharacter().equals("SAM THE HEALER") && p.getHealth() >=1){
+                   if(p.isAI())
+                   {
+
+                        int x = ai.who_toheal(players,p);
+                        if(x == -2)
+                            {
+                               //
+                            }
+                        else if(x == -1)
+                         heal(p);
+                        else
+                         heal(players.get(x));
+                   }
+                else{
+                    UIWhoToHeal h = new UIWhoToHeal(players);
+                    int x = h.healPlayer();
+                    if(x == -1)
+                    {
+                
+                    }
+                    else{
+                    heal(players.get(x));
+                     }
+                }   
+                   
+            }
+               Player c = Duel.performDuel(p, players);
+               B.update_Health(p.getHealth(),p.getNumber());
+               B.update_Health(p.getHealth(), p.getNumber());
+               if(getWinner(players))
+               {
+                   break;
+               }
+            }
         }
     }
      
