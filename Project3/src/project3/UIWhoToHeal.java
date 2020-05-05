@@ -46,6 +46,33 @@ public class UIWhoToHeal extends javax.swing.JFrame {
         }
         }
     }
+     public UIWhoToHeal(ArrayList<Player> players, String s) {
+       
+        initComponents();
+        this.setVisible(true);
+        jLabel1.setText(s);
+        Enumeration<AbstractButton> em  = buttonGroup1.getElements();
+        int i = 0;
+        while (em.hasMoreElements() ){
+            if(i>players.size()-1 || i == 0)
+                em.nextElement().setVisible(false);
+            else
+            {
+                String label = players.get(i).getNumber();
+                if(i == 0)
+                    label = "USER";
+                em.nextElement().setText(label);
+            }
+            i++;
+        }
+         synchronized(this)
+        {try {
+            this.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UserOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }
     public int healPlayer(){
        Enumeration<AbstractButton> em  = buttonGroup1.getElements();
        int i = 0;

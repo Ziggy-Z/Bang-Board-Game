@@ -11,24 +11,20 @@ import java.util.ArrayList;
  *
  * @author zeged
  */
-public class Duel {
+public class Duel{
        static UndeadorAliveDice temp = new UndeadorAliveDice();
        static Token tokens = new Token();
        
        
     public static void performDuel(Player p, ArrayList<Player> players){
             boolean win = false;
-            DuelUI d = null;
+           
             String s = "Duel";
             Player c = null;
            if(!p.isAI()){
-               d=new DuelUI();
-               d.setVisible(true);
-                for(Player temp: players){
-                    if(d.Splayer.equals(temp.getNumber())){
-                        c = temp;
-                } 
-           }
+               UIWhoToHeal d = new UIWhoToHeal(players,"Choose who to Duel");
+                c = players.get(d.healPlayer());
+                 
            }
            else{
                int max = players.size()-1;
@@ -46,17 +42,22 @@ public class Duel {
                 s = temp.rollDie();
                 System.out.println(s);
             }
+            
             if(win)
             {
-                WinnerUI w = new WinnerUI(win);
-                c.addToken(tokens.drawToken());
+                
+                String t = tokens.drawToken();
+                c.addToken(t);
+                c.setHealth(c.getHealth()-1);
+                WinnerUI w = new WinnerUI(win,p.getNumber(),t);
             }
             else
             {
-                WinnerUI w = new WinnerUI(win);
+                
                 String drawnToken = tokens.drawToken();
                 p.addToken(drawnToken);
-                    w.showToken(drawnToken);
+                c.setHealth(c.getHealth()-1);
+                WinnerUI w = new WinnerUI(win,c.getNumber(),drawnToken);
 
             }
    
