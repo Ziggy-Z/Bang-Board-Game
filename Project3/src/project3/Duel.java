@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author zeged
+ * @author zegedam zegeye
  */
 public class Duel{
        static UndeadorAliveDice temp = new UndeadorAliveDice();

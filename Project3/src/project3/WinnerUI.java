@@ -17,10 +17,13 @@ public class WinnerUI extends javax.swing.JFrame {
     /**
      * Creates new form WinnerUI
      */
+    int mousePX;
+    int mousePY;
     String player;
     String token;
     public WinnerUI(Boolean Set,String player, String token) {
         initComponents();
+
         this.player = player;
         this.token = token;
         if(Set)
@@ -32,6 +35,7 @@ public class WinnerUI extends javax.swing.JFrame {
         {
             jLabel4.setText("You've drawn token " + token);
             this.lose();
+            this.showToken(token);
         }
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -60,7 +64,17 @@ public class WinnerUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setBackground(new java.awt.Color(230, 153, 0));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,21 +104,21 @@ public class WinnerUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addContainerGap())
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,6 +143,17 @@ public class WinnerUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+                mousePX = evt.getX();
+                mousePY = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+                int offsetX = evt.getXOnScreen();
+                int offsetY = evt.getYOnScreen();
+                this.setLocation(offsetX-mousePX, offsetY-mousePY);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -136,10 +161,14 @@ public class WinnerUI extends javax.swing.JFrame {
         jLabel1.setText(player + " won the duel!");
     }
     public void lose(){
-        jLabel1.setText(player + "lost the duel!");
+        jLabel1.setText(player + " lost the duel!");
     }
-    public void showToken(String tkn){
-        jLabel1.setText("You've drawn token " + token);
+public void showToken(String tkn){
+        String s = "They have";
+        if(player.equals("p1")){
+            s = "You have";
+        }
+        jLabel4.setText( s + " drawn token " + token);
     }
     public static void main(String args[]) {
         

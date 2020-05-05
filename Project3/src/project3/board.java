@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 /*
  * CS 2365 OOP Spring 2020
  * Zegedam Zegeye
+ *Visual aspect of the game that displays the progress of the game
  */
 public class board extends javax.swing.JFrame {
   
@@ -766,7 +767,7 @@ public class board extends javax.swing.JFrame {
         }
         
     }
-    
+//Set the roles for reach player and if it's user, setup pictures of role
     public void setRole(String role, String player){
         if("p1".equals(player)){
             if("Outlaw".equals(role)){
@@ -819,7 +820,7 @@ public class board extends javax.swing.JFrame {
                 }
             }
         }
-    
+//Set the characters for reach player and if it's user, setup pictures of character
     public void setChar(String name, String player){
         if("p1".equals(player)||"p0".equals(player)){
             if(name.equals(name1)){
@@ -924,7 +925,7 @@ public class board extends javax.swing.JFrame {
             }
         }
     }
-    
+//Update health for each player and set color to red if health is 0
     public void update_Health(int value, String player){
         if("p1".equals(player)||"p0".equals(player)){
             hp1 = value;
@@ -1016,6 +1017,7 @@ public class board extends javax.swing.JFrame {
             }
         }
     }
+//Setup player arrows
     public void pArrow(int value, String player){
             if("p1".equals(player)){
             arrow1 = value;
@@ -1058,7 +1060,7 @@ public class board extends javax.swing.JFrame {
             A8.setText(s8);
         } 
     }
-    
+//Setup arrow in the middle of the board
     public void tArrow(int value){
         Tarrow = value;
         String ta = Integer.toString(Tarrow);
