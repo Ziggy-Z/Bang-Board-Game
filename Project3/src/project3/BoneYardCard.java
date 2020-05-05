@@ -18,6 +18,10 @@ public class BoneYardCard {
     LinkedList<Integer> deck = new LinkedList<Integer>();
     int totalHandsOnBoard =0; 
     int hands;
+
+    /**
+     *
+     */
     public BoneYardCard(){
         for(int i =0; i<6; i++)
             deck.add(1);
@@ -28,15 +32,30 @@ public class BoneYardCard {
         Collections.shuffle(deck);
             
     }
+
+    /**
+     *
+     * @return
+     */
     public int drawCard(){
         int temp = deck.pop();
         totalHandsOnBoard += temp;
         return temp;
         
     }
+
+    /**
+     *
+     * @param x
+     */
     public void returnToDeck(int x){
         deck.addLast(x);
     }
+
+    /**
+     *
+     * @return
+     */
     public int getTotalHands(){
         //return totalHandsOnBoard;
        return totalHandsOnBoard;

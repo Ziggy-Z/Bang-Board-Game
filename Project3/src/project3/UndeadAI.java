@@ -12,7 +12,14 @@ import java.util.ArrayList;
  Nathan Clough
  */
 public class UndeadAI {
-public static int whoToShoot(ArrayList<Player> options, Player p){
+
+    /**
+     *
+     * @param options
+     * @param p
+     * @return
+     */
+    public static int whoToShoot(ArrayList<Player> options, Player p){
     int shoot;
     boolean zombieStat [] = new boolean[2];
     boolean playerIsZombie = p.isZombie();

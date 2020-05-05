@@ -19,24 +19,43 @@ import static org.junit.Assert.*;
  */
 public class UserOptionTest {
     
+    /**
+     *
+     */
     public UserOptionTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
+
+    /**
+     *
+     */
     @Test
      public void newInit_withPlayers(){
         ArrayList<Player> options = new ArrayList<Player>();
@@ -47,6 +66,10 @@ public class UserOptionTest {
         UserOption instance = new UserOption(options);
 
     }
+
+    /**
+     *
+     */
     @Test
      public void newInit_withDice(){
         ArrayList<Dice> d = new ArrayList<Dice>();

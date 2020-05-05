@@ -10,16 +10,29 @@ import java.util.Collections;
 
 /**
  CS 2365 Section 02
- Nathan Clough
+ @Author Nathan Clough
+ * Contributors - Joseph Mclaine : added in cheifs arrow functionality
+ *     this class is an extension of the original game and implements the old saloon expansion pack         
  */
 public class OldSaloon extends Game{
+
+ChiefArrow arrow = new ChiefArrow();
+public int totalArrows = 10;
 
     public OldSaloon(){
         super();
     }
+
+    /**
+     *
+     * @param num
+     */
     public OldSaloon(int num){
         super(num);
     }
+    /***
+     * Override of the original game function to add the new players 
+     */
     @Override
     public void assignCharacters(){
         characters.add(0);
@@ -40,6 +53,11 @@ public class OldSaloon extends Game{
         }
 
     }
+    /***
+     * @author Nathan Clough 
+     * takes in a player object and performs necessary actions based on the final dice 
+     * @param p 
+     */
     @Override
     public void performActions(Player p){
         int totalGat=0;
@@ -159,7 +177,11 @@ public class OldSaloon extends Game{
                 gatlingGun(p);
         }
     }
-    
+    /***
+     * @author Nathan Clough
+     * takes in a player object and allows them to take their turn rerolling dice as neccessary 
+     * @param p 
+     */
     @Override
     public void takeTurn(Player p){
         int totalDynamite=0;
@@ -171,7 +193,7 @@ public class OldSaloon extends Game{
         die.clear();
         createDie(p);
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        System.out.println("\n=====New Turn ======\n" + p.getNumber() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         rollDie(rollingDie);
@@ -185,6 +207,10 @@ public class OldSaloon extends Game{
             {
                 if(d.getResult().equals("Arrow"))
                 {
+                    if (arrow.getArrow()==1)
+                    {
+                        p.setChief_Arrow(true);
+                    }
                     p.setArrows(p.getArrows()+1);
                     B.pArrow(p.getArrows(), p.getNumber());
                     totalArrows --;
@@ -208,6 +234,7 @@ public class OldSaloon extends Game{
                     if(p.getHealth() <= 0)
                     {
                         players.remove(p);
+                        System.out.println(p.getNumber() + "'s role was " + p.getRole());
                         if(getWinner(players));
                             break;
                     }
@@ -302,6 +329,11 @@ public class OldSaloon extends Game{
         if(players.contains(p)&& !getWinner(players))
             performActions(p);
     }
+
+    /***
+     * takes a player object and allows them to select the dice they want to use for their turn 
+     * @param p 
+     */
     public void createDie(Player p){
         int totalDice = 5;
         
@@ -385,7 +417,81 @@ public class OldSaloon extends Game{
            
        }
     }
+
+    /**
+     * used for testing to manipulate the dice in the game 
+     * @return 
+     */
     public ArrayList<Dice> getDie(){
         return die;
-    }                  
+    }
+    /***
+     * Indian attack function that accounts for cheifs arrow 
+     * @author Joey mcclain
+     */
+    @Override
+        public void IndianAttack(){
+        //show indian attack
+        System.out.println("Indian Attack");
+        totalArrows = 10;
+        B.tArrow(totalArrows);
+       int Chief_Arrows=0;
+       int flag=0;
+        for (int i = 0; i<players.size(); i++)
+        {
+            Player t = players.get(i);
+            if (t.isChief_Arrow()==true)
+            {
+                Chief_Arrows=t.getArrows();
+            }
+        }
+        for (int i = 0; i<players.size(); i++)
+        {
+            Player t = players.get(i);
+            if (t.getArrows() > Chief_Arrows)
+            {
+                flag=1;
+            }
+        }
+        for (int i = 0; i<players.size(); i++)
+        {
+            Player t = players.get(i);
+            if (t.isChief_Arrow()==true&& flag ==0)
+            {
+                t.setArrows(0);
+                t.setChief_Arrow(false);
+            }
+            else
+                if (t.isChief_Arrow()==true)
+                {
+                    t.setChief_Arrow(false);
+                    t.setArrows(t.getArrows()+1);
+                }
+                if(t.getCharacter().equals("JOURDONNAIS"))
+                {
+                    int damage = t.getArrows();
+                    if(damage > 1)
+                        damage = 1;
+                    t.setHealth(t.getHealth()-damage);
+                    B.update_Health(t.getHealth(), t.getNumber());
+                    t.setArrows(0);
+                    B.pArrow(t.getArrows(), t.getNumber());
+                }
+                else
+                {
+                    t.setHealth(t.getHealth()-t.getArrows());
+                    B.update_Health(t.getHealth(), t.getNumber());
+                    t.setArrows(0);
+                    B.pArrow(t.getArrows(), t.getNumber());
+                }
+            arrow.Reset_Arrows();
+            if(t.getHealth() <= 0)
+            {
+                players.remove(t);
+                System.out.println(t.getNumber() + "'s role was " + t.getRole());
+                if(getWinner(players))
+                    break;
+            }
+        }
+    }
 }

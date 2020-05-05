@@ -18,6 +18,10 @@ public class UserSelectDice extends javax.swing.JFrame {
      */
     Boolean loudmouth = false;
     Boolean coward = false;
+
+    /**
+     *
+     */
     public UserSelectDice() {
         initComponents();
         setVisible(true);
@@ -30,6 +34,11 @@ public class UserSelectDice extends javax.swing.JFrame {
        
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public boolean [] getUserSelectedDice(){
         boolean [] array = new boolean [2];
         

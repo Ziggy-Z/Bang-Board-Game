@@ -38,11 +38,17 @@ public class UI extends javax.swing.JFrame {
     /***
      * 
      * @return integer value for number of players  
+     * @throws java.lang.InterruptedException  
      */
     public int getStartNumPlayers() throws InterruptedException{
                 
                 return fchoice;
             }
+
+    /**
+     *
+     * @return
+     */
     public int getModules(){
         if(dead && saloon)
             return 3;

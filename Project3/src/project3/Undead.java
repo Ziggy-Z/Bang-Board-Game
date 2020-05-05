@@ -13,18 +13,40 @@ import java.util.Collections;
  Nathan Clough
  */
 public class Undead extends Game{
+
+    /**
+     *
+     */
     public ArrayList<Player> totalPlayers;
+
+    /**
+     *
+     */
     public boolean outbreak;
+
+    /**
+     *
+     */
     public BoneYardCard deck = new BoneYardCard();
+
+    /**
+     *
+     */
     public Undead(){
         super();
     }
+
+    /**
+     *
+     * @param num
+     */
     public Undead(int num){
         super(num);
     }
     @Override
     public void assignCharacters(){
-         characters.add(0);
+        
+        characters.add(0);
         characters.add(5);
         characters.add(5);
         characters.add(7);
@@ -33,7 +55,9 @@ public class Undead extends Game{
         characters.add(13);
         characters.add(14);
         characters.add(18);
-        characters.add(19);
+        characters.add(19); 
+        
+       
         Collections.shuffle(characters);
         for(Player t : players)
         {
@@ -42,6 +66,7 @@ public class Undead extends Game{
             B.update_Health(t.getHealth(), t.getNumber());
             
         }
+        
     }
     @Override
     public void play() throws InterruptedException{
@@ -85,6 +110,12 @@ public class Undead extends Game{
         System.out.println(winners + " wins!!!!!!!");
     }
     }
+
+    /**
+     *
+     * @param i
+     * @throws InterruptedException
+     */
     public void playOutbreak(int i ) throws InterruptedException{
         
        setupOutbreak();
@@ -103,6 +134,10 @@ public class Undead extends Game{
         
         System.out.println(winners + " win!!!");
     }
+
+    /**
+     *
+     */
     public void setupOutbreak(){
        finished = false;
        for(Player p: totalPlayers)
@@ -124,6 +159,11 @@ public class Undead extends Game{
        
            
     }
+
+    /**
+     *
+     * @param p
+     */
     public void takeOutbreakTurn(Player p){
         int totalDynamite=0;
         int turnNum =1;
@@ -260,6 +300,11 @@ public class Undead extends Game{
            
        }
     }
+
+    /**
+     *
+     * @param p
+     */
     public void createDie(Player p){
         int totalDice=5;
         if(p.isZombie())
@@ -355,6 +400,9 @@ public class Undead extends Game{
         int totalDynamite=0;
         int turnNum =1;
         int maxRerolls = 3;
+        if(p.hasToken("Dynamite")){
+            totalDynamite ++;
+        }
         if(p.getCharacter().equals("LUCKY DUKE"));
             maxRerolls =4;
         boolean rollAgain = true;
@@ -402,8 +450,7 @@ public class Undead extends Game{
                      }
                     for(int i = 0; i < totalMultiplier; i++){
                        if(p.hasToken()){
-                           Token t = new Token();
-                           t.returnToken(p.removeToken());
+                           p.removeToken();
                            
                        }
                        
@@ -498,7 +545,6 @@ public class Undead extends Game{
         int totalTwoShot=0;
         int totalOneShot=0;
         int totalBeer=0;
-        int totalWhiskey=0;
         int totalDuel=0;
         AI ai = new AI();
         for(Dice d :die)
@@ -510,11 +556,21 @@ public class Undead extends Game{
                 totalBeer ++;
             else if(d.getResult().equals("Gatling"))
                 totalGat++;
-            else if(d.getResult().equals("Whiskey"))
-                totalWhiskey ++;
             else if(d.getResult().equals("Duel"))
                 totalDuel ++;
+
+        if(p.hasToken("One")){
+            totalOneShot --;
+        }
+        if(p.hasToken("Two")){
+            totalTwoShot --;
+        }
+        if(p.hasToken("Beer")){
+            totalBeer --;
+        }
+   
         
+
         if(p.getCharacter().equals("SUZY LAFAYETTE") && (totalOneShot == 0 && totalTwoShot == 0))
         {
             p.setHealth(p.getHealth()+2);
@@ -607,7 +663,7 @@ public class Undead extends Game{
         if(!getWinner(players)){
             for(int i =0; i<totalDuel; i++)
             {
-                if(p.getCharacter().equals("SAM THE HEALER")){
+                if(p.getCharacter().equals("SAM THE HEALER") && p.getHealth() >=1){
                    if(p.isAI())
                    {
 
@@ -634,7 +690,9 @@ public class Undead extends Game{
                 }   
                    
             }
-               Duel.performDuel(p, players);
+               Player c = Duel.performDuel(p, players);
+               B.update_Health(p.getHealth(),p.getNumber());
+               B.update_Health(p.getHealth(), p.getNumber());
                if(getWinner(players))
                {
                    break;

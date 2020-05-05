@@ -163,7 +163,8 @@ public class WinnerUI extends javax.swing.JFrame {
     public void lose(){
         jLabel1.setText(player + " lost the duel!");
     }
-public void showToken(String tkn){
+
+    public void showToken(String tkn){
         String s = "They have";
         if(player.equals("p1")){
             s = "You have";

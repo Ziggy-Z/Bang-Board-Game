@@ -23,67 +23,73 @@ Nathan Clough
  * 
  */
 public class Game {
+
+    /**
+     *
+     */
     public ArrayList<Player> players = new ArrayList<Player>();
+
+    /**
+     *
+     */
     public LinkedList<String> roles = new LinkedList<String>();
+
+    /**
+     *
+     */
     public LinkedList<Integer> characters = new LinkedList<Integer>();
+
+    /**
+     *
+     */
     public ArrayList<Dice> die = new ArrayList<Dice>();
+
+    /**
+     *
+     */
     public boolean finished;
+
+    /**
+     *
+     */
     public boolean three = false;
+
+    /**
+     *
+     */
     public int totalArrows = 9;
     int start;
+
+    /**
+     *
+     */
     public String winners;
     board B = new board();
-    /***
-     * Constructor for game object that takes in a number of players 
+    /**
      * @author Nathan Clough
      * @param numPlayers 
+     * Constructor for game object that takes in a number of players 
+     * @author Nathan Clough 
      */
     public Game(){
         int numPlayers = 4;
         B.setVisible(true);
+
         B.pChoice(players);
         B.tArrow(9);
+
         
+   
         
         for(int i =1; i <=numPlayers; i++)
         {
-           if(numPlayers == 4){
-                Player p = new Player("p"+((2*i)-1));
-     
-                players.add(p);
-                
-           }
-           else if(numPlayers == 5){
-                Player p = new Player("p"+((2*(i-1))));
-                                if(i ==1 )
-                p.setUser();
-                players.add(p);
-
-                
-            }
-           else if(numPlayers == 6){
-                Player p = new Player("p"+((2*(i-1))));
-      
-                players.add(p);
-
-           }
-           else if(numPlayers == 7){
-                Player p = new Player("p"+((i)));
-                
-           
-                players.add(p);
-           }
-           else if(numPlayers == 8){
-                Player p = new Player("p"+((i+1)));
-                
-                
-           
-                players.add(p);
-           }
-          
+           Player p = new Player("p"+i);
+           players.add(p);
         }
+        
+        
         //creates the board gui with correct information
-       
+         B.pChoice(players);
         setupRoles();
         assignCharacters();
         players.get(0).setUser();
@@ -91,7 +97,7 @@ public class Game {
  
     }
     /***
-     * creates Game instance for testing purposes
+     * creates Game instance based on a number of players  
      * @param numPlayers 
      */
     public Game(int numPlayers){                
@@ -187,6 +193,7 @@ public class Game {
     /**
      * Function for looping through the players arrayList and having each player take turn in order
      * @author Nathan Clough
+     * @throws java.lang.InterruptedException
      */
     public void play() throws InterruptedException{
 //loops through the list allowing to keep taking turns in the correct order
@@ -207,7 +214,7 @@ public class Game {
     }
     /**
      * Takes in a Player object and then runs through the rolls and applies any actions
-     * @param p a 
+     * @param p a player object 
      * @author Nathan Clough
      */
     public void takeTurn(Player p){
@@ -220,7 +227,7 @@ public class Game {
         die.clear();
         createDie();
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        System.out.println("\n=====New Turn ======\n" + p.getNumber() + " " + p.getCharacter()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         rollDie(rollingDie);
@@ -548,9 +555,11 @@ public class Game {
                     t.setArrows(0);
                     B.pArrow(t.getArrows(), t.getNumber());
                 }
+           
             if(t.getHealth() <= 0)
             {
                 players.remove(t);
+                System.out.println(t.getNumber() + "'s role was " + t.getRole());
                 if(getWinner(players))
                 {
                    finished = true;
@@ -587,6 +596,7 @@ public class Game {
     /** 
      * Shots given player who is one position away
      * @author Krystyna Urbanczyk
+     * @param p
      */
     public void oneShot(Player p){
         if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
@@ -602,11 +612,15 @@ public class Game {
 
         }
         if(p.getHealth() <= 0)
+        {
+            System.out.println(p.getNumber() + "'s role was " + p.getRole());
             players.remove(p);
+        }
     }
     /** 
      * Shots given player who is two positions away
      * @author Krystyna Urbanczyk
+     * @param p
      */
     public void twoShot(Player p){
         if(p.getCharacter().equals("BART CASSIDY") && totalArrows != 1)
@@ -622,7 +636,11 @@ public class Game {
 
         }
         if(p.getHealth() <= 0)
+        {
+            System.out.println(p.getNumber() + "'s role was " + p.getRole());
             players.remove(p);
+            
+        }
         
     }
     /**
@@ -683,30 +701,69 @@ public class Game {
     }
     
     // Functions to aid with testing by allowing to set up specific situations 
+
+    /**
+     *
+     * @return
+     */
     public String getWinners(){
         return winners;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getTotalArrows(){
         return totalArrows;
     }
+
+    /**
+     *
+     * @param ta
+     */
     public void setTotalArrows(int ta){
         totalArrows = ta;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getNumPlayers(){
         return players.size();
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Player> getPlayers(){
         return players;
     }
+
+    /**
+     *
+     */
     public void display(){
         for(Player t: players)
         {
             System.out.println(t.getNumber());
         }
     }
+
+    /**
+     *
+     * @param newPlayers
+     */
     public void setPlayers( ArrayList<Player> newPlayers ){
         players = newPlayers;
     }
+
+    /**
+     *
+     * @param dices
+     */
     public void setDie(ArrayList<Dice> dices){
         die = dices;
     }

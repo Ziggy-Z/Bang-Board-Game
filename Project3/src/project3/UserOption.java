@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package project3;
 
 import java.util.ArrayList;
@@ -11,8 +7,8 @@ import java.util.logging.Logger;
 import jdk.nashorn.internal.runtime.options.Options;
 
 /**
- *
- * @author bigjo
+ *GUI for selecting dice to reroll and players to shoot when taking a turn 
+ * @author Nathan Clough
  */
 public class UserOption extends javax.swing.JFrame {
     /**
@@ -21,7 +17,7 @@ public class UserOption extends javax.swing.JFrame {
     private boolean shoot;
     private ArrayList<Integer> reroll = new ArrayList<Integer>();
     /**
-     *
+     * initializes the window with the players to shoot displayed as buttons 
      * @param options
      */
     public UserOption(ArrayList<Player> options) {
@@ -52,8 +48,10 @@ public class UserOption extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * displays the dice so user can select which ones to reroll;
      * @param die
+     * @param d needed to differentiate from the first constructor
+
      */
     public UserOption(ArrayList<Dice> die, String d){
         initComponents();
@@ -92,6 +90,7 @@ public class UserOption extends javax.swing.JFrame {
         
         leftB.setVisible(false);
         rightB.setVisible(false);
+        //syncronizes the thread so the main game pauses to wait for input 
         synchronized(this)
         {try {
             this.wait();
@@ -306,7 +305,15 @@ public class UserOption extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    //array to store what options are selected 
     boolean [] checked = {false,false,false,false,false,false};
+
+    /***
+     * @return an arraylist with indexes of the dice to reroll
+     * 
+     */ 
+
     public ArrayList<Integer> getReroll(){
         for (int i = 0; i<6; i ++){
             if(checked[i])
@@ -314,6 +321,11 @@ public class UserOption extends javax.swing.JFrame {
         }
         return reroll;
     }
+
+    /*** 
+   
+
+     */
     public int shootWho(){
         if(shoot)
             return 0;
@@ -367,7 +379,12 @@ public class UserOption extends javax.swing.JFrame {
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
        checked[5] = !checked[5];       // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox6ActionPerformed
-     public static void main(String args[]) {
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

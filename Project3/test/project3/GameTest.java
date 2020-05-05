@@ -20,21 +20,36 @@ import static org.junit.Assert.*;
  */
 public class GameTest {
     
+    /**
+     *
+     */
     public GameTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -199,7 +214,11 @@ public class GameTest {
             i++;
         }
     }
-        @Test
+
+    /**
+     *
+     */
+    @Test
     public void IndianAttack_Jourdonnais() {
     //arange 
     int expectedHealth = 6;
@@ -284,7 +303,11 @@ public class GameTest {
         assertEquals(expectedPlayerArrows,players.get(1).getArrows());
         assertEquals(expectedTotalGameArrows,instance.getTotalArrows());
     }
-       @Test
+
+    /**
+     *
+     */
+    @Test
     public void testGatGun_PaulRegret_FourPlayerGame() {
         //arrange
         Game instance = new Game(4);
@@ -468,6 +491,10 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+
+    /**
+     *
+     */
     @Test
     public void testGetOneAway_lastPosition_FourPlayerGamme() {
         System.out.println("getOneAway");
@@ -487,6 +514,10 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+
+    /**
+     *
+     */
     @Test
     public void testGetOneAway_middlePosition_FourPlayerGamme() {
         System.out.println("getOneAway");
@@ -530,6 +561,10 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+
+    /**
+     *
+     */
     @Test
     public void testGetTwoAway_secondPosition_FivePlayerGamme() {
         System.out.println("getOneAway");
@@ -550,6 +585,10 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
+
+    /**
+     *
+     */
     @Test
     public void testGetTwoAway_MiddlePosition_FivePlayerGamme() {
         System.out.println("getOneAway");
@@ -570,7 +609,11 @@ public class GameTest {
         // TODO review the generated test code and remove the default call to fail.
         
     }
-        @Test
+
+    /**
+     *
+     */
+    @Test
         public void testGetTwoAway_LastPosition_FivePlayerGamme() {
         System.out.println("getOneAway");
         
