@@ -120,7 +120,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="You may re-roll a dynamite&#xa;(not if you roll three or more)."/>
+                <Property name="text" type="java.lang.String" value="You may re-roll a dynamite&#xa;(not if you roll three or more).&#xa;&#xa;&#xa;"/>
               </Properties>
             </Component>
           </SubComponents>
