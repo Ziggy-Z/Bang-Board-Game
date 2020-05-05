@@ -16,7 +16,7 @@ public class Duel{
        static Token tokens = new Token();
        
        
-    public static void performDuel(Player p, ArrayList<Player> players){
+    public static Player performDuel(Player p, ArrayList<Player> players){
             boolean win = false;
            
             String s = "Duel";
@@ -56,10 +56,11 @@ public class Duel{
                 
                 String drawnToken = tokens.drawToken();
                 p.addToken(drawnToken);
-                c.setHealth(c.getHealth()-1);
+                p.setHealth(p.getHealth()-1);
                 WinnerUI w = new WinnerUI(win,c.getNumber(),drawnToken);
 
             }
+            return c;
    
         
     }

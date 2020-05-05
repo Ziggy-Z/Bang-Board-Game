@@ -32,6 +32,7 @@ public class WinnerUI extends javax.swing.JFrame {
         {
             jLabel4.setText("You've drawn token " + token);
             this.lose();
+            this.showToken(token);
         }
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -136,10 +137,14 @@ public class WinnerUI extends javax.swing.JFrame {
         jLabel1.setText(player + " won the duel!");
     }
     public void lose(){
-        jLabel1.setText(player + "lost the duel!");
+        jLabel1.setText(player + " lost the duel!");
     }
     public void showToken(String tkn){
-        jLabel1.setText("You've drawn token " + token);
+        String s = "They have";
+        if(player.equals("p1")){
+            s = "You have";
+        }
+        jLabel4.setText( s + " drawn token " + token);
     }
     public static void main(String args[]) {
         

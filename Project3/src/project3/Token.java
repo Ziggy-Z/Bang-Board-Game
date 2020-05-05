@@ -40,8 +40,16 @@ public class Token {
     } 
     public String drawToken(){
         Collections.shuffle(tokens);
-        String token = tokens.pop();
-        return token;
+        String token = "";
+        if(tokens.size() <= 0){
+            return token;
+        }
+        else
+        {
+            token = tokens.pop(); 
+            return token;
+        }
+
     }
     public void returnToken(String token){
         tokens.addFirst(token);

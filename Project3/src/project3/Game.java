@@ -548,6 +548,7 @@ public class Game {
                     t.setArrows(0);
                     B.pArrow(t.getArrows(), t.getNumber());
                 }
+           
             if(t.getHealth() <= 0)
             {
                 players.remove(t);

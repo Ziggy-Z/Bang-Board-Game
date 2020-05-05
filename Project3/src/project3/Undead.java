@@ -24,7 +24,8 @@ public class Undead extends Game{
     }
     @Override
     public void assignCharacters(){
-         characters.add(0);
+        
+        characters.add(0);
         characters.add(5);
         characters.add(5);
         characters.add(7);
@@ -33,7 +34,9 @@ public class Undead extends Game{
         characters.add(13);
         characters.add(14);
         characters.add(18);
-        characters.add(19);
+        characters.add(19); 
+        
+       
         Collections.shuffle(characters);
         for(Player t : players)
         {
@@ -42,6 +45,7 @@ public class Undead extends Game{
             B.update_Health(t.getHealth(), t.getNumber());
             
         }
+        
     }
     @Override
     public void play() throws InterruptedException{
@@ -498,7 +502,6 @@ public class Undead extends Game{
         int totalTwoShot=0;
         int totalOneShot=0;
         int totalBeer=0;
-        int totalWhiskey=0;
         int totalDuel=0;
         AI ai = new AI();
         for(Dice d :die)
@@ -510,8 +513,6 @@ public class Undead extends Game{
                 totalBeer ++;
             else if(d.getResult().equals("Gatling"))
                 totalGat++;
-            else if(d.getResult().equals("Whiskey"))
-                totalWhiskey ++;
             else if(d.getResult().equals("Duel"))
                 totalDuel ++;
         
@@ -607,7 +608,7 @@ public class Undead extends Game{
         if(!getWinner(players)){
             for(int i =0; i<totalDuel; i++)
             {
-                if(p.getCharacter().equals("SAM THE HEALER")){
+                if(p.getCharacter().equals("SAM THE HEALER") && p.getHealth() >=1){
                    if(p.isAI())
                    {
 
@@ -634,7 +635,9 @@ public class Undead extends Game{
                 }   
                    
             }
-               Duel.performDuel(p, players);
+               Player c = Duel.performDuel(p, players);
+               B.update_Health(p.getHealth(),p.getNumber());
+               B.update_Health(p.getHealth(), p.getNumber());
                if(getWinner(players))
                {
                    break;
