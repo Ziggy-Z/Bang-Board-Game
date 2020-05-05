@@ -11,17 +11,6 @@ import java.util.Random;
 /**
  * Creates the AI to be used in the game for automated players.
  * @author Rohit Gurnani
-<<<<<<< HEAD
- * Contributor Nathan Clough
- */
-public class AI {
-    
-/**
- * returns array of integers of indexes of dice that needs to be re-rolled.
- * 
- */
-    public AI(){
-=======
  * Contributor: Nathan Clough : Added functionality for AI to choose who to heal.
  */
 public class AI {
@@ -31,20 +20,17 @@ public class AI {
             * 
             */
            public AI(){
->>>>>>> 44cb0cd7ba49a1df8b99f619a72b5cdc904f5cc4
     
-    }
+            }
                  
     /**
      *
      * @param die
      * @param role
-<<<<<<< HEAD
      * @return role_list
-=======
      * @return roll_list
->>>>>>> 44cb0cd7ba49a1df8b99f619a72b5cdc904f5cc4
-     */
+    */
+     
     public ArrayList<Integer> rollagain(ArrayList<Dice> die, String role){
                    int i;
                    ArrayList<Integer> roll_list = new ArrayList<Integer>();
@@ -282,14 +268,11 @@ public class AI {
             * 
             * returns 1 for coward and 2 for loudmouth and 3 for both the die
             * and 0 for none
-<<<<<<< HEAD
             * @param p
             * @return 
-=======
             *
             * @param p
             * @return int 
->>>>>>> 44cb0cd7ba49a1df8b99f619a72b5cdc904f5cc4
             */ 
             public int selectDice(Player p){
               Random saloon = new Random(); 
