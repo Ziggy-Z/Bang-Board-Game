@@ -221,13 +221,17 @@ public class GameTest {
     @Test
     public void IndianAttack_Jourdonnais() {
     //arange 
-    int expectedHealth = 6;
+    int expectedHealth = 6;  //one less than his normal health
     Game instance = new Game(4);
-    ArrayList<Player> players = instance.getPlayers();
-    players.get(0).setCharacterTraits(5);
-    players.get(0).setArrows(5);
-    instance.setPlayers(players);
+   
+    ArrayList<Player> players = instance.getPlayers(); // lets us set up the players 
+    players.get(0).setCharacterTraits(5); //sets character traits to be Jourdonnais
+    players.get(0).setArrows(5);// sets his arrows to be 5 
+    instance.setPlayers(players); // puts him in the game 
+    
+
     // act
+    
     instance.IndianAttack();
     players = instance.getPlayers();
     //assert
