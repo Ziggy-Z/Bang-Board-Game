@@ -132,6 +132,11 @@ public class UserOption extends javax.swing.JFrame {
         leftB.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         leftB.setForeground(new java.awt.Color(255, 255, 255));
         leftB.setText("Left");
+        leftB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                leftBMouseClicked(evt);
+            }
+        });
         leftB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 leftBActionPerformed(evt);
@@ -142,6 +147,11 @@ public class UserOption extends javax.swing.JFrame {
         rightB.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         rightB.setForeground(new java.awt.Color(255, 255, 255));
         rightB.setText("Right");
+        rightB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rightBMouseClicked(evt);
+            }
+        });
         rightB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rightBActionPerformed(evt);
@@ -213,7 +223,7 @@ public class UserOption extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Done");
@@ -379,6 +389,16 @@ public class UserOption extends javax.swing.JFrame {
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
        checked[5] = !checked[5];       // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox6ActionPerformed
+
+    private void rightBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightBMouseClicked
+        rightB.setBackground(new java.awt.Color(255,10,10));
+        leftB.setBackground(new java.awt.Color(51,51,255));
+    }//GEN-LAST:event_rightBMouseClicked
+
+    private void leftBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftBMouseClicked
+        leftB.setBackground(new java.awt.Color(255,10,10));
+        rightB.setBackground(new java.awt.Color(51,51,255));
+    }//GEN-LAST:event_leftBMouseClicked
 
     /**
      *
