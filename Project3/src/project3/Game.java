@@ -25,44 +25,29 @@ Nathan Clough
 public class Game {
 
     /**
-     *
+     * Array list for players
      */
     public ArrayList<Player> players = new ArrayList<Player>();
 
     /**
-     *
+     * Array list for roles
      */
     public LinkedList<String> roles = new LinkedList<String>();
 
     /**
-     *
+     * Array list for characters
      */
     public LinkedList<Integer> characters = new LinkedList<Integer>();
 
     /**
-     *
+     * Array list for die
      */
     public ArrayList<Dice> die = new ArrayList<Dice>();
 
-    /**
-     *
-     */
     public boolean finished;
-
-    /**
-     *
-     */
     public boolean three = false;
-
-    /**
-     *
-     */
     public int totalArrows = 9;
     int start;
-
-    /**
-     *
-     */
     public String winners;
     board B = new board();
     /**
