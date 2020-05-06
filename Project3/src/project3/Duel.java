@@ -18,7 +18,7 @@ public class Duel{
        
     public static Player performDuel(Player p, ArrayList<Player> players){
             boolean win = false;
-           
+           System.out.println("======Duel======");
             String s = "Duel";
             Player c = null;
            if(!p.isAI()){

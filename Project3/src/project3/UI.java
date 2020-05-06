@@ -12,11 +12,11 @@ import java.util.logging.Logger;
  * @author zeged
  */
 public class UI extends javax.swing.JFrame {
-    int choice;
-    int fchoice =0;
+    int choice = 4;
+    int fchoice;
     int modules =0;
     boolean done;
-    boolean saloon,dead;
+    boolean saloon,dead = false;
 
     /**
      * Creates new form UI
@@ -50,11 +50,9 @@ public class UI extends javax.swing.JFrame {
      * @return
      */
     public int getModules(){
-        if(dead && saloon)
-            return 3;
-        else if(dead)
+        if(dead)
             return 2;
-        else if(saloon)
+        if(saloon)
             return 1;
         else 
             return 0;
@@ -210,12 +208,12 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-       saloon = true;
+       saloon = !saloon;
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
-        dead = true;
+        dead = !dead;
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
