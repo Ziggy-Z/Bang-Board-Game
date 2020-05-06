@@ -26,20 +26,6 @@ public class Player {
     public Player(String number)
     {
         this.number = number;
-        
-        /*
-        setCharacterTraits(0);
-        System.out.println("Name: " +Character);
-        System.out.println("Max Health: " +MaxHealth);
-        System.out.println("Current Health: " +CurrentHealth);
-        System.out.println("Ability: " +ability);
-        setRole("Bandit");
-        setHealth(10);
-        setArrows(5);
-        System.out.println("Current Health: " +CurrentHealth);
-        System.out.println("Role: " +Role);
-        System.out.println("Arrows: "+Arrows);
-*/
     }
     public String getNumber(){
         return number;
