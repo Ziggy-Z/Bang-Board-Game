@@ -1,9 +1,6 @@
-/*
-CS 2365 OOP Spring 2020 Section 2
-Nathan Clough
- */
 package project3;
 
+import project3.AI;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,77 +8,56 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+/*
+CS 2365 OOP Spring 2020 Section 2
+Rohit Gurnani
+ */
+
 
 /**
- *
- * @author X1Gen3
+ * Creates testing for the AI class
+ * @author Rohit Gurnani
  */
 public class AITest {
     
-    /**
-     *
-     */
     public AITest() {
     }
-    
-    /**
-     *
-     */
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    /**
-     *
-     */
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    /**
-     *
-     */
-    @Before
-    public void setUp() {
-    }
-    
-    /**
-     *
-     */
-    @After
-    public void tearDown() {
-    }
 
-    /**
+     /**
      * Test of rollagain method, of class AI.
+     * @author Rohit Gurnani
      */
     @Test
     public void testRollagain() {
-        System.out.println("rollagain");
-        ArrayList<Dice> die = null;
-        String role = "";
-        AI instance = new AI();
-        ArrayList<Integer> expResult = null;
-        ArrayList<Integer> result = instance.rollagain(die, role);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      ArrayList<Dice> d= new ArrayList<>();
+      ArrayList<Dice> p= new ArrayList<>();
+      AI test_1 = new AI();
+      AI test_2 = new AI();
+      String str = "Deputy";
+      String str2 = "Sheriff";
+      ArrayList<Integer> roll = test_1.rollagain(d, str);
+      ArrayList<Integer> roll_2 = test_2.rollagain(p, str2);
+      System.out.println(roll);
+      System.out.println(roll_2);
+      
     }
 
     /**
      * Test of who_toshoot method, of class AI.
+     * @author Rohit Gurnani
      */
     @Test
     public void testWho_toshoot() {
-        System.out.println("who_toshoot");
-        ArrayList<Player> options = null;
-        String role = "";
-        AI instance = new AI();
-        int expResult = 0;
-        int result = instance.who_toshoot(options, role);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      ArrayList<Player> d= new ArrayList<>();
+      ArrayList<Player> p= new ArrayList<>();
+      AI test_1 = new AI();
+      AI test_2 = new AI();
+      String str = "Deputy";
+      String str2 = "Sheriff";
+      int shoot = test_1.who_toshoot(d,str);
+      int shoot_2 = test_2.who_toshoot(p, str2);
+      System.out.println(shoot);
+      System.out.println(shoot_2);
     }
 
     /**
@@ -89,22 +65,29 @@ public class AITest {
      */
     @Test
     public void testWho_toheal() {
-        //arrange - setting up all the variables to fit situation 
-        ArrayList<Player> options = new ArrayList<Player>();
-        Player p = new Player("p1");
-        options.add(p);
-        options.add(p);
-        AI instance = new AI();
-        p.setCharacterTraits(0);
-        int expectedhealth = 8;
-        //act
-        
-        int who = instance.who_toheal(options,"Outlaw");
-        
-        //assert
-        assertNotEquals(-1,who);
-        System.out.println(who);
+        ArrayList<Player> p = new ArrayList<>();
+        ArrayList<Player> d = new ArrayList<>();
+        Player x = new Player("one");
+        Player y = new Player("two");
+        AI test_1= new AI();
+        AI test_2= new AI();
+        int one = test_1.who_toheal(p, x);
+        int two = test_2.who_toheal(d, y);
+        System.out.println(one);
+        System.out.println(two);
+         
+     }
 
+    /**
+     * Test of selectDice method, of class AI.
+     */
+    @Test
+    public void testSelectDice() {
+      Player p = new Player("test");
+      AI test = new AI();
+      int d = test.selectDice(p);
+      System.out.println(d);
+      
     }
     
 }
