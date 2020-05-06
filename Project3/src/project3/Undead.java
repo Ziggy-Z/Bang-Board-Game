@@ -174,7 +174,7 @@ public class Undead extends Game{
         die.clear();
         createDie(p);
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        System.out.println("\n=====New Turn ======\n" + p.getCharacter() + " " + p.getNumber()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         rollDie(rollingDie);
@@ -409,13 +409,21 @@ public class Undead extends Game{
         die.clear();
         createDie();
         // start the turn dialog 
-        System.out.println("\n=====New Turn ======\n" + p.getRole() + " " + p.getCharacter()+ ":");
+        System.out.println("\n=====New Turn ======\n" + p.getCharacter() + " " + p.getNumber()+ ":");
         ArrayList<Dice> rollingDie = (ArrayList<Dice>)die.clone();
         die.clear();
         rollDie(rollingDie);
         do 
         {
-            
+            //display the dice to the user
+                       //display the dice to the user
+            Collections.sort(rollingDie);
+            System.out.println("Roll: " + turnNum );
+             for(Dice d: die)
+                System.out.print(d.getResult() + " ");
+            for(Dice d: rollingDie)
+                System.out.print(d.getResult() + " ");
+            System.out.println();
            
             //arrayList to iterate through since cannot itterate and edit at same time 
             ArrayList<Dice> temp = (ArrayList<Dice>)rollingDie.clone();
@@ -462,15 +470,7 @@ public class Undead extends Game{
                 
             }
             temp.clear();
-            //display the dice to the user
-             Collections.sort(rollingDie);
-            for(Dice d: die)
-                System.out.print(d.getResult() + " ");
-            System.out.println();
-            for(Dice d: rollingDie)
-                System.out.print(d.getResult() + " ");
-            System.out.println();
-            
+
             //System.out.println("  - Dynamite " + totalDynamite
             //resets the roling with the ones that 
             
